@@ -49,7 +49,7 @@ Route::group(
         Route::get('/', 'DashboardController@index') -> name('dashboard');
     });
 
-    Route::prefix('admin')->middleware('auth')->namespace('Admin')->name('admin.')->group(function (){
+    Route::prefix('admin')->middleware('auth')->name('admin.')->namespace('Admin')->group(function (){
 
 
         // Collection Routes
