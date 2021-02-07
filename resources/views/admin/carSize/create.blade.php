@@ -1,6 +1,6 @@
 @php
     $pageType = __('trans.create');
-    $pageItem = __('trans.car size');
+    $pageItem = __('trans.car size')
 @endphp
 @extends('admin.layouts.app')
 

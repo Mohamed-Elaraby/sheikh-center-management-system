@@ -1,0 +1,7 @@
+.button_custom_style li a {
+    color: #ffffff;
+}
+.button_custom_style li a:hover{
+    background-color: #ffffff;
+    /*color: #ffffff;*/
+}

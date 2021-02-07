@@ -627,7 +627,7 @@ jvm.WorldMap.prototype = {
 
     for (i = 0; i < selected.length; i++) {
       select[selected[i]] = false;
-    };
+    }
 
     this.setSelected(type, select);
   },
@@ -782,7 +782,7 @@ jvm.WorldMap.prototype = {
     this.createMarkers(markers);
     for (i = 0; i < seriesData.length; i++) {
       this.series.markers[i].setValues(seriesData[i] || {});
-    };
+    }
   },
 
   /**
@@ -795,7 +795,7 @@ jvm.WorldMap.prototype = {
     for (i = 0; i < markers.length; i++) {
       this.markers[ markers[i] ].element.remove();
       delete this.markers[ markers[i] ];
-    };
+    }
   },
 
   /**

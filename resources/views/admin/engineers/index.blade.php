@@ -32,38 +32,6 @@
                 </div>
                 <div class="card-body">
                     {!! $dataTable->table(['class' => 'table table-bordered table-striped']) !!}
-{{--                    <table id="engineers_table" class="table table-bordered table-striped">--}}
-{{--                        <thead>--}}
-{{--                        <tr>--}}
-{{--                            <th>#</th>--}}
-{{--                            <th>{{ __('trans.engineer name') }}</th>--}}
-{{--                            <th>{{ __('trans.branch name') }}</th>--}}
-{{--                            <th>{{ __('trans.last update') }}</th>--}}
-{{--                            <th>{{ __('trans.action') }}</th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody>--}}
-{{--                        @foreach ($engineers as $index => $engineer)--}}
-{{--                            <tr>--}}
-{{--                                <td>{{ $index + 1 }}</td>--}}
-{{--                                <td>{{ $engineer -> name }}</td>--}}
-{{--                                <td>{{ $engineer -> branch -> name }}</td>--}}
-{{--                                <td style="direction:ltr; {!! LaravelLocalization::getCurrentLocale() == 'ar'?"float:right":"float:left" !!}">--}}
-{{--                                    {{ $engineer -> updated_at -> format('d/m/Y - h:i:s a') }}--}}
-{{--                                </td>                                <td>--}}
-{{--                                    @if (Auth::user()->hasPermission('update-engineers'))--}}
-{{--                                        <a href="{{ route('admin.engineers.edit', $engineer->id) }}" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> {{ __('trans.edit') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('delete-engineers'))--}}
-{{--                                        {!! Form::open(['route' => ['admin.engineers.destroy', $engineer->id], 'method' => 'delete', 'style' => 'display:inline']) !!}--}}
-{{--                                        <button class="btn btn-sm btn-danger" onclick="return showDeleteMessage()"> <i class="fa fa-remove"></i> {{ __('trans.delete') }}</button>--}}
-{{--                                        {!! Form::close() !!}--}}
-{{--                                    @endif--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
                 </div>
             </div>
         </div>
@@ -98,40 +66,6 @@
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     {!! $dataTable->scripts() !!}
-    <!-- Datatable Bootstrap Options -->
-<!--    <script>
-        $('#engineers_table').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "order": [[ 3, "desc" ]],
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "scrollX": true,
-            dom: 'lBfrtip',
-            "aLengthMenu": [[5,10,25,50,100,-1], [5,10,25,50,100,"All"]],
-            buttons: [
-                // 'copy', 'csv', 'excel', 'pdf', 'print'
-                {
-                    extend: 'copy',
-                    text: 'Copy',
-                },
-                {
-                    extend: 'excel',
-                    text: 'Excel',
-                },{
-                    extend: 'pdf',
-                    text: 'PDF',
-                },
-                {
-                    extend: 'print',
-                    text: 'Print',
-                },
-            ]
-        });
-    </script>-->
     <!-- Custom Function -->
     <script>
 

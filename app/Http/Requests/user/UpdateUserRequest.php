@@ -30,9 +30,7 @@ class UpdateUserRequest extends FormRequest
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->user)],
             'password' => 'nullable|min:6|confirmed',
             'role_id' => 'required|min:1',
-            'branch_id' => 'required|min:1',
-            'profile_picture' => 'image|mimes:jpg,jpeg,png,gif',
-            'job_title_id'      => 'required'
+            'profile_picture' => 'mimes:jpg,jpeg,png|max:2048',
         ];
     }
 }

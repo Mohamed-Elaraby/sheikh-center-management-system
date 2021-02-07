@@ -187,5 +187,6 @@ return [
         'car_model_id'          => 'الموديل',
         'car_status_report'     => 'الإصلاحات المطلوبة',
         'job_title_id'          => 'المسمى الوظيفى',
+        'profile_picture'       => 'الصورة الشخصية',
     ],
 ];

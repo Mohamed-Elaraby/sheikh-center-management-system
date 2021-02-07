@@ -1,6 +1,6 @@
 @php
 $pageType = __('trans.create');
-$pageItem = __('trans.check');
+$pageItem = __('trans.check')
 @endphp
 @extends('admin.layouts.app')
 
@@ -15,10 +15,8 @@ $pageItem = __('trans.check');
             <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
                     <!-- Open Form -->
                 {!! Form::open(['route' => 'admin.check.store', 'method' => 'post', 'files' => true, 'class' => 'f1', 'role'=>'form']) !!}
-                {!! Form::hidden('client_id', $targetClient -> id) !!}
-                @if ($targetBranch != '')
-                    {!! Form::hidden('branch_id', $targetBranch -> id) !!}
-                @endif
+                {!! Form::hidden('client_id', $client_id) !!}
+                @if ($branch_id != '') {!! Form::hidden('branch_id', $branch_id) !!} @endif
                     <h2 style="background-color: #3C8DBC; color: #fff">{{ __('trans.sheikh center group') }}</h2>
                     <p>{{ __('trans.create check') }}</p>
                     <div class="f1-steps">

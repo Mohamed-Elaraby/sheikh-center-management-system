@@ -6,11 +6,13 @@ use App\Models\CarModel;
 use App\Models\CarSize;
 use App\Models\Check;
 use App\Models\Client;
+use App\Models\User;
+
 #################   Constants   #################
 
 Route::get('test', function () {
 
-    return \App\Models\User::find(1);
+    return User::find(1);
     // Remove Duplicate Value From Array Script
 //    $object = $array ;
 //

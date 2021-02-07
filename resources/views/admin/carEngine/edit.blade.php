@@ -1,6 +1,6 @@
 @php
     $pageType = __('trans.edit');
-    $pageItem = __('trans.engine');
+    $pageItem = __('trans.engine')
 @endphp
 @extends('admin.layouts.app')
 

@@ -3,6 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\JobTitle;
+use Yajra\DataTables\DataTableAbstract;
+use Yajra\DataTables\Html\Builder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -15,7 +17,7 @@ class JobTitleDatatable extends DataTable
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
+     * @return DataTableAbstract
      */
     public function dataTable($query)
     {
@@ -31,7 +33,7 @@ class JobTitleDatatable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\JobTitle $model
+     * @param JobTitle $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(JobTitle $model)
@@ -42,7 +44,7 @@ class JobTitleDatatable extends DataTable
     /**
      * Optional method if you want to use html builder.
      *
-     * @return \Yajra\DataTables\Html\Builder
+     * @return Builder
      */
     public function html()
     {
@@ -52,7 +54,8 @@ class JobTitleDatatable extends DataTable
                     ->minifiedAjax()
                     ->parameters(array_merge($this->getBuilderParameters(),[]))
                     ->dom('Blfrtip')
-                    ->scrollX(true)
+                    ->scrollX(false)
+                    ->scrollY(true)
                     ->searching(true)
                     ->responsive(true)
                     ->autoWidth(false)

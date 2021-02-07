@@ -1,6 +1,6 @@
 @php
     $pageType = __('trans.create');
-    $pageItem = __('trans.car development code');
+    $pageItem = __('trans.car development code')
 
 
 @endphp

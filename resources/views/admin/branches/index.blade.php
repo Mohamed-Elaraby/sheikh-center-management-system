@@ -32,59 +32,6 @@
                 </div>
                 <div class="card-body">
                     {!! $dataTable->table(['class' => 'table table-bordered table-striped']) !!}
-{{--                    <table id="branches_table" class="table table-bordered table-striped">--}}
-{{--                        <thead>--}}
-{{--                        <tr>--}}
-{{--                            <th>#</th>--}}
-{{--                            <th>{{ __('trans.branch name') }}</th>--}}
-{{--                            <th>{{ __('trans.phone') }}</th>--}}
-{{--                            <th>{{ __('trans.address') }}</th>--}}
-{{--                            <th>{{ __('trans.status') }}</th>--}}
-{{--                            <th>{{ __('trans.last update') }}</th>--}}
-{{--                            <th>{{ __('trans.action') }}</th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody>--}}
-{{--                        @foreach ($branches as $index => $branch)--}}
-{{--                            <tr>--}}
-{{--                                <td>{{ $index + 1 }}</td>--}}
-{{--                                <td>{{ $branch->name }}</td>--}}
-{{--                                <td>{{ $branch->phone }}</td>--}}
-{{--                                <td>{{ $branch->address }}</td>--}}
-{{--                                <td class="bg-{{ $branch->getOriginal('status') == '1'?'green':'red' }}">{{ $branch->status }}</td>--}}
-{{--                                <td style="direction:ltr; {!! LaravelLocalization::getCurrentLocale() == 'ar'?"float:right":"float:left" !!}">--}}
-{{--                                    {{ $branch -> updated_at -> format('d/m/Y - h:i:s a') }}--}}
-{{--                                </td>--}}
-{{--                                <td>--}}
-{{--                                    <a href="{{ route('dashboard', ['branch_id' => $branch->id]) }}" class="btn btn-sm btn-info"> <i class="fa fa-line-chart"></i> {{ __('trans.branch statistic') }}</a>--}}
-{{--                                    @if (Auth::user()->hasPermission('read-check'))--}}
-{{--                                        <a href="{{ route('admin.check.index', ['branch_id' => $branch->id]) }}" class="btn btn-sm btn-warning"> <i class="fa fa-wrench"></i> {{ __('trans.branch checks') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('read-check'))--}}
-{{--                                        <a href="{{ route('admin.check.index', ['branch_id' => $branch->id, 'car_exists' => true]) }}" class="btn btn-sm btn-success"> <i class="fa fa-car"></i> {{ __('trans.branch exit car now') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('read-users'))--}}
-{{--                                        <a href="{{ route('admin.users.index', ['branch_id' => $branch->id]) }}" class="btn btn-sm btn-info"> <i class="fa fa-users"></i> {{ __('trans.branch users') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('read-technicals'))--}}
-{{--                                        <a href="{{ route('admin.technicals.index', ['branch_id' => $branch->id]) }}" class="btn btn-sm btn-warning"> <i class="fa fa-child"></i> {{ __('trans.branch technicals') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('read-engineers'))--}}
-{{--                                        <a href="{{ route('admin.engineers.index', ['branch_id' => $branch->id]) }}" class="btn btn-sm btn-info"> <i class="fa fa-child"></i> {{ __('trans.branch engineers') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('update-branches'))--}}
-{{--                                        <a href="{{ route('admin.branches.edit', $branch->id) }}" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> {{ __('trans.edit') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('delete-branches'))--}}
-{{--                                        {!! Form::open(['route' => ['admin.branches.destroy', $branch->id], 'method' => 'delete', 'style' => 'display:inline']) !!}--}}
-{{--                                        <button class="btn btn-sm btn-danger" onclick="return showDeleteMessage()"> <i class="fa fa-remove"></i> {{ __('trans.delete') }}</button>--}}
-{{--                                        {!! Form::close() !!}--}}
-{{--                                    @endif--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
                 </div>
             </div>
         </div>
@@ -119,40 +66,6 @@
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     {!! $dataTable->scripts() !!}
 
-    <!-- Datatable Bootstrap Options -->
-<!--    <script>
-        $('#branches_table').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "order": [[ 5, "desc" ]],
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            'scrollX': true,
-            dom: 'lBfrtip',
-            "aLengthMenu": [[5,10,25,50,100,-1], [5,10,25,50,100,"All"]],
-            buttons: [
-                // 'copy', 'csv', 'excel', 'pdf', 'print'
-                {
-                    extend: 'copy',
-                    text: 'Copy',
-                },
-                {
-                    extend: 'excel',
-                    text: 'Excel',
-                },{
-                    extend: 'pdf',
-                    text: 'PDF',
-                },
-                {
-                    extend: 'print',
-                    text: 'Print',
-                },
-            ]
-        });
-    </script>-->
     <!-- Custom Function -->
     <script>
 

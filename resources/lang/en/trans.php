@@ -60,7 +60,7 @@ return [
     "role"                                                                          => ucwords('role'),
     "profile picture"                                                               => ucwords('profile picture'),
     "last update"                                                                   => ucwords('last update'),
-    "action"                                                                        => ucwords('action'),
+    "action"                                                                        => ucwords('actions'),
     "language change"                                                               => ucwords('language change'),
     "main pages"                                                                    => ucwords('main pages'),
     "extra pages"                                                                   => ucwords('extra pages'),

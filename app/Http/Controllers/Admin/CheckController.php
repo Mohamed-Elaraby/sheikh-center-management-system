@@ -60,30 +60,20 @@ class CheckController extends Controller
 
     public function create(Request $request)
     {
-//        dd($request -> all());
-        $targetBranch = '';
-        if ($request ->get('branch_id')) {
-            $branch_id = $request ->get('branch_id');
-            $targetBranch = Branch::findOrFail($branch_id);
-        }
+        $branch_id = $request ->get('branch_id') ?? '';
         $client_id = $request ->get('client_id');
         $targetClient = Client::findOrFail($client_id);
         $technicals = Technical::where('branch_id', Auth::user()->branch_id) -> pluck('name', 'id') -> toArray();
         $engineers = Engineer::where('branch_id', Auth::user()->branch_id) -> pluck('name', 'id') -> toArray();
         $carTypes = CarType::pluck('name', 'id') -> toArray();
         $carModels = CarModel::orderBy('name', 'DESC') -> pluck('name', 'id') -> toArray();
-        return view('admin.check.create', compact('technicals', 'targetClient', 'targetBranch', 'engineers', 'carTypes', 'carModels'));
+        return view('admin.check.create', compact('technicals', 'targetClient', 'branch_id', 'client_id', 'engineers', 'carTypes', 'carModels'));
     }
 
     public function store(AddAndUpdateCheckRequest $request)
     {
 
-        if ($request -> branch_id && $request -> branch_id != null) {
-            $branch_id =  $request -> branch_id;
-        }else{
-            $branch_id = Auth::user()->branch_id;
-        }
-//        dd($request -> all() );
+        $branch_id = $request -> branch_id && $request -> branch_id != null ? $request -> branch_id : Auth::user()->branch_id;
         $check_number = rand();
         $check_data = $request -> except('car_images'); // Get All Column Without [car_images]
         $allData = $check_data+ ['user_id' => Auth::user()->id] + ['check_number' => $check_number] + ['branch_id' => $branch_id];

@@ -1,6 +1,6 @@
 @php
     $pageType = __('trans.create');
-    $pageItem = __('trans.model');
+    $pageItem = __('trans.model')
 
 
 @endphp

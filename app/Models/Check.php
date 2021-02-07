@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Observers\CheckObserver;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Check extends Model
 {
@@ -75,68 +77,68 @@ class Check extends Model
         Check::observe(CheckObserver::class);
     }
 
-    public function client(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function client(): BelongsTo
     {
         return $this -> belongsTo(Client::class);
     }
 
 
-    public function checkStatus(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function checkStatus(): BelongsTo
     {
         return $this -> belongsTo(CheckStatus::class);
     }
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function user(): BelongsTo
     {
         return $this -> belongsTo(User::class);
     }
 
-    public function images(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function images(): HasMany
     {
         return $this -> hasMany(Images::class);
     }
 
-    public function branch(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function branch(): BelongsTo
     {
         return $this -> belongsTo(Branch::class);
     }
 
-    public function status(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function status(): BelongsTo
     {
         return $this -> belongsTo(CheckStatus::class);
     }
 
-    public function technical(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function technical(): BelongsTo
     {
         return $this -> belongsTo(Technical::class);
     }
 
-    public function engineer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function engineer(): BelongsTo
     {
         return $this -> belongsTo(Engineer::class);
     }
 
-    public function carType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function carType(): BelongsTo
     {
         return $this -> belongsTo(CarType::class);
     }
 
-    public function carSize(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function carSize(): BelongsTo
     {
         return $this -> belongsTo(CarSize::class);
     }
 
-    public function carModel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function carModel(): BelongsTo
     {
         return $this -> belongsTo(CarModel::class);
     }
 
-    public function carEngine(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function carEngine(): BelongsTo
     {
         return $this -> belongsTo(CarEngine::class);
     }
 
-    public function carDevelopmentCode(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function carDevelopmentCode(): BelongsTo
     {
         return $this -> belongsTo(CarDevelopmentCode::class);
     }

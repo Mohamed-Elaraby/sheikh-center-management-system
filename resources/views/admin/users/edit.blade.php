@@ -1,7 +1,7 @@
 @php
     $pageType = __('trans.edit');
     $pageItem = __('trans.user');
-    $profile_picture_path = $user -> image_name == 'default.png' ? 'storage' .DIRECTORY_SEPARATOR. 'default.png' : $user -> profile_picture_path;
+    $profile_picture_path = $user -> image_name == 'default.png' ? 'storage' .DIRECTORY_SEPARATOR. 'default.png' : $user -> profile_picture_path
 @endphp
 @extends('admin.layouts.app')
 

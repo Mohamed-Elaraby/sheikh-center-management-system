@@ -1,4 +1,5 @@
 <?php
+
 return [
     "app name"                                                                      => 'نظام إدارة مجموعة مراكز الشيخ',
     "search"                                                                        => 'بحث',
@@ -60,7 +61,7 @@ return [
     "role"                                                                          => 'الترخيص',
     "profile picture"                                                               => 'الصورة الشخصية',
     "last update"                                                                   => 'آخر تعديل',
-    "action"                                                                        => 'الإجراء',
+    "action"                                                                        => 'الإجراءات',
     "language change"                                                               => 'تغيير اللغة',
     "main pages"                                                                    => 'الصفحات الرئيسية',
     "extra pages"                                                                   => 'صفحات اضافية',

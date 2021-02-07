@@ -4,6 +4,8 @@ namespace App\DataTables;
 
 use App\Models\CarDevelopmentCode;
 use App\Models\CarSize;
+use Yajra\DataTables\DataTableAbstract;
+use Yajra\DataTables\Html\Builder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -16,7 +18,7 @@ class CarDevelopmentCodeDatatable extends DataTable
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
+     * @return DataTableAbstract
      */
     public function dataTable($query)
     {
@@ -35,7 +37,7 @@ class CarDevelopmentCodeDatatable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\CarDevelopmentCode $model
+     * @param CarDevelopmentCode $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(CarDevelopmentCode $model)
@@ -52,7 +54,7 @@ class CarDevelopmentCodeDatatable extends DataTable
     /**
      * Optional method if you want to use html builder.
      *
-     * @return \Yajra\DataTables\Html\Builder
+     * @return Builder
      */
     public function html()
     {
@@ -62,7 +64,8 @@ class CarDevelopmentCodeDatatable extends DataTable
             ->minifiedAjax()
             ->parameters(array_merge($this->getBuilderParameters(),[]))
             ->dom('Blfrtip')
-            ->scrollX(true)
+            ->scrollX(false)
+            ->scrollY(true)
             ->searching(true)
             ->responsive(true)
             ->autoWidth(false)

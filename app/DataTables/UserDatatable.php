@@ -4,6 +4,8 @@ namespace App\DataTables;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\DataTableAbstract;
+use Yajra\DataTables\Html\Builder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -16,7 +18,7 @@ class UserDatatable extends DataTable
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
+     * @return DataTableAbstract
      */
     public function dataTable($query)
     {
@@ -45,7 +47,7 @@ class UserDatatable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\User $model
+     * @param User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(User $model)
@@ -64,7 +66,7 @@ class UserDatatable extends DataTable
     /**
      * Optional method if you want to use html builder.
      *
-     * @return \Yajra\DataTables\Html\Builder
+     * @return Builder
      */
     public function html()
     {
@@ -74,7 +76,8 @@ class UserDatatable extends DataTable
                     ->minifiedAjax()
                     ->parameters(array_merge($this->getBuilderParameters(),[]))
                     ->dom('Blfrtip')
-                    ->scrollX(true)
+                    ->scrollX(false)
+                    ->scrollY(true)
                     ->searching(true)
                     ->responsive(true)
                     ->autoWidth(false)
@@ -94,7 +97,7 @@ class UserDatatable extends DataTable
                         ]
                     )
                     ->languageUrl('//cdn.datatables.net/plug-ins/1.10.22/i18n/Arabic.json')
-                    ->orderBy(4, 'asc')
+                    ->orderBy(7)
                     ->buttons(
                         Button::make('create'),
                         Button::make('export'),

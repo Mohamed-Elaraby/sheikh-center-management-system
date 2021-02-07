@@ -1,6 +1,6 @@
 @php
 $pageType = __('trans.upload');
-$pageItem = __('trans.device report');
+$pageItem = __('trans.device report')
 
 @endphp
 @extends('admin.layouts.app')

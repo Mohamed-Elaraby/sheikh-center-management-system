@@ -1,6 +1,6 @@
 @php
 $pageType = __('trans.create');
-$pageItem = __('trans.job title');
+$pageItem = __('trans.job title')
 
 
 @endphp

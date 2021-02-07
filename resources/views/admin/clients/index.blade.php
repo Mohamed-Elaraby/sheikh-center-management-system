@@ -21,12 +21,7 @@
                 <div class="card-header" style="margin: 20px 0">
                     <div class="row">
                         <div class="col-xs-6">
-                            @if(request('month'))
-                                <h3 style="margin: 0; padding: 0; display: inline">[ {{ __('trans.all clients list'). ' عن شهر ' .' - '.$monthName }} ]</h3>
-                            @else
-                                <h3 style="margin: 0; padding: 0; display: inline"> <i class="fa fa-user-secret"></i> {{ __('trans.all clients list') }}</h3>
-                            @endif
-
+                            <h3 style="margin: 0; padding: 0; display: inline">{{ request('month')?__('trans.all clients list').'['. ' عن شهر ' .' - '.$monthName.']': __('trans.all clients list')}}</h3>
                         </div>
                         <div class="col-xs-6">
                             <div class="col-xs-9">

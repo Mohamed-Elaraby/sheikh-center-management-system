@@ -9,7 +9,7 @@ class CheckObserver
     /**
      * Handle the check "created" event.
      *
-     * @param  \App\Models\Check  $check
+     * @param Check $check
      * @return void
      */
     public function created(Check $check)
@@ -20,7 +20,7 @@ class CheckObserver
     /**
      * Handle the check "updated" event.
      *
-     * @param  \App\Models\Check  $check
+     * @param Check $check
      * @return void
      */
     public function updated(Check $check)
@@ -31,7 +31,7 @@ class CheckObserver
     /**
      * Handle the check "deleted" event.
      *
-     * @param  \App\Models\Check  $check
+     * @param Check $check
      * @return void
      */
     public function deleted(Check $check)
@@ -42,7 +42,7 @@ class CheckObserver
     /**
      * Handle the check "restored" event.
      *
-     * @param  \App\Models\Check  $check
+     * @param Check $check
      * @return void
      */
     public function restored(Check $check)
@@ -53,7 +53,7 @@ class CheckObserver
     /**
      * Handle the check "force deleted" event.
      *
-     * @param  \App\Models\Check  $check
+     * @param Check $check
      * @return void
      */
     public function forceDeleted(Check $check)

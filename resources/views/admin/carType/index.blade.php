@@ -32,43 +32,6 @@
                 </div>
                 <div class="card-body">
                     {!! $dataTable->table(['class' => 'table table-bordered table-striped']) !!}
-{{--                    <table id="carType_table" class="table table-bordered table-striped">--}}
-{{--                        <thead>--}}
-{{--                        <tr>--}}
-{{--                            <th>#</th>--}}
-{{--                            <th>{{ __('trans.car type') }}</th>--}}
-{{--                            <th>{{ __('trans.last update') }}</th>--}}
-{{--                            <th>{{ __('trans.action') }}</th>--}}
-{{--                        </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody>--}}
-{{--                        @foreach ($carType as $index => $car)--}}
-{{--                            <tr>--}}
-{{--                                <td>{{ $index + 1 }}</td>--}}
-{{--                                <td>{{ $car->name }}</td>--}}
-{{--                                <td style="direction:ltr; {!! LaravelLocalization::getCurrentLocale() == 'ar'?"float:right":"float:left" !!}">--}}
-{{--                                    {{ $car -> updated_at -> format('d/m/Y - h:i:s a') }}--}}
-{{--                                </td>--}}
-{{--                                <td>--}}
-{{--                                    @if (Auth::user()->hasPermission('create-carSize'))--}}
-{{--                                        <a href="{{ route('admin.carSize.create', ['car_type_id' => $car->id]) }}" class="btn btn-success btn-sm "><i class="fa fa-plus"></i> {{ __('trans.create car size') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('read-carSize'))--}}
-{{--                                            <a href="{{ route('admin.carSize.index', ['car_type_id' => $car->id]) }}" class="btn btn-warning btn-sm "><i class="fa fa-eye"></i> {{ __('trans.show all sizes related by type') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('update-carType'))--}}
-{{--                                        <a href="{{ route('admin.carType.edit', $car->id) }}" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> {{ __('trans.edit') }}</a>--}}
-{{--                                    @endif--}}
-{{--                                    @if (Auth::user()->hasPermission('delete-carType'))--}}
-{{--                                        {!! Form::open(['route' => ['admin.carType.destroy', $car->id], 'method' => 'delete', 'style' => 'display:inline']) !!}--}}
-{{--                                        <button class="btn btn-sm btn-danger" onclick="return showDeleteMessage()"> <i class="fa fa-remove"></i> {{ __('trans.delete') }}</button>--}}
-{{--                                        {!! Form::close() !!}--}}
-{{--                                    @endif--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
                 </div>
             </div>
         </div>
@@ -103,40 +66,6 @@
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     {!! $dataTable->scripts() !!}
 
-    <!-- Datatable Bootstrap Options -->
-<!--    <script>
-        $('#carType_table').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "order": [[ 2, "desc" ]],
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "scrollX": true,
-            dom: 'lBfrtip',
-            "aLengthMenu": [[5,10,25,50,100,-1], [5,10,25,50,100,"All"]],
-            buttons: [
-                // 'copy', 'csv', 'excel', 'pdf', 'print'
-                {
-                    extend: 'copy',
-                    text: 'Copy',
-                },
-                {
-                    extend: 'excel',
-                    text: 'Excel',
-                },{
-                    extend: 'pdf',
-                    text: 'PDF',
-                },
-                {
-                    extend: 'print',
-                    text: 'Print',
-                },
-            ]
-        });
-    </script>-->
     <!-- Custom Function -->
     <script>
 

@@ -720,7 +720,7 @@ function conditionallyLinkCanvasResizeToWindowResize(jSignatureInstance, setting
 			)
 		)
 	}
-};
+}
 
 
 function jSignatureClass(parent, options, instanceExtensions) {
@@ -1152,7 +1152,7 @@ jSignatureClass.prototype.initializeCanvas = function(settings) {
 
 	// normally select preventer would be short, but
 	// Canvas emulator on IE does NOT provide value for Event. Hence this convoluted line.
-	canvas.onselectstart = function(e){if(e && e.preventDefault){e.preventDefault()}; if(e && e.stopPropagation){e.stopPropagation()}; return false;};
+	canvas.onselectstart = function(e){if(e && e.preventDefault){e.preventDefault()} if(e && e.stopPropagation){e.stopPropagation()} return false;};
 
 	return canvas;
 }

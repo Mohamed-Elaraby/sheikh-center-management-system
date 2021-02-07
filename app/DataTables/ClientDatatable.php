@@ -5,6 +5,8 @@ namespace App\DataTables;
 use App\Models\Client;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTableAbstract;
+use Yajra\DataTables\Html\Builder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -15,7 +17,7 @@ class ClientDatatable extends DataTable
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
-     * @return \Yajra\DataTables\DataTableAbstract
+     * @return DataTableAbstract
      */
     public function dataTable($query)
     {
@@ -31,7 +33,7 @@ class ClientDatatable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Client $model
+     * @param Client $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Client $model, Request $request)
@@ -58,7 +60,7 @@ class ClientDatatable extends DataTable
     /**
      * Optional method if you want to use html builder.
      *
-     * @return \Yajra\DataTables\Html\Builder
+     * @return Builder
      */
     public function html()
     {
@@ -68,7 +70,8 @@ class ClientDatatable extends DataTable
                     ->minifiedAjax()
                     ->parameters(array_merge($this->getBuilderParameters(),[]))
                     ->dom('Blfrtip')
-                    ->scrollX(true)
+                    ->scrollX(false)
+                    ->scrollY(true)
                     ->searching(true)
                     ->responsive(true)
                     ->autoWidth(true)
