@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-header" style="margin: 20px 0">
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-xs-12">
                             <h3 style="margin: 0; padding: 0; display: inline"> <i class="fa fa-car"></i> {{ request('car_type_id')?__('trans.all car size').'['.$carTypeName.']': __('trans.all car size')}}</h3>
                         </div>
                     </div>

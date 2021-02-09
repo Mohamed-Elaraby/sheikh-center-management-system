@@ -1,4 +1,4 @@
-<div class="btn-group">
+<div class="btn-group convert_to_display_flex">
     <button type="button" class="btn btn-warning">{{ __('trans.action') }}</button>
     <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
         <span class="caret"></span>

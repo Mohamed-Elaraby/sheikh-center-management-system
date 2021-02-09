@@ -1,11 +1,11 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{ route('dashboard') }}" class="logo" style="padding: 0 5px">
+    <a href="{{ route('dashboard') }}" class="logo" style="padding: 0 5px; font-family: myFirstFont !important;">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><small><b>SCG</b></small></span> <!-- SCG For Sheikh Center Group -->
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg" style="font-size: .75vw"><b>{{ __('trans.app name') }}</b></span>
+        <span class="logo-lg logo_custom_style">{{ __('trans.app name') }}</span>
     </a>
 
     <!-- Header Navbar -->

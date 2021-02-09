@@ -20,27 +20,28 @@
                 </div>
                 <div class="card-header" style="margin: 20px 0">
                     <div class="row">
-                        <div class="col-xs-6">
-                            <h3 style="margin: 0; padding: 0; display: inline">{{ request('month')?__('trans.all clients list').'['. ' عن شهر ' .' - '.$monthName.']': __('trans.all clients list')}}</h3>
+                        <div class="col-xs-9">
+                            <h4 style="margin: 0; padding: 0; display: inline">{{ request('month')?__('trans.all clients list').'['. ' عن شهر ' .' - '.$monthName.']': __('trans.all clients list')}}</h4>
                         </div>
-                        <div class="col-xs-6">
-                            <div class="col-xs-9">
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input type="text" id="start_date" value="" placeholder="من تاريخ" autocomplete="off" style="width: 90px">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" id="end_date" value="" placeholder="الى تاريخ" autocomplete="off" style="width: 90px">
-                                    </div>
-                                    <button type="button" id="filter_date_button" class="btn btn-success btn-xs">تصفية <i class="fa fa-filter"></i> </button>
-                                    <button type="button" id="refresh_date_button" class="btn btn-warning btn-xs">اعادة تحميل <i class="fa fa-refresh"></i> </button>
-                                </form>
-                            </div>
-                            <div class="col-xs-3">
-                                @if (Auth::user()->hasPermission('create-clients'))
-                                    <a href="{{ route('admin.clients.create') }}" class="btn btn-success btn-sm pull-right"><i class="fa fa-plus"></i> {{ __('trans.create') }}</a>
-                                @endif
-                            </div>
+                        <div class="col-xs-3">
+                            @if (Auth::user()->hasPermission('create-clients'))
+                                <a href="{{ route('admin.clients.create') }}" class="btn btn-success btn-sm pull-right"><i
+                                        class="fa fa-plus"></i> {{ __('trans.create') }}</a>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form class="form-inline" style=" text-align: center; margin-top: 20px">
+                                <div class="form-group">
+                                    <input type="text" id="start_date" value="" placeholder="من تاريخ" autocomplete="off" >
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="end_date" value="" placeholder="الى تاريخ" autocomplete="off" >
+                                </div>
+                                <button type="button" id="filter_date_button" class="btn btn-success btn-xs">تصفية <i class="fa fa-filter"></i> </button>
+                                <button type="button" id="refresh_date_button" class="btn btn-warning btn-xs">اعادة تحميل <i class="fa fa-refresh"></i> </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -54,14 +55,15 @@
 @push('links')
     <!-- Datatable Bootstrap Css Files -->
     <link rel="stylesheet" href="{{ asset('assets/dist/css/datatableButtonsCssFiles/buttons.dataTables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
     <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
     @if (LaravelLocalization::getCurrentLocale() === 'ar')
         <style>
-            .date_dir_setting
-            {
-                direction:ltr;
+            .date_dir_setting {
+                direction: ltr;
                 text-align: right;
             }
         </style>
@@ -81,7 +83,8 @@
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     <!-- bootstrap datepicker -->
-    <script src="{{ asset('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+    <script
+        src="{{ asset('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     {!! $dataTable->scripts() !!}
     <!-- Datatable Bootstrap Options -->
     <script>
@@ -99,19 +102,19 @@
 
         $('#filter_date_button').on('click', function () {
             let start_date = $('#start_date').val();
-            let end_date    = $('#end_date').val();
-            let table       = $('#clientdatatable-table');
+            let end_date = $('#end_date').val();
+            let table = $('#clientdatatable-table');
 
             table.on('preXhr.dt', function (e, settings, data) {
-                data.start_date  = start_date;
-                data.end_date  = end_date;
+                data.start_date = start_date;
+                data.end_date = end_date;
 
             })
             table.DataTable().ajax.reload();
             $('#refresh_date_button').on('click', function () {
                 table.on('preXhr.dt', function (e, settings, data) {
-                    data.start_date  = '';
-                    data.end_date  = '';
+                    data.start_date = '';
+                    data.end_date = '';
                 })
                 table.DataTable().ajax.reload();
             })
@@ -123,7 +126,7 @@
     <script>
 
         // Show Confirm Message For Delete Any Item
-        function showDeleteMessage (){
+        function showDeleteMessage() {
             let deleteMessage = '{{ __('trans.are you sure delete this') }}';
             return confirm(deleteMessage);
         }
