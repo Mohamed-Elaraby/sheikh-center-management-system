@@ -53,6 +53,7 @@ class DashboardController extends Controller
 
             $latestClientsInMonth = Client::whereMonth('created_at', Carbon::now()->month) -> take(8) -> latest() -> get();
             $allClientsCountAtToday= Client::whereDate('created_at', Carbon::today()) -> get()->count();
+
             $totalCheckCountInMonth = Check::whereMonth('updated_at', Carbon::now()->month) -> get() ->count();
             if ($request->branch_id){
                 $totalCheckCountInMonth = Check::where('branch_id', $request->branch_id) -> whereMonth('updated_at', Carbon::now()->month) -> get() ->count();

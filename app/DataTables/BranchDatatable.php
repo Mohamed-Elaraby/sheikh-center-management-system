@@ -34,7 +34,10 @@ class BranchDatatable extends DataTable
                     return '<span class="bg-red">'.$query->status.'</span>';
                 }
             })
-            ->rawColumns(['action', 'status']);
+            ->editColumn('name', function ($query){
+                return "<a href='".route('dashboard', ['branch_id' => $query->id])."'>".$query -> name."</a>";
+            })
+            ->rawColumns(['action', 'status', 'name']);
     }
 
     /**

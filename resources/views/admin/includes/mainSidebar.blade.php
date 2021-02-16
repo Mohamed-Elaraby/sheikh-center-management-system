@@ -108,98 +108,96 @@
             @endif
 
 
-            <li class="header">{{ __('trans.extra pages') }}</li>
-
-            <!-- Check Status Route -->
-            @if(auth()->user()->hasPermission('read-checkStatus'))
-                <li>
-                    <a href="{{ route('admin.checkStatus.index') }}">
-                        <i class="fa fa-plus"></i>
-                        <span>@lang('trans.all checkStatus')</span>
-                    </a>
-                </li>
-            @endif
-
-
-            <!-- Job Title Route -->
-            @if(auth()->user()->hasPermission('read-jobTitle'))
-                <li>
-                    <a href="{{ route('admin.jobTitle.index') }}">
-                        <i class="fa fa-briefcase"></i>
-                        <span>@lang('trans.all job title')</span>
-                    </a>
-                </li>
-            @endif
-
-
-            <!-- Car Type Route -->
-            @if(auth()->user()->hasPermission('read-carType'))
-                <li>
-                    <a href="{{ route('admin.carType.index') }}">
-                        <i class="fa fa-car"></i>
-                        <span>@lang('trans.all car type')</span>
-                    </a>
-                </li>
-            @endif
-
-
-            <!-- Car Size Route -->
-            @if(auth()->user()->hasPermission('read-carSize'))
-                <li>
-                    <a href="{{ route('admin.carSize.index') }}">
-                        <i class="fa fa-car"></i>
-                        <span>@lang('trans.all car size')</span>
-                    </a>
-                </li>
-            @endif
-
-
-            <!-- Car Model Route -->
-            @if(auth()->user()->hasPermission('read-carModel'))
-                <li>
-                    <a href="{{ route('admin.carModel.index') }}">
-                        <i class="fa fa-car"></i>
-                        <span>@lang('trans.all car model')</span>
-                    </a>
-                </li>
-            @endif
-
-
-            <!-- Car Engine Route -->
-            @if(auth()->user()->hasPermission('read-carEngine'))
-                <li>
-                    <a href="{{ route('admin.carEngine.index') }}">
-                        <i class="fa fa-car"></i>
-                        <span>@lang('trans.all car engine')</span>
-                    </a>
-                </li>
-            @endif
-
-            <!-- Car Development Code Route -->
-            @if(auth()->user()->hasPermission('read-carDevelopmentCode'))
-                <li>
-                    <a href="{{ route('admin.carDevelopmentCode.index') }}">
-                        <i class="fa fa-car"></i>
-                        <span>@lang('trans.all car development code')</span>
-                    </a>
-                </li>
-            @endif
-
-
+{{--            <li class="header">{{ __('trans.extra pages') }}</li>--}}
 
         {{--            <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>--}}
+
             <!-- Multiple Links -->
-{{--            <li class="treeview">
-                <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-                    <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
-                </ul>
-            </li>--}}
+            @if(!auth()->user()->hasRole(['accountant']))
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-list"></i> <span>{{ __('trans.extra pages') }}</span>
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <!-- Check Status Route -->
+                        @if(auth()->user()->hasPermission('read-checkStatus'))
+                            <li>
+                                <a href="{{ route('admin.checkStatus.index') }}">
+                                    <i class="fa fa-plus"></i>
+                                    <span>@lang('trans.all checkStatus')</span>
+                                </a>
+                            </li>
+                        @endif
+
+
+                    <!-- Job Title Route -->
+                        @if(auth()->user()->hasPermission('read-jobTitle'))
+                            <li>
+                                <a href="{{ route('admin.jobTitle.index') }}">
+                                    <i class="fa fa-briefcase"></i>
+                                    <span>@lang('trans.all job title')</span>
+                                </a>
+                            </li>
+                        @endif
+
+
+                    <!-- Car Type Route -->
+                        @if(auth()->user()->hasPermission('read-carType'))
+                            <li>
+                                <a href="{{ route('admin.carType.index') }}">
+                                    <i class="fa fa-car"></i>
+                                    <span>@lang('trans.all car type')</span>
+                                </a>
+                            </li>
+                        @endif
+
+
+                    <!-- Car Size Route -->
+                        @if(auth()->user()->hasPermission('read-carSize'))
+                            <li>
+                                <a href="{{ route('admin.carSize.index') }}">
+                                    <i class="fa fa-car"></i>
+                                    <span>@lang('trans.all car size')</span>
+                                </a>
+                            </li>
+                        @endif
+
+
+                    <!-- Car Model Route -->
+                        @if(auth()->user()->hasPermission('read-carModel'))
+                            <li>
+                                <a href="{{ route('admin.carModel.index') }}">
+                                    <i class="fa fa-car"></i>
+                                    <span>@lang('trans.all car model')</span>
+                                </a>
+                            </li>
+                        @endif
+
+
+                    <!-- Car Engine Route -->
+                        @if(auth()->user()->hasPermission('read-carEngine'))
+                            <li>
+                                <a href="{{ route('admin.carEngine.index') }}">
+                                    <i class="fa fa-car"></i>
+                                    <span>@lang('trans.all car engine')</span>
+                                </a>
+                            </li>
+                        @endif
+
+                    <!-- Car Development Code Route -->
+                        @if(auth()->user()->hasPermission('read-carDevelopmentCode'))
+                            <li>
+                                <a href="{{ route('admin.carDevelopmentCode.index') }}">
+                                    <i class="fa fa-car"></i>
+                                    <span>@lang('trans.all car development code')</span>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </li>
+            @endif
         </ul>
         <!-- /.sidebar-menu -->
     </section>

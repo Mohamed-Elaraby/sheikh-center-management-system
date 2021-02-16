@@ -4,6 +4,8 @@ return [
     "app name"                                                                      => 'نظام إدارة مجموعة مراكز الشيخ',
     "search"                                                                        => 'بحث',
     "advanced search"                                                               => 'بحث متقدم',
+    "setting"                                                                       => 'الظبط',
+    "more"                                                                          => 'المزيد',
     "open"                                                                          => 'مفتوح',
     "closed"                                                                        => 'مغلق',
     "close"                                                                         => 'إغلاق',

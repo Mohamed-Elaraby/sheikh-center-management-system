@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c20632a-571d-402d-912a-5c7ff43b69df" name="Default Changelist" comment="" />
+    <list default="true" id="3c20632a-571d-402d-912a-5c7ff43b69df" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/BranchDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/BranchDatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/CheckDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/CheckDatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/DashboardRedirect.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/DashboardRedirect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/trans.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/trans.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

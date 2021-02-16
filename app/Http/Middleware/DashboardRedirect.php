@@ -17,7 +17,7 @@ class DashboardRedirect
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::user()->hasRole('owner'))
+        if (!Auth::user()->hasRole(['owner', 'general_manager']))
         {
             return redirect()->route('admin.check.index');
         }

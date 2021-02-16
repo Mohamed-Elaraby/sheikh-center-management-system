@@ -4,6 +4,8 @@ return [
     "app name"                                                                      => ucwords('sheikh center group management system'),
     "search"                                                                        => ucwords('search'),
     "advanced search"                                                               => ucwords('advanced search'),
+    "setting"                                                                          => ucwords('setting'),
+    "more"                                                                          => ucwords('more'),
     "open"                                                                          => ucwords('open'),
     "close"                                                                         => ucwords('close'),
     "save"                                                                          => ucwords('save'),

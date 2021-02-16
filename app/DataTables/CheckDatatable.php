@@ -34,12 +34,18 @@ class CheckDatatable extends DataTable
             ->editColumn('car_type', function ($query){
                 return $query->carType->name ?? '';
             })
+            ->editColumn('branch', function ($query){
+                return $query->branch->name ?? '';
+            })
+            ->editColumn('check_number', function ($query){
+                return "<a href='".route('admin.check.receipt', $query->id)."'>".$query -> check_number."</a>";
+            })
             ->filterColumn('car_type', function($query, $keyword) {
                 $query->whereHas('carType', function ($q) use ($keyword){
                     $q->where('name', 'LIKE', "%{$keyword}%");
                 });
             })
-            ->rawColumns(['checkStatus', 'action'])
+            ->rawColumns(['checkStatus', 'action', 'check_number'])
             ->addRowAttr('class', function ($query){
 
                 if (auth()->user()->hasRole(['owner', 'general_manager'])) {
@@ -174,7 +180,7 @@ class CheckDatatable extends DataTable
                         ]
                     )
                     ->languageUrl('//cdn.datatables.net/plug-ins/1.10.22/i18n/Arabic.json')
-                    ->orderBy(6)
+                    ->orderBy(7)
                     ->buttons(
                         Button::make('create'),
                         Button::make('export'),
@@ -197,6 +203,7 @@ class CheckDatatable extends DataTable
             Column::make('car_type')        -> title( __('trans.car type') ),
             Column::make('car_color')       -> title( __('trans.car color') ),
             Column::make('plate_number')    -> title( __('trans.plate number') ),
+            Column::make('branch')          -> title( __('trans.branch name') ),
             Column::make('checkStatus')     -> title( __('trans.status') ),
             Column::make('updated_at')      -> title( __('trans.last update') )
                 ->addClass('date_dir_setting'),
