@@ -12,7 +12,7 @@ use App\Models\User;
 
 Route::get('test', function () {
 
-//    return route('logout');
+    return "Test Mohamed";
     // Remove Duplicate Value From Array Script
 //    $object = $array ;
 //
