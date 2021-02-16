@@ -12,7 +12,6 @@ use App\Models\User;
 
 Route::get('test', function () {
 
-    return "Test Mohamed";
     // Remove Duplicate Value From Array Script
 //    $object = $array ;
 //
