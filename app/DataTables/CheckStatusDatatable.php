@@ -25,7 +25,7 @@ class CheckStatusDatatable extends DataTable
             ->eloquent($query)
             ->addIndexColumn()
             ->addColumn('action', function ($query){
-                return view('admin.datatableHtmlBuilderRender.carModel.action', compact('query'));
+                return view('admin.datatableHtmlBuilderRender.checkStatus.action', compact('query'));
             })
             ->rawColumns(['action']);
     }

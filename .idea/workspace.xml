@@ -2,46 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c20632a-571d-402d-912a-5c7ff43b69df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/public.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/DashboardRedirect.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/DashboardRedirect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/commandlinetools/Laravel_2_4_21__10_34_AM.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/dataSources/eda0240e-0496-4666-8a41-33a91158fcfd.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/dataSources/eda0240e-0496-4666-8a41-33a91158fcfd/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/laravel-plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/sheikhCenterGroupManagementSystem.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/symfony2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/watcherTasks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/dist/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/dist/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/carDevelopmentCode/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carDevelopmentCode/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/carEngine/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carEngine/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/carSize/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carSize/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/branch/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/branch/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carSize/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carSize/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carType/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carType/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/check/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/check/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/client/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/client/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/mainHeader.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/mainHeader.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/CheckStatusDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/CheckStatusDatatable.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +189,7 @@
       <workItem from="1612708124309" duration="5150000" />
       <workItem from="1612716431832" duration="2488000" />
       <workItem from="1612839257848" duration="812000" />
-      <workItem from="1612841798439" duration="3766000" />
+      <workItem from="1612841798439" duration="5495000" />
     </task>
     <servers />
   </component>
