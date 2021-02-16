@@ -28,10 +28,11 @@ class DashboardController extends Controller
 
             // ======================= data in day ======================= //
 
-            $totalCheckCountInDay = Check::whereDay('created_at', Carbon::today()) -> get() ->count();
+            $totalCheckCountInDay = Check::whereDay('updated_at', Carbon::today()) -> get() ->count();
             if ($request->branch_id){
-                $totalCheckCountInDay = Check::where('branch_id', $request->branch_id) -> whereDay('created_at', Carbon::today()) -> get() ->count();
+                $totalCheckCountInDay = Check::where('branch_id', $request->branch_id) -> whereDay('updated_at', Carbon::today()) -> get() ->count();
             }
+
             $dataDay = [];
             foreach ($checkStatus as $status) {
                 $checksCountInDay = Check::where('check_status_id', $status -> id)->whereDay('updated_at', Carbon::today())->get()->count();
@@ -48,14 +49,13 @@ class DashboardController extends Controller
                     'data_percentage'       => $percentageInDay
                 ];
             }
-
             // ======================= data in month ======================= //
 
             $latestClientsInMonth = Client::whereMonth('created_at', Carbon::now()->month) -> take(8) -> latest() -> get();
             $allClientsCountAtToday= Client::whereDate('created_at', Carbon::today()) -> get()->count();
-            $totalCheckCountInMonth = Check::whereMonth('created_at', Carbon::now()->month) -> get() ->count();
+            $totalCheckCountInMonth = Check::whereMonth('updated_at', Carbon::now()->month) -> get() ->count();
             if ($request->branch_id){
-                $totalCheckCountInMonth = Check::where('branch_id', $request->branch_id) -> whereMonth('created_at', Carbon::now()->month) -> get() ->count();
+                $totalCheckCountInMonth = Check::where('branch_id', $request->branch_id) -> whereMonth('updated_at', Carbon::now()->month) -> get() ->count();
             }
             $dataMonth = [];
             foreach ($checkStatus as $status) {
