@@ -5,75 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c20632a-571d-402d-912a-5c7ff43b69df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/DataTables/CarDatatable.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CarController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Car/AddCarRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Car/UpdateCarRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Car.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Relation_check_technical.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_20_090730_create_cars_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_23_113024_create_relation_check_technicals_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/cars/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/cars/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/cars/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/car/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/BranchDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/BranchDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/CarDevelopmentCodeDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/CarDevelopmentCodeDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/CarEngineDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/CarEngineDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/CarModelDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/CarModelDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/CarSizeDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/CarSizeDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/CarTypeDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/CarTypeDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/CheckDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/CheckDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/CheckStatusDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/CheckStatusDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/ClientDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/ClientDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/EngineerDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/EngineerDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/JobTitleDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/JobTitleDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/TechnicalDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/TechnicalDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/UserDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/UserDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CheckController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Check/AddAndUpdateCheckRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Check/AddAndUpdateCheckRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CarDevelopmentCode.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CarDevelopmentCode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CarEngine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CarEngine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CarModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CarModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CarSize.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CarSize.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CarType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CarType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Check.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Technical.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Technical.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Observers/CheckObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/CheckObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/laratrust_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/laratrust_seeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/CheckFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CheckFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_30_151134_create_checks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_30_151134_create_checks_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/ChecksTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ChecksTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/TechnicalsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/TechnicalsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/dist/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/dist/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/wizardForm/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/wizardForm/js/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/trans.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/trans.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/branches/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/branches/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/carSize/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carSize/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/carType/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carType/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/check/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/check/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/check/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/check/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/check/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/check/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/check/receipt.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/check/receipt.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/check/selectBranch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/check/selectBranch.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/check/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/check/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/branch/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/branch/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carSize/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carSize/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carType/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carType/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/check/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/check/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/client/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/client/action.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +216,7 @@
       <workItem from="1614066653353" duration="1776000" />
       <workItem from="1614068707170" duration="5410000" />
       <workItem from="1614115447921" duration="6570000" />
-      <workItem from="1614143392550" duration="4274000" />
+      <workItem from="1614143392550" duration="7227000" />
     </task>
     <servers />
   </component>
