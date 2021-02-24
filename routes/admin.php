@@ -6,12 +6,20 @@ use App\Models\CarModel;
 use App\Models\CarSize;
 use App\Models\Check;
 use App\Models\Client;
+use App\Models\Technical;
 use App\Models\User;
 
 #################   Constants   #################
 
 Route::get('test', function () {
-
+$technical = check::find(5);
+dd($technical->images);
+//    return $client -> carTypes;
+//    return Check::where('client_id', 1)->where('car_type_id', 1)->select('client_id', 'car_type_id', 'check_number')->get();
+//   foreach ($client -> carTypes as $car)
+//   {
+//       dump($car ->id);
+//   }
     // Remove Duplicate Value From Array Script
 //    $object = $array ;
 //
@@ -51,8 +59,6 @@ Route::group(
     });
 
     Route::prefix('admin')->middleware('auth')->name('admin.')->namespace('Admin')->group(function (){
-
-
         // Collection Routes
         Route::get('images/{check_id}/{type}', 'CheckController@images')->name('check.images');
         Route::get('createDeviceReport/{check_id}/{check_number}', 'CheckController@create_device_report')->name('check.createDeviceReport');
@@ -62,12 +68,12 @@ Route::group(
         Route::post('editCheckStatus', 'CheckController@onlyEditCheckStatus')->name('check.onlyEditCheckStatus');
         Route::get('receipt/{check_id}', 'CheckController@receipt')->name('check.receipt');
         Route::get('getAllCheckByAjax', 'CheckController@getAllCheckByAjax')->name('check.getAllCheckByAjax');
-        Route::post('getCarSizesByAjax', 'CheckController@getCarSizesByAjax')->name('check.getCarSizesByAjax');
-        Route::post('getCarDevCodeAndEnginesByAjax', 'CheckController@getCarDevCodeAndEnginesByAjax')->name('check.getCarDevCodeAndEnginesByAjax');
+        Route::post('getCarSizesByAjax', 'CarController@getCarSizesByAjax')->name('check.getCarSizesByAjax');
+        Route::post('getCarDevCodeAndEnginesByAjax', 'CarController@getCarDevCodeAndEnginesByAjax')->name('check.getCarDevCodeAndEnginesByAjax');
         Route::get('managementNotes/{check_id}', 'CheckController@managementNotes')->name('check.managementNotes');
         Route::post('managementNotesUpdate/{check_id}', 'CheckController@managementNotesUpdate')->name('check.managementNotesUpdate');
-        Route::post('getCarModelByAjax', 'CarSizeController@getCarModelByAjax')->name('getCarModelByAjax');
-        Route::post('saveCarModelByAjax', 'CarSizeController@saveCarModelByAjax')->name('saveCarModelByAjax');
+//        Route::post('getCarModelByAjax', 'CarSizeController@getCarModelByAjax')->name('getCarModelByAjax');
+//        Route::post('saveCarModelByAjax', 'CarSizeController@saveCarModelByAjax')->name('saveCarModelByAjax');
         Route::get('selectBranch', 'CheckController@selectBranch')->name('selectBranch');
 
         Route::resources([
@@ -79,6 +85,7 @@ Route::group(
             'technicals'                => 'TechnicalController',
             'engineers'                 => 'EngineerController',
             'jobTitle'                  => 'JobTitleController',
+            'cars'                      => 'CarController',
             'carType'                   => 'CarTypeController',
             'carSize'                   => 'CarSizeController',
             'carModel'                  => 'CarModelController',

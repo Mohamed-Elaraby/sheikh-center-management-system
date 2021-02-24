@@ -16,6 +16,7 @@ $pageItem = __('trans.check')
                     <!-- Open Form -->
                 {!! Form::open(['route' => 'admin.check.store', 'method' => 'post', 'files' => true, 'class' => 'f1', 'role'=>'form']) !!}
                 {!! Form::hidden('client_id', $client_id) !!}
+                {!! Form::hidden('car_id', $car_id) !!}
                 @if ($branch_id != '') {!! Form::hidden('branch_id', $branch_id) !!} @endif
                     <h2 style="background-color: #3C8DBC; color: #fff">{{ __('trans.sheikh center group') }}</h2>
                     <p>{{ __('trans.create check') }}</p>
@@ -40,46 +41,40 @@ $pageItem = __('trans.check')
                     <fieldset>
                         <h4 class="text-center">{{ __('trans.car data') }}</h4>
                         <div class="form-group">
-                            {!! Form::label('counter_number', __('trans.counter number'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::text('counter_number', null, [ 'class' => 'form-control', 'placeholder' => __('trans.counter number')]) !!}
+                            {!! Form::label('counter_number', __('trans.counter number'), ['class' => 'control-label']) !!}
+                            {!! Form::text('counter_number', null, [ 'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('structure_number', __('trans.structure number'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::text('structure_number', null, [ 'class' => 'form-control', 'placeholder' => __('trans.structure number')]) !!}
+                            {!! Form::label('chassis_number', __('trans.chassis number'), ['class' => 'control-label']) !!}
+                            {!! Form::text('chassis_number', $targetCar -> chassis_number, [ 'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('plate_number', __('trans.plate number'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::text('plate_number', null, [ 'class' => 'form-control', 'placeholder' => __('trans.plate number')]) !!}
+                            {!! Form::label('plate_number', __('trans.plate number'), ['class' => 'control-label']) !!}
+                            {!! Form::text('plate_number', $targetCar -> plate_number, [ 'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('car_type_id', __('trans.car type'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::select('car_type_id', $carTypes, null, [ 'class' => 'form-control', 'placeholder' => __('trans.car type')]) !!}
+                            {!! Form::label('car_type', __('trans.car type'), ['class' => 'control-label']) !!}
+                            {!! Form::text('car_type', $targetCar -> carType -> name, [ 'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('car_model_id', __('trans.model'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::select('car_model_id', $carModels, null, [ 'class' => 'form-control', 'placeholder' => __('trans.model')]) !!}
+                            {!! Form::label('car_size', __('trans.car size'), ['class' => 'control-label']) !!}
+                            {!! Form::text('car_size', $targetCar -> carSize -> name, [ 'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('car_size_id', __('trans.car size'), ['class' => 'control-label sr-only']) !!}
-                            <select class="form-control" name="car_size_id" id="car_sizes_id" disabled>
-                                <option value="">{{ __('trans.car size') }}</option>
-                            </select>
+                            {!! Form::label('car_engine', __('trans.engine number'), ['class' => 'control-label']) !!}
+                            {!! Form::text('car_engine', $targetCar -> carEngine -> name, [ 'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('car_engine_id', __('trans.car engine'), ['class' => 'control-label sr-only']) !!}
-                            <select class="form-control" name="car_engine_id" id="car_engine_id" disabled>
-                                <option value="">{{ __('trans.engine number') }}</option>
-                            </select>
+                            {!! Form::label('car_development_code', __('trans.car development code'), ['class' => 'control-label']) !!}
+                            {!! Form::text('car_development_code', $targetCar -> carDevelopmentCode -> name, [ 'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('car_development_code_id', __('trans.car development code'), ['class' => 'control-label sr-only']) !!}
-                            <select class="form-control" name="car_development_code_id" id="car_development_code_id" disabled>
-                                <option value="">{{ __('trans.car development code') }}</option>
-                            </select>
+                            {!! Form::label('car_model', __('trans.model'), ['class' => 'control-label']) !!}
+                            {!! Form::text('car_model', $targetCar -> carModel -> name, [ 'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('car_color', __('trans.car color'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::text('car_color', null, [ 'class' => 'form-control', 'placeholder' => __('trans.car color')]) !!}
+                            {!! Form::label('car_color', __('trans.car color'), ['class' => 'control-label']) !!}
+                            {!! Form::text('car_color', $targetCar -> car_color, [ 'class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -94,16 +89,23 @@ $pageItem = __('trans.check')
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('driver_name', __('trans.driver name'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::text('driver_name', null, ['class' => 'form-control', 'placeholder' => __('trans.driver name')]) !!}
+                            {!! Form::label('driver_name', __('trans.driver name'), ['class' => 'control-label']) !!}
+                            {!! Form::text('driver_name', null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('technical_id', __('trans.technical name'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::select('technical_id', $technicals, null, [ 'class' => 'form-control', 'placeholder' => __('trans.technical name')]) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('engineer_id', __('trans.engineer name'), ['class' => 'control-label sr-only']) !!}
+                            {!! Form::label('engineer_id', __('trans.engineer name'), ['class' => 'control-label']) !!}
                             {!! Form::select('engineer_id', $engineers, null, [ 'class' => 'form-control', 'placeholder' => __('trans.engineer name')]) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('technical_id', __('trans.technical name'), ['class' => 'control-label']) !!}
+                            @foreach ($technicals as $technical)
+                                <div>
+                                    <label>
+                                        {!! Form::checkbox('technical_id[]', $technical -> id, null) !!}
+                                        {{ $technical -> name }}
+                                    </label>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="f1-buttons">
                             <button type="button" class="btn btn-next">{{ __('trans.next') }}</button>
@@ -113,12 +115,12 @@ $pageItem = __('trans.check')
                     <fieldset>
                         <h4 class="text-center">{{ __('trans.repairs needed') }}</h4>
                         <div class="form-group">
-                            {!! Form::label('car_status_report', __('trans.repairs needed'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::textarea('car_status_report', null, ['class' => 'form-control', 'placeholder' => __('trans.repairs needed')]) !!}
+                            {!! Form::label('car_status_report', __('trans.repairs needed'), ['class' => 'control-label']) !!}
+                            {!! Form::textarea('car_status_report', null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('car_status_report_note', __('trans.notes when entering the car'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::textarea('car_status_report_note', null, ['class' => 'form-control', 'placeholder' => __('trans.notes when entering the car')]) !!}
+                            {!! Form::label('car_status_report_note', __('trans.notes when entering the car'), ['class' => 'control-label']) !!}
+                            {!! Form::textarea('car_status_report_note', null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="f1-buttons">
                             <button type="button" class="btn btn-previous">{{ __('trans.previous') }}</button>
@@ -137,8 +139,8 @@ $pageItem = __('trans.check')
                             </label>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('car_images_note', __('trans.car images note'), ['class' => 'control-label sr-only']) !!}
-                            {!! Form::textarea('car_images_note', null, ['class' => 'form-control', 'placeholder' => __('trans.car images note')]) !!}
+                            {!! Form::label('car_images_note', __('trans.car images note'), ['class' => 'control-label']) !!}
+                            {!! Form::textarea('car_images_note', null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="f1-buttons">
                             <button type="button" class="btn btn-previous">{{ __('trans.previous') }}</button>
@@ -170,7 +172,6 @@ $pageItem = __('trans.check')
 
     <!-- Custom File Inputs -->
     <link rel="stylesheet" href="{{ asset('assets/wizardForm/css/customFileInput.css') }}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 @push('scripts')
     <!-- Javascript -->
@@ -183,89 +184,5 @@ $pageItem = __('trans.check')
     <script src="{{ asset('assets/wizardForm/js/placeholder.js') }}"></script>
     <![endif]-->
     <!-- Custom File Inputs -->
-
-    <script>
-        $(document).ready(function () {
-            $('select[name=car_type_id]').on('change', function () {
-                let car_type_id = $(this).children(':selected').val();
-                let car_size_element = $('#car_sizes_id');
-                let car_engine_element = $('#car_engine_id');
-                let car_development_code_element = $('#car_development_code_id');
-                if (car_type_id == ''){
-                    car_size_element.html('<option value="">'+'{{ __('trans.car size') }}'+'</option>');
-                    car_size_element.prop('disabled', true);
-
-                    car_engine_element.html('<option value="">'+'{{ __('trans.engine number') }}'+'</option>');
-                    car_engine_element.prop('disabled', true);
-
-                    car_development_code_element.html('<option value="">'+'{{ __('trans.car development code') }}'+'</option>');
-                    car_development_code_element.prop('disabled', true);
-                }else {
-                    car_size_element.prop('disabled', false);
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: '{{ route('admin.check.getCarSizesByAjax') }}',
-                        method: 'POST',
-                        data: {car_type_id:car_type_id},
-                        success: function (data) {
-                            if (!data.error)
-                            {
-                                car_size_element.empty();
-                                car_size_element.append('<option value="">'+'{{ __('trans.car size') }}'+'</option>');
-                                $.each(data, function (index, element){
-                                    car_size_element.append('<option value="'+element.id+'">'+element.name+'</option>');
-                                })
-                            }
-                        }
-                    })
-                }
-            })
-        })
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            $('select[name=car_size_id]').on('change', function () {
-                let car_size_id = $(this).children(':selected').val();
-                let car_engine_element = $('#car_engine_id');
-                let car_development_code_element = $('#car_development_code_id');
-                if (car_size_id == ''){
-                    car_engine_element.html('<option value="">'+'{{ __('trans.engine number') }}'+'</option>');
-                    car_engine_element.prop('disabled', true);
-
-                    car_development_code_element.html('<option value="">'+'{{ __('trans.car development code') }}'+'</option>');
-                    car_development_code_element.prop('disabled', true);
-                }else {
-                    car_engine_element.prop('disabled', false);
-                    car_development_code_element.prop('disabled', false);
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: '{{ route('admin.check.getCarDevCodeAndEnginesByAjax') }}',
-                        method: 'POST',
-                        data: {car_size_id},
-                        success: function (data) {
-                            if (!data.error)
-                            {
-                                car_engine_element.empty();
-                                $.each(data.carEngines, function (index, element){
-                                    car_engine_element.append('<option value="'+element.id+'">'+element.name+'</option>');
-                                })
-
-                                car_development_code_element.empty();
-                                $.each(data.carDevelopmentCodes, function (index, element){
-                                    car_development_code_element.append('<option value="'+element.id+'">'+element.name+'</option>');
-                                })
-                            }
-                        }
-                    })
-                }
-            })
-        })
-    </script>
-
 
 @endpush

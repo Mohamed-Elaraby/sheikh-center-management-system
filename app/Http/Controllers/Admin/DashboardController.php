@@ -27,7 +27,13 @@ class DashboardController extends Controller
 
 
             // ======================= data in day ======================= //
+            $clientsVisitLogAtToday = Check::whereDay('created_at', Carbon::today())->select('check_number', 'client_id', 'branch_id', 'created_at')->get();
+            if ($request->branch_id)
+            {
+                $clientsVisitLogAtToday = Check::where('branch_id', $request->branch_id)->whereDay('created_at', Carbon::today())->select('check_number', 'client_id', 'branch_id', 'created_at')->get();
+            }
 
+//            dd($clientsVisitLogAtToday -> branch -> name);
             $totalCheckCountInDay = Check::whereDay('updated_at', Carbon::today()) -> get() ->count();
             if ($request->branch_id){
                 $totalCheckCountInDay = Check::where('branch_id', $request->branch_id) -> whereDay('updated_at', Carbon::today()) -> get() ->count();
@@ -53,7 +59,6 @@ class DashboardController extends Controller
 
             $latestClientsInMonth = Client::whereMonth('created_at', Carbon::now()->month) -> take(8) -> latest() -> get();
             $allClientsCountAtToday= Client::whereDate('created_at', Carbon::today()) -> get()->count();
-
             $totalCheckCountInMonth = Check::whereMonth('updated_at', Carbon::now()->month) -> get() ->count();
             if ($request->branch_id){
                 $totalCheckCountInMonth = Check::where('branch_id', $request->branch_id) -> whereMonth('updated_at', Carbon::now()->month) -> get() ->count();
@@ -73,7 +78,7 @@ class DashboardController extends Controller
                     'data_percentage'       => $percentageInMonth
                 ];
             }
-            return view('admin.dashboard', compact('dataMonth', 'totalCheckCountInMonth', 'latestClientsInMonth', 'allClientsCountAtToday', 'dataDay', 'totalCheckCountInDay', 'branchName'));
+            return view('admin.dashboard', compact('dataMonth', 'totalCheckCountInMonth', 'latestClientsInMonth', 'allClientsCountAtToday', 'dataDay', 'totalCheckCountInDay', 'clientsVisitLogAtToday', 'branchName'));
 //        }
 //        return redirect()->route('admin.check.index');
     }

@@ -11,6 +11,7 @@ return [
             'branches'              => 'c,r,u,d',
             'technicals'            => 'c,r,u,d',
             'engineers'             => 'c,r,u,d',
+            'cars'                  => 'c,r,u,d',
             'carType'               => 'c,r,u,d',
             'carSize'               => 'c,r,u,d',
             'carModel'              => 'c,r,u,d',
@@ -28,6 +29,7 @@ return [
             'branches'              => 'c,r,u',
             'technicals'            => 'c,r,u',
             'engineers'             => 'c,r,u',
+            'cars'                  => 'c,r,u',
             'carType'               => 'c,r,u',
             'carSize'               => 'c,r,u',
             'carModel'              => 'c,r,u',
@@ -38,6 +40,7 @@ return [
         'branch_manager' => [
             'check'                 => 'c,r,u',
             'clients'               => 'c,r',
+            'cars'                  => 'c,r',
             'carType'               => 'c,r',
             'carSize'               => 'c,r',
             'carModel'              => 'c,r',
@@ -48,6 +51,7 @@ return [
         'accountant' => [
             'check'                 => 'c,r',
             'clients'               => 'c,r',
+            'cars'                  => 'c,r',
             'checkStatus'           => 'u'
         ]
     ],

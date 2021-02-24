@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Check;
+use App\Models\Relation_check_technical;
 
 class CheckObserver
 {
@@ -37,6 +38,7 @@ class CheckObserver
     public function deleted(Check $check)
     {
         $check -> images() -> delete();
+        $check -> technicals() -> detach();
     }
 
     /**

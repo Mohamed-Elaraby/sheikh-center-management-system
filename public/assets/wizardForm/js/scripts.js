@@ -20,7 +20,7 @@ function bar_progress(progress_line_object, direction) {
 }
 
 jQuery(document).ready(function() {
-    var validation_fields = 'input[name="counter_number"], input[name="structure_number"], input[name="plate_number"], select[name="car_type_id"], input[name="car_color"], select[name="car_model_id"], select[name="car_size_id"], textarea[name="car_status_report"]';
+    var validation_fields = 'input[name="counter_number"], input[name="chassis_number"], input[name="plate_number"], select[name="car_type"], input[name="car_color"], select[name="car_model"], select[name="car_size"], textarea[name="car_status_report"]';
 
     /*
         Fullscreen background

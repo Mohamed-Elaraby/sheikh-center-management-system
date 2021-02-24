@@ -38,6 +38,10 @@
                                 <h4 style="margin: 0; padding: 0; display: inline">
                                     [ {{ __('trans.all check list').' - '.$clientName }} ]
                                 </h4>
+                            @elseif(request('car_id'))
+                                <h4 style="margin: 0; padding: 0; display: inline">
+                                    [ {{ __('trans.all check list').' - '.$car -> carType -> name. ' - الخاصة بالعميل '. $car -> client -> name}} ]
+                                </h4>
                             @else
                                 <h4 style="margin: 0; padding: 0; display: inline"><i
                                         class="fa fa-check"></i> {{ __('trans.all check list') }}
@@ -56,6 +60,17 @@
                                 <button type="button" id="refresh_date_button" class="btn btn-warning btn-xs">اعادة تحميل <i class="fa fa-refresh"></i> </button>
                             </form>
                         </div>
+                        @if(!request('car_id'))
+                            <div class="col-xs-12">
+                                <form class="form-inline" style=" text-align: center; margin-top: 20px">
+                                    <div class="form-group">
+                                        <input type="text" id="search_in_chassis_number" value="" placeholder="بحث برقم الشاسية" autocomplete="off" >
+                                    </div>
+                                    <button type="button" id="filter_chassis_number_button" class="btn btn-success btn-xs">بحث <i class="fa fa-filter"></i> </button>
+                                    <button type="button" id="refresh_chassis_number_button" class="btn btn-warning btn-xs">اعادة تحميل <i class="fa fa-refresh"></i> </button>
+                                </form>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
@@ -143,6 +158,14 @@
                 }); // end ajax
             } // end if
         }) // end on change
+
+    </script>
+
+    <script>
+        $(document).on('change', '#selectAction', function () {
+            let url = $(this).children('option:selected').attr('value');
+            location.href = url;
+        }) // end on change
     </script>
     <script>
         $('#start_date').datepicker({
@@ -172,6 +195,28 @@
                 table.on('preXhr.dt', function (e, settings, data) {
                     data.start_date  = '';
                     data.end_date  = '';
+                })
+                table.DataTable().ajax.reload();
+            })
+
+        })
+
+    </script>
+
+    <script>
+
+        $('#filter_chassis_number_button').on('click', function () {
+            let search_in_chassis_number = $('#search_in_chassis_number').val();
+            let table       = $('#checkdatatable-table');
+
+            table.on('preXhr.dt', function (e, settings, data) {
+                data.search_in_chassis_number  = search_in_chassis_number;
+
+            })
+            table.DataTable().ajax.reload();
+            $('#refresh_chassis_number_button').on('click', function () {
+                table.on('preXhr.dt', function (e, settings, data) {
+                    data.search_in_chassis_number  = '';
                 })
                 table.DataTable().ajax.reload();
             })

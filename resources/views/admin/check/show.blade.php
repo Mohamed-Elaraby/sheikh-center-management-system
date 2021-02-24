@@ -62,8 +62,8 @@
                             <td>{{ $check -> counter_number }}</td>
                         </tr>
                         <tr>
-                            <th width="30%" class="bg-gray">{{ __('trans.structure number') }} :</th>
-                            <td>{{ $check -> structure_number }}</td>
+                            <th width="30%" class="bg-gray">{{ __('trans.chassis number') }} :</th>
+                            <td>{{ $check -> chassis_number }}</td>
                         </tr>
                         <tr>
                             <th width="30%" class="bg-gray">{{ __('trans.plate number') }} :</th>
@@ -75,27 +75,27 @@
                         </tr>
                         <tr>
                             <th width="30%" class="bg-gray">{{ __('trans.car type') }} :</th>
-                            <td>{{ $check -> carType? $check -> carType ->name: '' }}</td>
+                            <td>{{ $check -> car_type }}</td>
                         </tr>
 
                         <tr>
                             <th width="30%" class="bg-gray">{{ __('trans.car size') }} :</th>
-                            <td>{{ $check -> carSize? $check -> carSize -> name: '' }}</td>
+                            <td>{{ $check -> car_size }}</td>
                         </tr>
 
                         <tr>
                             <th width="30%" class="bg-gray">{{ __('trans.model') }} :</th>
-                            <td>{{ $check -> carModel ->name ?? ''  }}</td>
+                            <td>{{ $check -> car_model }}</td>
                         </tr>
 
                         <tr>
                             <th width="30%" class="bg-gray">{{ __('trans.engine number') }} :</th>
-                            <td>{{ $check -> carEngine ->name ?? ''  }}</td>
+                            <td>{{ $check -> car_engine }}</td>
                         </tr>
 
                         <tr>
                             <th width="30%" class="bg-gray">{{ __('trans.car development code') }} :</th>
-                            <td>{{ $check -> carDevelopmentCode ->name ?? ''  }}</td>
+                            <td>{{ $check -> car_development_code }}</td>
                         </tr>
 
                         <tr>
@@ -109,7 +109,11 @@
 
                         <tr>
                             <th width="30%" class="bg-gray">{{ __('trans.technical name') }} :</th>
-                            <td>{{ $check -> technical?$check -> technical -> name:'' }}</td>
+                            <td>
+                                @foreach ($check -> technicals as $key => $technical)
+                                    {{ $key >  $technical -> count ? ' , ' :''}}{{ $technical -> name}}
+                                @endforeach
+                            </td>
                         </tr>
 
                         <tr>

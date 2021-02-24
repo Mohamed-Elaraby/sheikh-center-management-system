@@ -63,7 +63,12 @@ return [
     "role"                                                                          => 'الترخيص',
     "profile picture"                                                               => 'الصورة الشخصية',
     "last update"                                                                   => 'آخر تعديل',
+    "client register date"                                                          => 'تاريخ تسجيل العميل',
+    "visit branch date"                                                             => 'تاريخ زيارة الفرع',
     "action"                                                                        => 'الإجراءات',
+    "old client"                                                                    => 'عميل قديم',
+    "new client"                                                                    => 'عميل جديد',
+    "clients visit log"                                                             => 'السجل اليومى لزيارات العملاء',
     "language change"                                                               => 'تغيير اللغة',
     "main pages"                                                                    => 'الصفحات الرئيسية',
     "extra pages"                                                                   => 'صفحات اضافية',
@@ -86,6 +91,22 @@ return [
     "client edit successfully"                                                      => 'تم تعديل العميل بنجاح',
     "client delete successfully"                                                    => 'تم حذف العميل بنجاح',
     "driver name"                                                                   => 'إسم السائق',
+
+
+    // Client Cars Translations
+    "all clients cars"                                                              => 'جميع سيارات العملاء',
+    "client cars"                                                                   => 'جميع سيارات العميل',
+    "car name"                                                                      => 'إسم السيارة',
+    "all car"                                                                       => 'السيارات',
+    "create car"                                                                    => 'إضافة سيارة جديدة',
+    "edit car"                                                                      => 'تعديل سيارة',
+    "delete car"                                                                    => 'حذف سيارة',
+    "car"                                                                           => 'سيارة',
+    "car checks"                                                                    => 'فحوصات السيارة',
+    "car added successfully"                                                        => 'تم إضافة السيارة بنجاح',
+    "car edit successfully"                                                         => 'تم تعديل السيارة بنجاح',
+    "car delete successfully"                                                       => 'تم حذف السيارة بنجاح',
+
 
     // Technical Translations
     "all technicals list"                                                           => 'قائمة جميع الفنيين',
@@ -150,7 +171,7 @@ return [
     "check number"                                                                  => 'رقم الفحص',
     "counter number"                                                                => 'رقم العداد',
     "engine number"                                                                 => 'رقم المحرك',
-    "structure number"                                                              => 'رقم الهيكل',
+    "chassis number"                                                                => 'رقم الشاسية',
     "plate number"                                                                  => 'رقم اللوحة',
     "car type"                                                                      => 'نوع السيارة',
     "car color"                                                                     => 'لون السيارة',

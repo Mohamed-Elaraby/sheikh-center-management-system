@@ -6,6 +6,7 @@ use App\Observers\CheckObserver;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Check extends Model
@@ -13,7 +14,7 @@ class Check extends Model
     protected $fillable = [
         'check_number' ,
         'counter_number' ,
-        'structure_number',
+        'chassis_number',
         'plate_number' ,
         'car_color',
         'car_status_report',
@@ -25,16 +26,19 @@ class Check extends Model
         'branch_id',
         'car_exit_date',
         'fuel_level',
-        'technical_id',
+//        'technical_id',
         'engineer_id',
-        'car_type_id',
-        'car_size_id',
-        'car_model_id',
-        'car_engine_id',
-        'car_development_code_id',
+        'car_type',
+        'car_size',
+        'car_model',
+        'car_engine',
+        'car_development_code',
+        'car_id',
         'driver_name',
         'management_notes'
     ];
+
+    protected $hidden = ['pivot'];
 
     protected $casts = [
         'car_exit_date' => 'datetime',
@@ -45,11 +49,6 @@ class Check extends Model
         return Carbon::parse($value)->format('d/m/Y h:i:s a');
     }
 
-//    protected function setUpdatedAtAttribute($value)
-//    {
-////        return $value ->format('d/m/Y - h:i:s');
-//        return $this->attributes['updated_at'] = (new Carbon($value)) -> format('d/m/Y - h:i:s a');
-//    }
 
     protected function getCarStatusReportAttribute($value)
     {
@@ -66,9 +65,9 @@ class Check extends Model
         return nl2br($value);
     }
 
-    protected function setStructureNumberAttribute($value)
+    protected function setChassisNumberAttribute($value)
     {
-        return $this -> attributes['structure_number'] = strtoupper($value);
+        return $this -> attributes['chassis_number'] = strtoupper($value);
     }
 
     protected static function boot()
@@ -76,6 +75,7 @@ class Check extends Model
         parent::boot();
         Check::observe(CheckObserver::class);
     }
+
 
     public function client(): BelongsTo
     {
@@ -108,9 +108,9 @@ class Check extends Model
         return $this -> belongsTo(CheckStatus::class);
     }
 
-    public function technical(): BelongsTo
+    public function technicals(): BelongsToMany
     {
-        return $this -> belongsTo(Technical::class);
+        return $this -> belongsToMany(Technical::class, 'relation_check_technicals', 'check_id', 'technical_id');
     }
 
     public function engineer(): BelongsTo
@@ -141,6 +141,11 @@ class Check extends Model
     public function carDevelopmentCode(): BelongsTo
     {
         return $this -> belongsTo(CarDevelopmentCode::class);
+    }
+
+    public function car(): BelongsTo
+    {
+        return $this -> belongsTo(Car::class);
     }
 
 }

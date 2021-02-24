@@ -12,6 +12,6 @@ class ChecksTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Check::class, 50)->create();
+        factory(Check::class, 10)->create();
     }
 }

@@ -18,6 +18,9 @@
     .logo_custom_style {
         font-size: 1.5vw;
     }
+    .convert_to_display_flex {
+        display: flex;
+    }
 }
 
 /* Portrait tablets and small desktops */

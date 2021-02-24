@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Car;
 
+use App\Models\Car;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AddCarRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class AddCarRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,15 @@ class AddCarRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'client_id' => 'required',
+            'car_type_id' => 'required',
+            'car_size_id' => 'required',
+            'car_engine_id' => 'required',
+            'car_development_code_id' => 'required',
+            'car_model_id' => 'required',
+            'chassis_number' => ['required', Rule::unique('cars', 'chassis_number')],
+            'plate_number' => 'required' ,
+            'car_color' => 'required',
         ];
     }
 }

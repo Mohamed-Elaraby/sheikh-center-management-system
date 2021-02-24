@@ -62,7 +62,12 @@ return [
     "role"                                                                          => ucwords('role'),
     "profile picture"                                                               => ucwords('profile picture'),
     "last update"                                                                   => ucwords('last update'),
+    "client register date"                                                          => ucwords('client register date'),
+    "visit branch date"                                                             => ucwords('visit branch date'),
     "action"                                                                        => ucwords('actions'),
+    "old client"                                                                    => ucwords('old client'),
+    "new client"                                                                    => ucwords('new client'),
+    "clients visit log"                                                             => ucwords('clients visit log'),
     "language change"                                                               => ucwords('language change'),
     "main pages"                                                                    => ucwords('main pages'),
     "extra pages"                                                                   => ucwords('extra pages'),
@@ -85,6 +90,21 @@ return [
     "client edit successfully"                                                      => ucwords('client edit successfully'),
     "client delete successfully"                                                    => ucwords('client delete successfully'),
     "driver name"                                                                   => ucwords('driver name'),
+
+
+    // Car Translations
+    "all clients cars"                                                              => ucwords('all clients cars'),
+    "client cars"                                                                   => ucwords('client cars'),
+    "car name"                                                                      => ucwords('car name'),
+    "all car"                                                                       => ucwords('all car'),
+    "create car"                                                                    => ucwords('create car'),
+    "edit car"                                                                      => ucwords('edit car'),
+    "delete car"                                                                    => ucwords('delete car'),
+    "car"                                                                           => ucwords('car'),
+    "car checks"                                                                    => ucwords('car checks'),
+    "car added successfully"                                                        => ucwords('car added successfully'),
+    "car edit successfully"                                                         => ucwords('car edit successfully'),
+    "car delete successfully"                                                       => ucwords('car delete successfully'),
 
     // Technical Translations
     "all technicals list"                                                           => ucwords('all technical list'),
@@ -150,7 +170,7 @@ return [
     "check number"                                                                  => ucwords('check number'),
     "counter number"                                                                => ucwords('counter number'),
     "engine number"                                                                 => ucwords('engine number'),
-    "structure number"                                                              => ucwords('structure number'),
+    "chassis number"                                                                => ucwords('chassis number'),
     "plate number"                                                                  => ucwords('plate number'),
     "car type"                                                                      => ucwords('car type'),
     "car size"                                                                      => ucwords('car size'),

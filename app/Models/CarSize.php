@@ -19,6 +19,11 @@ class CarSize extends Model
         return $this->hasMany(CarEngine::class);
     }
 
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
+    }
+
     public function checks()
     {
         return $this->hasMany(Check::class);

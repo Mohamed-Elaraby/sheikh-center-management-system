@@ -17,7 +17,7 @@ class CreateChecksTable extends Migration
             $table->bigIncrements('id');
             $table->string('check_number');
             $table->string('counter_number');
-            $table->string('structure_number');
+            $table->string('chassis_number');
             $table->string('plate_number');
             $table->string('car_color');
             $table->string('driver_name')->nullable();
@@ -29,15 +29,16 @@ class CreateChecksTable extends Migration
                 ->unsigned()
                 ->default(true)
                 ->comment('1=>carUnderCheck, 2=>waitingClientResponse, 3=>clientApproved, 4=>carUnderMaintenance, 5=>maintenanceComplete, 6=>carExit');
-            $table->bigInteger('car_type_id') ->unsigned();
-            $table->bigInteger('car_size_id') ->unsigned();
-            $table->bigInteger('car_model_id') ->unsigned() ->nullable();
-            $table->bigInteger('car_engine_id') ->unsigned() ->nullable();
-            $table->bigInteger('car_development_code_id') ->unsigned() ->nullable();
+            $table->string('car_type');
+            $table->string('car_size');
+            $table->string('car_model') ->nullable();
+            $table->string('car_engine') ->nullable();
+            $table->string('car_development_code') ->nullable();
             $table->bigInteger('client_id') -> unsigned();
             $table->bigInteger('user_id') -> unsigned();
             $table->bigInteger('branch_id') -> unsigned();
-            $table->bigInteger('technical_id') -> unsigned() ->nullable();
+            $table->bigInteger('car_id') -> unsigned()->nullable();
+//            $table->bigInteger('technical_id') -> unsigned() ->nullable();
             $table->bigInteger('engineer_id') -> unsigned() ->nullable();
             $table->tinyInteger('client_approved') ->default(false) ->comment('0=>disabled, 1 =>enabled');
             $table->longText('management_notes') ->nullable();

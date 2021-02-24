@@ -12,10 +12,10 @@ class TechnicalsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i =1; $i<6 ;$i++) {
+        for ($i =1; $i <= 10 ;$i++) {
             Technical::create([
-                'name' => 'Technical_'.$i,
-                'branch_id' => random_int(1,5),
+                'name' => 'الفنى _ '.$i,
+                'branch_id' => 1,
             ]);
         }
     }

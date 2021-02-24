@@ -17,4 +17,14 @@ class CarType extends Model
     {
         return $this->hasMany(Check::class);
     }
+
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
+    }
+
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class, 'relation_car_type_clients', 'car_type_id', 'client_id');
+    }
 }

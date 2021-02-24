@@ -63,6 +63,14 @@
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     {!! $dataTable->scripts() !!}
     <!-- Custom Function -->
+
+    <script>
+        $(document).on('change', '.selectAction', function () {
+            let url = $(this).children('option:selected').attr('value');
+            location.href = url;
+        }) // end on change
+    </script>
+
     <script>
         // Show Confirm Message For Delete Any Item
         function showDeleteMessage (){

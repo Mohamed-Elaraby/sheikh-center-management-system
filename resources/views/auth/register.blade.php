@@ -60,10 +60,10 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
-                        <label>
+                        `<label>
                             {!! Form::checkbox('terms', 1, null,  ['id' => 'terms', old('terms') ? 'checked' : '']) !!}
                             {{ __('trans.i agree to the') }} <a href="#">{{ __('trans.terms') }}</a>
-                        </label>
+                        </label>`
                     </div>
                     <div class="col-xs-4">
                         {!! Form::submit(__('trans.register'), ['class' => 'form-control btn btn-primary btn-block btn-flat']) !!}

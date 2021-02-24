@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\CheckDatatable;
 use App\Http\Requests\Check\AddAndUpdateCheckRequest;
 use App\Models\Branch;
+use App\Models\Car;
 use App\Models\CarDevelopmentCode;
 use App\Models\CarEngine;
 use App\Models\CarModel;
@@ -15,6 +16,7 @@ use App\Models\CheckStatus;
 use App\Models\Client;
 use App\Models\Engineer;
 use App\Models\Images;
+use App\Models\Relation_check_technical;
 use App\Models\Technical;
 use App\Traits\HelperTrait;
 use Illuminate\Http\Request;
@@ -42,6 +44,7 @@ class CheckController extends Controller
         $branchName = '';
         $clientName = '';
         $carExists = '';
+        $car = '';
         if ($request->check_status_id) // Get all check with [ check status id ] from request url
             $checkStatusName = CheckStatus::findOrFail($request->check_status_id)->name; // Get [ check status name ] to send into view
 
@@ -55,27 +58,30 @@ class CheckController extends Controller
         if ($request->client_id) // Get all check with [ client id ] from request url
             $clientName = Client::findOrFail($request->client_id)->name; // Get [ client name ] to send into view
 
-        return $checkDatatable->render('admin.check.index', compact('checkStatusName', 'branchName', 'clientName', 'carExists'));
+        if ($request->car_id) // Get all check with [ client id ] from request url
+            $car = Car::findOrFail($request -> car_id); // Get [ Car ] to send into view
+
+        return $checkDatatable->render('admin.check.index', compact('checkStatusName', 'branchName', 'clientName', 'carExists', 'car'));
     }
 
     public function create(Request $request)
     {
-        $branch_id = $request ->get('branch_id') ?? '';
+        $branch_id = $request ->get('branch_id') ?? Auth::user()->branch_id;
+        $car_id = $request ->get('car_id') ?? '';
+        $targetCar = Car::findOrFail($car_id);
         $client_id = $request ->get('client_id');
         $targetClient = Client::findOrFail($client_id);
-        $technicals = Technical::where('branch_id', Auth::user()->branch_id) -> pluck('name', 'id') -> toArray();
-        $engineers = Engineer::where('branch_id', Auth::user()->branch_id) -> pluck('name', 'id') -> toArray();
-        $carTypes = CarType::pluck('name', 'id') -> toArray();
-        $carModels = CarModel::orderBy('name', 'DESC') -> pluck('name', 'id') -> toArray();
-        return view('admin.check.create', compact('technicals', 'targetClient', 'branch_id', 'client_id', 'engineers', 'carTypes', 'carModels'));
+        $technicals = Technical::where('branch_id', $branch_id) -> select('id', 'name') -> get();
+        $engineers = Engineer::where('branch_id', $branch_id) -> pluck('name', 'id') -> toArray();
+
+        return view('admin.check.create', compact('technicals', 'targetClient', 'targetCar', 'branch_id', 'client_id', 'car_id', 'engineers'));
     }
 
     public function store(AddAndUpdateCheckRequest $request)
     {
-
         $branch_id = $request -> branch_id && $request -> branch_id != null ? $request -> branch_id : Auth::user()->branch_id;
         $check_number = rand();
-        $check_data = $request -> except('car_images'); // Get All Column Without [car_images]
+        $check_data = $request -> except('car_images', 'technical_id'); // Get All Column Without [car_images, technical_id]
         $allData = $check_data+ ['user_id' => Auth::user()->id] + ['check_number' => $check_number] + ['branch_id' => $branch_id];
         $check = Check::create($allData); // Create New check From [check_data] Request And [image_data] Coming With Trait
         $check_id = $check->id;
@@ -86,6 +92,12 @@ class CheckController extends Controller
                 // Type => 1 [ 1 For car_images ]
                 $check -> images() -> create($image + ['type'=>1]);
             }
+        }
+
+        if ($request -> has('technical_id'))
+        {
+            $technicalsIds = $request -> technical_id;
+            $check -> technicals() -> attach($technicalsIds);
         }
         return redirect() -> route('admin.check.clientSignature', [$check_id, $check_number]) -> with('success', __('trans.check added successfully'));
     }
@@ -100,17 +112,11 @@ class CheckController extends Controller
     {
         $check = Check::findOrFail($id);
         if (Auth::user()->hasRole('branch_manager') && $check->branch_id != Auth::user()->branch_id)
-            abort(403);
+            abort(403); // no edit if User not who set check data
         $checkStatus = CheckStatus::pluck('name', 'id')->toArray();
-        $technicals = Technical::where('branch_id', $check -> branch_id) -> pluck('name', 'id') -> toArray();
+        $technicals = Technical::where('branch_id', $check -> branch_id) -> select('id', 'name') -> get();
         $engineers = Engineer::where('branch_id', Auth::user()->branch_id) -> pluck('name', 'id') -> toArray();
-        $carTypes = CarType::pluck('name', 'id') -> toArray();
-        $carSizes = CarSize::where('car_type_id', $check -> car_type_id)->pluck('name', 'id') -> toArray();
-        $carModels = CarModel::orderBy('name', 'DESC') -> pluck('name', 'id') -> toArray();
-        $carEngines = CarEngine::where('car_size_id', $check -> car_size_id)->pluck('name', 'id') -> toArray();
-        $carDevelopmentCode = CarDevelopmentCode::where('car_size_id', $check -> car_size_id)->pluck('name', 'id') -> toArray();
-//dd($carSizes);
-
+        $check_technicals = Relation_check_technical::where('check_id', $id) -> pluck('id', 'technical_id') -> toArray();
         // Send to view if need disabled check status item from select box option
 /*        $option_attributes = collect(CheckStatus::all())
             ->mapWithKeys(function ($item) use ($check) {
@@ -126,13 +132,19 @@ class CheckController extends Controller
                 return [];
             })->all();*/
 
-        return view('admin.check.edit',compact('check', 'checkStatus', 'technicals', 'engineers', 'carTypes', 'carSizes', 'carModels', 'carEngines', 'carDevelopmentCode'));
+        return view('admin.check.edit',compact('check', 'checkStatus', 'technicals', 'engineers', 'check_technicals'));
     }
 
     public function update(AddAndUpdateCheckRequest $request, $id)
     {
         $check = Check::findOrFail($id);
-        $check -> update($request -> all());
+        $check -> update($request -> except(['technical_id']));
+
+        if ($request -> has('technical_id'))
+        {
+            $technicalsIds = $request -> technical_id;
+            $check -> technicals() -> sync($technicalsIds);
+        }
         return redirect() -> route('admin.check.index') -> with('success', __('trans.check edit successfully'));
     }
 
@@ -219,29 +231,6 @@ class CheckController extends Controller
         $client_signature_entry = Images::where('check_id',$check_id)->where('type',3) -> latest() -> first();
         $client_signature_exit = Images::where('check_id',$check_id)->where('type',4) -> latest() -> first();
         return view('admin.check.receipt', compact('check', 'client_signature_entry', 'client_signature_exit'));
-    }
-
-    // Custom Function getCarSizesByAjax
-    public function getCarSizesByAjax(Request $request)
-    {
-        if ($request -> ajax())
-        {
-            $car_type_id = $request -> car_type_id;
-            $carSizes = CarSize::where('car_type_id', $car_type_id)->select('id', 'name')->get();
-            return response() -> json($carSizes, 200);
-        }
-    }
-
-    // Custom Function getCarDevCodeAndEnginesByAjax
-    public function getCarDevCodeAndEnginesByAjax(Request $request)
-    {
-        if ($request -> ajax())
-        {
-            $car_size_id = $request -> car_size_id;
-            $carEngines = CarEngine::where('car_size_id', $car_size_id)->select('id', 'name')->get();
-            $carDevelopmentCodes = CarDevelopmentCode::where('car_size_id', $car_size_id)->select('id', 'name')->get();
-            return response() -> json(['carEngines' => $carEngines, 'carDevelopmentCodes' => $carDevelopmentCodes], 200);
-        }
     }
 
     // Custom function managementNotes

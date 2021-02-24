@@ -277,7 +277,7 @@
                                             {{ $check -> counter_number }}
                                         </span>
                                             <span class="padding-0 text-center col-xs-3">
-                                           {{ $check -> structure_number }}
+                                           {{ $check -> chassis_number }}
                                         </span>
                                             <span class="padding-0 text-center col-xs-3">
                                             {{ $check -> plate_number }}
@@ -344,16 +344,16 @@
                                     <div class="data_body">
                                         <div class="padding-0 col-xs-12">
                                             <span class="padding-0 text-center col-xs-3">
-                                                {{ $check -> carType? $check -> carType ->name: '' }}
+                                                {{ $check -> car_type }}
                                             </span>
                                             <span class="padding-0 text-center col-xs-3">
-                                            {{ $check -> carSize? $check -> carSize ->name: '' }}
+                                            {{ $check -> car_size}}
                                         </span>
                                             <span class="padding-0 text-center col-xs-3">
-                                            {{ $check -> carModel -> name ?? '' }}
+                                            {{ $check -> car_model }}
                                         </span>
                                             <span class="padding-0 text-center col-xs-3">
-                                            {{ $check -> carEngine -> name ?? ''  }}
+                                            {{ $check -> car_engine }}
                                         </span>
                                         </div> <!-- end col 12 -->
                                     </div> <!-- end data body -->
@@ -414,7 +414,7 @@
                                     <div class="data_body">
                                     <span class="padding-0 col-xs-12">
                                         <span class="padding-0 text-center col-xs-3">
-                                            {{ $check -> carDevelopmentCode?$check -> carDevelopmentCode -> name:''  }}
+                                            {{ $check -> car_development_code }}
                                         </span>
                                         <span class="padding-0 text-center col-xs-3">
                                             {{ $check -> fuel_level }}%

@@ -12,4 +12,9 @@ class CarModel extends Model
     {
         return $this->hasMany(Check::class);
     }
+
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
+    }
 }

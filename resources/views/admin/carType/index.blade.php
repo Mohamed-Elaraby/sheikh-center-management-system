@@ -75,5 +75,12 @@
             return confirm(deleteMessage);
         }
     </script>
+
+    <script>
+        $(document).on('change', '#selectAction', function () {
+            let url = $(this).children('option:selected').attr('value');
+            location.href = url;
+        }) // end on change
+    </script>
 @endpush
 

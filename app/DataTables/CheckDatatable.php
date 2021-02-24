@@ -11,6 +11,7 @@ use Yajra\DataTables\Html\Builder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
+use function Matrix\trace;
 
 class CheckDatatable extends DataTable
 {
@@ -31,17 +32,14 @@ class CheckDatatable extends DataTable
             ->addColumn('action', function ($query){
                 return view('admin.datatableHtmlBuilderRender.check.action', compact('query'));
             })
-            ->editColumn('car_type', function ($query){
-                return $query->carType->name ?? '';
-            })
             ->editColumn('branch', function ($query){
                 return $query->branch->name ?? '';
             })
             ->editColumn('check_number', function ($query){
                 return "<a href='".route('admin.check.receipt', $query->id)."'>".$query -> check_number."</a>";
             })
-            ->filterColumn('car_type', function($query, $keyword) {
-                $query->whereHas('carType', function ($q) use ($keyword){
+            ->filterColumn('branch', function($query, $keyword) {
+                $query->whereHas('branch', function ($q) use ($keyword){
                     $q->where('name', 'LIKE', "%{$keyword}%");
                 });
             })
@@ -62,6 +60,7 @@ class CheckDatatable extends DataTable
     protected function searchFilter($model, $request,array $selectQueryColumns, string $column_name_whereBetween, array $where_query, array $extra_ifConditions = null)
     {
         // Search Parameters
+        $chassis_number = $this -> request() -> get('search_in_chassis_number');
         $start_date = $this -> request() -> get('start_date');
         $end_date = $this -> request() -> get('end_date');
 
@@ -77,6 +76,12 @@ class CheckDatatable extends DataTable
             $allCheck = Auth::user()->hasRole(['owner', 'general_manager'])?
                 $model->newQuery()-> whereBetween($column_name_whereBetween, $date_range) ->select($selectQueryColumns):
                 $model->newQuery()-> whereBetween($column_name_whereBetween, $date_range) ->where($where_query) -> select($selectQueryColumns);
+        }
+        if (!empty($chassis_number))
+        {
+            $allCheck = Auth::user()->hasRole(['owner', 'general_manager'])?
+                $model->newQuery()-> where('chassis_number', $chassis_number) ->select($selectQueryColumns):
+                $model->newQuery()-> where('chassis_number', $chassis_number) ->where($where_query) -> select($selectQueryColumns);
         }
 
 
@@ -98,6 +103,12 @@ class CheckDatatable extends DataTable
                             $model->newQuery()-> whereBetween($column_name_whereBetween, $date_range) ->where($key, $value)->select($selectQueryColumns):
                             $model->newQuery()-> whereBetween($column_name_whereBetween, $date_range) ->where($key, $value)->where($where_query)->select($selectQueryColumns);
                     }
+                    if (!empty($chassis_number))
+                    {
+                        $allCheck = Auth::user()->hasRole(['owner', 'general_manager'])?
+                            $model->newQuery()-> where('chassis_number', $chassis_number) ->select($selectQueryColumns):
+                            $model->newQuery()-> where('chassis_number', $chassis_number) ->where($where_query) -> select($selectQueryColumns);
+                    }
                 }
             }
         }
@@ -111,6 +122,12 @@ class CheckDatatable extends DataTable
                 $allCheck = Auth::user()->hasRole(['owner', 'general_manager'])?
                     $model->newQuery()-> whereBetween($column_name_whereBetween, $date_range) ->where([['check_status_id', $request -> check_status_id], ['branch_id', $request -> branch_id]])->select($selectQueryColumns):
                     $model->newQuery()-> whereBetween($column_name_whereBetween, $date_range) ->where([['check_status_id', $request -> check_status_id], ['branch_id', $request -> branch_id]])->where($where_query)->select($selectQueryColumns);
+            }
+            if (!empty($chassis_number))
+            {
+                $allCheck = Auth::user()->hasRole(['owner', 'general_manager'])?
+                    $model->newQuery()-> where('chassis_number', $chassis_number) ->select($selectQueryColumns):
+                    $model->newQuery()-> where('chassis_number', $chassis_number) ->where($where_query) -> select($selectQueryColumns);
             }
         }
         if ($request->car_exists == true) {
@@ -127,6 +144,25 @@ class CheckDatatable extends DataTable
                     })->whereBetween($column_name_whereBetween, $date_range)->where('branch_id', $request->branch_id)->select($selectQueryColumns) :
                     $model->newQuery()->whereBetween($column_name_whereBetween, $date_range)->where('branch_id', $request->branch_id)->where($where_query)->select($selectQueryColumns);
             }
+            if (!empty($chassis_number))
+            {
+                $allCheck = Auth::user()->hasRole(['owner', 'general_manager'])?
+                    $model->newQuery()-> where('chassis_number', $chassis_number) ->select($selectQueryColumns):
+                    $model->newQuery()-> where('chassis_number', $chassis_number) ->where($where_query) -> select($selectQueryColumns);
+            }
+        }
+        if ($request -> car_id)
+        {
+            $allCheck = $model->newQuery() -> where('car_id', $request -> car_id)->select($selectQueryColumns);
+            if (!empty($start_date) && !empty($end_date))
+            {
+                $allCheck = $model->newQuery()->whereBetween($column_name_whereBetween, $date_range) -> where('car_id', $request -> car_id)->select($selectQueryColumns);
+            }
+
+            if (!empty($chassis_number))
+            {
+                $allCheck = $model->newQuery() -> where('chassis_number', $chassis_number) -> where('car_id', $request -> car_id)->select($selectQueryColumns);
+            }
         }
         return $allCheck;
     }
@@ -140,7 +176,7 @@ class CheckDatatable extends DataTable
      */
     public function query(Check $model, Request $request)
     {
-        $selectQueryColumns = ['id', 'check_number', 'car_type_id', 'car_color', 'plate_number', 'management_notes', 'check_status_id','branch_id', 'updated_at'];
+        $selectQueryColumns = ['id', 'check_number', 'car_type', 'car_color', 'plate_number', 'management_notes', 'check_status_id','branch_id', 'updated_at'];
         $result = $this -> searchFilter($model, $request, $selectQueryColumns, 'updated_at', [['branch_id','=',Auth::user()->branch_id]] , ['check_status_id' => $request -> check_status_id, 'branch_id' => $request -> branch_id, 'client_id' => $request -> client_id, 'car_exists' => $request -> car_exists]);
         return $result;
     }
@@ -159,11 +195,11 @@ class CheckDatatable extends DataTable
 //                    ->addAction([])
                     ->parameters(array_merge($this->getBuilderParameters(),[]))
                     ->dom('Blfrtip')
-                    ->scrollX(false)
-                    ->scrollY(true)
+                    ->scrollX(true)
+                    ->scrollY(false)
                     ->searching(true)
-                    ->responsive(true)
-                    ->autoWidth(true)
+                    ->responsive(false)
+                    ->autoWidth(false)
                     ->lengthMenu([[5,10,25,50,100,-1], [5,10,25,50,100,"الكل"]])
                     ->processing(true)
                     ->serverSide(true)
@@ -203,7 +239,7 @@ class CheckDatatable extends DataTable
             Column::make('car_type')        -> title( __('trans.car type') ),
             Column::make('car_color')       -> title( __('trans.car color') ),
             Column::make('plate_number')    -> title( __('trans.plate number') ),
-            Column::make('branch')          -> title( __('trans.branch name') ),
+            Column::make('branch')          -> title( __('trans.branch') ),
             Column::make('checkStatus')     -> title( __('trans.status') ),
             Column::make('updated_at')      -> title( __('trans.last update') )
                 ->addClass('date_dir_setting'),

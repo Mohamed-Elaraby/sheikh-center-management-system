@@ -1,6 +1,6 @@
 @php
 $pageType = __('trans.create');
-$pageItem = __('trans.client')
+$pageItem = __('trans.car')
 
 @endphp
 @extends('admin.layouts.app')
@@ -23,44 +23,49 @@ $pageItem = __('trans.client')
                     @endif
                 </div>
                 <div class="card-header">
-                    <h3 class="text-center"><i class="fa fa-user-secret"></i> {{ $pageType .' '. $pageItem }}</h3>
+                    <h3 class="text-center"><i class="fa fa-car"></i> {{ $pageType .' '. $pageItem }}</h3>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['route' => 'admin.clients.store', 'method' => 'post']) !!}
+                    {!! Form::open(['route' => 'admin.cars.store', 'method' => 'post']) !!}
+                    {!! Form::hidden('client_id', request('client_id')) !!}
                         <div class="form-group">
-                            {!! Form::label('name', __('trans.client name'), ['class' => 'control-label']) !!}
-                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                            {!! Form::label('car_type_id', __('trans.car type'), ['class' => 'control-label']) !!}
+                            {!! Form::select('car_type_id', $carTypes, null, ['class' => 'form-control', 'placeholder' => __('trans.car type')]) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('phone', __('trans.phone'), ['class' => 'control-label']) !!}
-                            {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+                            {!! Form::label('car_size_id', __('trans.car size'), ['class' => 'control-label']) !!}
+                            <select class="form-control" name="car_size_id" id="car_sizes_id" disabled>
+                                <option value="">{{ __('trans.car size') }}</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('employer', __('trans.employer'), ['class' => 'control-label']) !!}
-                            {!! Form::text('employer', null, [ 'class' => 'form-control']) !!}
+                            {!! Form::label('car_engine_id', __('trans.engine number'), ['class' => 'control-label']) !!}
+                            <select class="form-control" name="car_engine_id" id="car_engine_id" disabled>
+                                <option value="">{{ __('trans.engine number') }}</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('how_you_now_us', __('trans.how you now us'), ['class' => 'control-label']) !!}
-                            {!! Form::text('how_you_now_us', null, [ 'class' => 'form-control']) !!}
+                            {!! Form::label('car_development_code_id', __('trans.car development code'), ['class' => 'control-label']) !!}
+                            <select class="form-control" name="car_development_code_id" id="car_development_code_id" disabled>
+                                <option value="">{{ __('trans.car development code') }}</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                {!! Form::label('other_car', __('trans.other car'), ['class' => 'control-label']) !!}
-                            </div>
-                            <div class="col-xs-6">
-                                <label>
-                                    {!! Form::radio('other_car_status', '0', true,  ['id' => 'other_car_status']) !!}
-                                    لا
-                                </label>
-                                <label>
-                                    {!! Form::radio('other_car_status', '1', null,  ['id' => 'other_car_status']) !!}
-                                    نعم
-                                </label>
-                            </div>
+                            {!! Form::label('car_model_id', __('trans.model'), ['class' => 'control-label']) !!}
+                            {!! Form::select('car_model_id', $carModels, null, [ 'class' => 'form-control', 'placeholder' => __('trans.model')]) !!}
                         </div>
-                        {!! Form::text('other_car', null, [ 'class' => 'form-control', 'id' => 'other_car', 'disabled', 'placeholder' => __('trans.car type')]) !!}
-                    </div>
+                        <div class="form-group">
+                            {!! Form::label('chassis_number', __('trans.chassis number'), ['class' => 'control-label']) !!}
+                            {!! Form::text('chassis_number', null, [ 'class' => 'form-control', 'placeholder' => __('trans.chassis number')]) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('plate_number', __('trans.plate number'), ['class' => 'control-label']) !!}
+                            {!! Form::text('plate_number', null, [ 'class' => 'form-control', 'placeholder' => __('trans.plate number')]) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('car_color', __('trans.car color'), ['class' => 'control-label']) !!}
+                            {!! Form::text('car_color', null, [ 'class' => 'form-control', 'placeholder' => __('trans.car color')]) !!}
+                        </div>
                     </div>
                     <div class="form-group">
                             {!! Form::submit($pageType, ['class' => 'form-control btn btn-success']) !!}
@@ -71,16 +76,90 @@ $pageItem = __('trans.client')
         </div>
     </div>
 @endsection
+@push('links')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endpush
 @push('scripts')
     <script>
-        $("input[name='other_car_status']").change(function(e){
-            if($(this).val() == 0) {
-                $("#other_car").prop('disabled', true);
-                $("#other_car").css('background-color', '#EBEBE4');
-            } else if($(this).val() == 1) {
-                $("#other_car").prop('disabled', false);
-                $("#other_car").css('background-color', '#FFFFFF');
-            }
-        });
+        $(document).ready(function () {
+            $('select[name=car_type_id]').on('change', function () {
+                let car_type_id = $(this).children(':selected').val();
+                let car_size_element = $('#car_sizes_id');
+                let car_engine_element = $('#car_engine_id');
+                let car_development_code_element = $('#car_development_code_id');
+                if (car_type_id == ''){
+                    car_size_element.html('<option value="">'+'{{ __('trans.car size') }}'+'</option>');
+                    car_size_element.prop('disabled', true);
+
+                    car_engine_element.html('<option value="">'+'{{ __('trans.engine number') }}'+'</option>');
+                    car_engine_element.prop('disabled', true);
+
+                    car_development_code_element.html('<option value="">'+'{{ __('trans.car development code') }}'+'</option>');
+                    car_development_code_element.prop('disabled', true);
+                }else {
+                    car_size_element.prop('disabled', false);
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{{ route('admin.check.getCarSizesByAjax') }}',
+                        method: 'POST',
+                        data: {car_type_id:car_type_id},
+                        success: function (data) {
+                            if (!data.error)
+                            {
+                                car_size_element.empty();
+                                car_size_element.append('<option value="">'+'{{ __('trans.car size') }}'+'</option>');
+                                $.each(data, function (index, element){
+                                    car_size_element.append('<option value="'+element.id+'">'+element.name+'</option>');
+                                })
+                            }
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('select[name=car_size_id]').on('change', function () {
+                let car_size_id = $(this).children(':selected').val();
+                let car_engine_element = $('#car_engine_id');
+                let car_development_code_element = $('#car_development_code_id');
+                if (car_size_id == ''){
+                    car_engine_element.html('<option value="">'+'{{ __('trans.engine number') }}'+'</option>');
+                    car_engine_element.prop('disabled', true);
+
+                    car_development_code_element.html('<option value="">'+'{{ __('trans.car development code') }}'+'</option>');
+                    car_development_code_element.prop('disabled', true);
+                }else {
+                    car_engine_element.prop('disabled', false);
+                    car_development_code_element.prop('disabled', false);
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{{ route('admin.check.getCarDevCodeAndEnginesByAjax') }}',
+                        method: 'POST',
+                        data: {car_size_id},
+                        success: function (data) {
+                            if (!data.error)
+                            {
+                                car_engine_element.empty();
+                                $.each(data.carEngines, function (index, element){
+                                    car_engine_element.append('<option value="'+element.id+'">'+element.name+'</option>');
+                                })
+
+                                car_development_code_element.empty();
+                                $.each(data.carDevelopmentCodes, function (index, element){
+                                    car_development_code_element.append('<option value="'+element.id+'">'+element.name+'</option>');
+                                })
+                            }
+                        }
+                    })
+                }
+            })
+        })
     </script>
 @endpush

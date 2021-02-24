@@ -27,7 +27,8 @@
                 <div class="card-body">
                     {!! Form::open(['route' => ['admin.check.create'], 'method' => 'get']) !!}
                         <div class="form-group">
-                            {!! Form::hidden('client_id', request('client_id')) !!}
+                            {!! request('client_id') ? Form::hidden('client_id', request('client_id')) : '' !!}
+                            {!! request('car_id') ? Form::hidden('car_id', request('car_id')) : '' !!}
                             {!! Form::label('branch_id', __('trans.branch name'), ['class' => 'control-label']) !!}
                             {!! Form::select('branch_id', $branches, null,  ['class' => 'form-control']) !!}
                         </div>

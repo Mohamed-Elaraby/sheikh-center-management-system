@@ -121,7 +121,17 @@
                     </span>
                     </a>
                     <ul class="treeview-menu">
-                        <!-- Check Status Route -->
+                        <!-- Cars Route -->
+
+                            <li>
+                                <a href="{{ route('admin.cars.index') }}">
+                                    <i class="fa fa-car"></i>
+                                    <span>@lang('trans.all clients cars')</span>
+                                </a>
+                            </li>
+
+
+                    <!-- Check Status Route -->
                         @if(auth()->user()->hasPermission('read-checkStatus'))
                             <li>
                                 <a href="{{ route('admin.checkStatus.index') }}">

@@ -25,10 +25,10 @@ class AddAndUpdateCheckRequest extends FormRequest
     {
         return [
             'counter_number' => 'required' ,
-            'structure_number' => 'required',
+            'chassis_number' => 'required',
             'plate_number' => 'required' ,
-            'car_type_id' => 'required',
-            'car_size_id' => 'required',
+            'car_type' => 'required',
+            'car_size' => 'required',
             'car_color' => 'required',
             'car_status_report' => 'required',
         ];

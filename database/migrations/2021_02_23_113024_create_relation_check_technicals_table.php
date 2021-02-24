@@ -15,7 +15,8 @@ class CreateRelationCheckTechnicalsTable extends Migration
     {
         Schema::create('relation_check_technicals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->bigInteger('check_id')->unsigned();
+            $table->bigInteger('technical_id')->unsigned();
         });
     }
 
