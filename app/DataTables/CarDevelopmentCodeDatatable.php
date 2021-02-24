@@ -87,7 +87,6 @@ class CarDevelopmentCodeDatatable extends DataTable
             ->languageUrl('//cdn.datatables.net/plug-ins/1.10.22/i18n/Arabic.json')
             ->orderBy(3)
             ->buttons(
-                Button::make('create'),
                 Button::make('export'),
                 Button::make('print'),
                 Button::make('reset'),
