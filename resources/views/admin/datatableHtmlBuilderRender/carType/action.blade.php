@@ -16,7 +16,7 @@
 
 
 <select id="selectAction" class="form-control">
-    <option value="" disabled selected>{{ __('trans.engine number') }}</option>
+    <option value="" disabled selected>{{ __('trans.car size') }}</option>
     @if (Auth::user()->hasPermission('create-carSize'))
         <option value="{{ route('admin.carSize.create', ['car_type_id' => $query->id]) }}" >{{ __('trans.create car size') }}</option>
     @endif

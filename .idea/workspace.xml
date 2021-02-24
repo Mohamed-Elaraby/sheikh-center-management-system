@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c20632a-571d-402d-912a-5c7ff43b69df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/carSize/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carSize/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/cars/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cars/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/cars/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cars/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/check/managementNotes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/check/managementNotes.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carType/action.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/carType/action.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +214,7 @@
       <workItem from="1614066653353" duration="1776000" />
       <workItem from="1614068707170" duration="5410000" />
       <workItem from="1614115447921" duration="6570000" />
-      <workItem from="1614143392550" duration="9754000" />
+      <workItem from="1614143392550" duration="10088000" />
     </task>
     <servers />
   </component>
