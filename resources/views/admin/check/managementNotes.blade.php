@@ -52,7 +52,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '{{ route('admin.check.getCarSizesByAjax') }}',
+                url: '{{ route('admin.car.getCarSizesByAjax') }}',
                 method: 'POST',
                 data: {car_type_id:car_type_id},
                 success: function (data) {

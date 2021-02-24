@@ -102,7 +102,7 @@ $pageItem = __('trans.car')
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: '{{ route('admin.check.getCarSizesByAjax') }}',
+                        url: '{{ route('admin.car.getCarSizesByAjax') }}',
                         method: 'POST',
                         data: {car_type_id:car_type_id},
                         success: function (data) {
@@ -140,7 +140,7 @@ $pageItem = __('trans.car')
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: '{{ route('admin.check.getCarDevCodeAndEnginesByAjax') }}',
+                        url: '{{ route('admin.car.getCarDevCodeAndEnginesByAjax') }}',
                         method: 'POST',
                         data: {car_size_id},
                         success: function (data) {

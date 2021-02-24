@@ -84,72 +84,72 @@
         })
     </script>
 
-    <script>
-        $( document ).ready( function () {
+{{--    <script>--}}
+{{--        $( document ).ready( function () {--}}
 
-            $( document ).on('click', '#carId', function () {
-                let carSizeId = $( this ).data('id');
-                let carModel = {!! $carModel !!};
-                $('#save_data').attr('value', carSizeId);
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: '{{ route('admin.getCarModelByAjax') }}',
-                    method: 'POST',
-                    data: {carSizeId},
-                    success: function (data) {
-                        $('#show').empty();
-                        $('#messagesSection').empty();
-                        $(carModel).each(function (carModel_index, carModel_element)
-                        {
+{{--            $( document ).on('click', '#carId', function () {--}}
+{{--                let carSizeId = $( this ).data('id');--}}
+{{--                let carModel = {!! $carModel !!};--}}
+{{--                $('#save_data').attr('value', carSizeId);--}}
+{{--                $.ajax({--}}
+{{--                    headers: {--}}
+{{--                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--                    },--}}
+{{--                    url: '{{ route('admin.car.getCarModelByAjax') }}',--}}
+{{--                    method: 'POST',--}}
+{{--                    data: {carSizeId},--}}
+{{--                    success: function (data) {--}}
+{{--                        $('#show').empty();--}}
+{{--                        $('#messagesSection').empty();--}}
+{{--                        $(carModel).each(function (carModel_index, carModel_element)--}}
+{{--                        {--}}
 
-                            $('#show').append('<input class="myCheck" type="checkbox" name="name[]" id="name" value="'+carModel_element.id+'">'+carModel_element.name);
+{{--                            $('#show').append('<input class="myCheck" type="checkbox" name="name[]" id="name" value="'+carModel_element.id+'">'+carModel_element.name);--}}
 
-                            $(data).each(function (index, element){
+{{--                            $(data).each(function (index, element){--}}
 
-                                $(':checkbox[value='+element+']').prop('checked', 'enabled');
+{{--                                $(':checkbox[value='+element+']').prop('checked', 'enabled');--}}
 
-                            }) // end data each
+{{--                            }) // end data each--}}
 
-                        }) // end carModel each
-                    }
-                });
-            })
-        })
-    </script>
+{{--                        }) // end carModel each--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            })--}}
+{{--        })--}}
+{{--    </script>--}}
 
-    <script>
-        $( document ).ready( function () {
-            $( document ).on('click', '#save_data', function () {
-                let carSizeValue = $(this).val();
-                let carModelIds = [];
-                $("input[type=checkbox]:checked").each(function () {
-                    carModelIds.push($(this).val());
-                })
-                if (carModelIds.length < 1)
-                {
-                    $('#messagesSection').html("<p class='alert alert-danger'>مطلوب تحديد موديل واحد على الاقل.</p>")
-                }else {
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: '{{ route('admin.saveCarModelByAjax') }}',
-                        method: 'POST',
-                        data: {carSizeValue, carModelIds},
-                        success: function () {
-                            if (!$('#messagesSection').is(':empty') && $('#messagesSection').text() != 'مطلوب تحديد موديل واحد على الاقل.'){
-                                $('#messagesSection').fadeOut( 400 ).delay( 200 ).fadeIn( 400 );
-                            }
-                            $('#messagesSection').html("<p class='text-center alert alert-success'>تم الحفظ بنجاح.</p>");
-                        }
-                    })
-                }
+{{--    <script>--}}
+{{--        $( document ).ready( function () {--}}
+{{--            $( document ).on('click', '#save_data', function () {--}}
+{{--                let carSizeValue = $(this).val();--}}
+{{--                let carModelIds = [];--}}
+{{--                $("input[type=checkbox]:checked").each(function () {--}}
+{{--                    carModelIds.push($(this).val());--}}
+{{--                })--}}
+{{--                if (carModelIds.length < 1)--}}
+{{--                {--}}
+{{--                    $('#messagesSection').html("<p class='alert alert-danger'>مطلوب تحديد موديل واحد على الاقل.</p>")--}}
+{{--                }else {--}}
+{{--                    $.ajax({--}}
+{{--                        headers: {--}}
+{{--                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--                        },--}}
+{{--                        url: '{{ route('admin.saveCarModelByAjax') }}',--}}
+{{--                        method: 'POST',--}}
+{{--                        data: {carSizeValue, carModelIds},--}}
+{{--                        success: function () {--}}
+{{--                            if (!$('#messagesSection').is(':empty') && $('#messagesSection').text() != 'مطلوب تحديد موديل واحد على الاقل.'){--}}
+{{--                                $('#messagesSection').fadeOut( 400 ).delay( 200 ).fadeIn( 400 );--}}
+{{--                            }--}}
+{{--                            $('#messagesSection').html("<p class='text-center alert alert-success'>تم الحفظ بنجاح.</p>");--}}
+{{--                        }--}}
+{{--                    })--}}
+{{--                }--}}
 
-            });
-        });
+{{--            });--}}
+{{--        });--}}
 
 
-    </script>
+{{--    </script>--}}
 @endpush

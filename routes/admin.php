@@ -67,11 +67,11 @@ Route::group(
         Route::get('client_signature/{check_id}/{check_number}', 'CheckController@client_signature')->name('check.clientSignature');
         Route::post('editCheckStatus', 'CheckController@onlyEditCheckStatus')->name('check.onlyEditCheckStatus');
         Route::get('receipt/{check_id}', 'CheckController@receipt')->name('check.receipt');
-        Route::get('getAllCheckByAjax', 'CheckController@getAllCheckByAjax')->name('check.getAllCheckByAjax');
-        Route::post('getCarSizesByAjax', 'CarController@getCarSizesByAjax')->name('check.getCarSizesByAjax');
-        Route::post('getCarDevCodeAndEnginesByAjax', 'CarController@getCarDevCodeAndEnginesByAjax')->name('check.getCarDevCodeAndEnginesByAjax');
+        Route::post('getCarSizesByAjax', 'CarController@getCarSizesByAjax')->name('car.getCarSizesByAjax');
+        Route::post('getCarDevCodeAndEnginesByAjax', 'CarController@getCarDevCodeAndEnginesByAjax')->name('car.getCarDevCodeAndEnginesByAjax');
         Route::get('managementNotes/{check_id}', 'CheckController@managementNotes')->name('check.managementNotes');
         Route::post('managementNotesUpdate/{check_id}', 'CheckController@managementNotesUpdate')->name('check.managementNotesUpdate');
+//        Route::get('getAllCheckByAjax', 'CheckController@getAllCheckByAjax')->name('check.getAllCheckByAjax');
 //        Route::post('getCarModelByAjax', 'CarSizeController@getCarModelByAjax')->name('getCarModelByAjax');
 //        Route::post('saveCarModelByAjax', 'CarSizeController@saveCarModelByAjax')->name('saveCarModelByAjax');
         Route::get('selectBranch', 'CheckController@selectBranch')->name('selectBranch');
