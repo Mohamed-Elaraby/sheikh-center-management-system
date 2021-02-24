@@ -111,7 +111,6 @@ class CarDatatable extends DataTable
                 [
                     "buttons" =>
                         [
-                            "create" => 'إنشاء',
                             "export" => 'إستخراج',
                             "print" => 'طباعة',
                             "reset" => 'إعادة ضبط',
