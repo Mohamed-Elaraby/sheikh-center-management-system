@@ -1,0 +1,89 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\DataTables\MoneySafeLogDatatable;
+use App\Http\Requests\MoneySafeOperations\moneySafeOperationsRequest;
+use App\Models\Branch;
+use App\Models\MoneySafe;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
+class MoneySafeController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('permission:read-moneySafe')->only('index');
+        $this->middleware('permission:create-moneySafe')->only('operations');
+        $this->middleware('permission:update-moneySafe')->only('edit');
+        $this->middleware('permission:delete-moneySafe')->only('destroy');
+    }
+
+    public function index($branch_id)
+    {
+        $branch = Branch::findOrFail($branch_id);
+        $moneySafe = MoneySafe::where('branch_id', $branch_id)->select('final_amount', 'branch_id')->orderBy('id', 'desc')->first();
+        return view('admin.moneySafe.index', compact('moneySafe', 'branch'));
+    }
+
+    public function operations($branch_id)
+    {
+        $branch = Branch::findOrFail($branch_id);
+        return view('admin.moneySafe.create', compact('branch'));
+    }
+
+    public function store(moneySafeOperationsRequest $request)
+    {
+        $user_id = Auth::user()->id;
+
+        $last_amount = MoneySafe::where('branch_id', $request -> branch_id) -> get()->last(); // get last amount
+        $final_amount = $last_amount ? $last_amount->final_amount : 0; // if last amount not empty set final amount else final amount equal zero
+
+
+        if ($request->processType == 0){ // on withdrawn
+
+            if ($final_amount == 0 || $final_amount < $request->amount_paid){ // on mount in the safe is not enough redirect
+
+                $redirect = redirect()->route('admin.moneySafe.index', $request->branch_id)->with('delete', __('trans.the amount in the safe is not enough'));
+
+            }else { // on withdrawn money
+
+                MoneySafe::create([
+                    'amount_paid'           => $request->amount_paid,
+                    'final_amount'          => $final_amount - $request->amount_paid,
+                    'notes'                 => $request->notes,
+                    'processType'           => $request->processType,
+                    'user_id'               => $user_id,
+                    'branch_id'             => $request->branch_id,
+                ]);
+
+                $redirect = redirect()->route('admin.moneySafe.index', $request->branch_id)->with('success', __('trans.the amount has been withdrawn successfully'));
+
+            }
+        }else{ // on deposited money
+
+            MoneySafe::create([
+                'amount_paid'           => $request->amount_paid,
+                'final_amount'          => $final_amount + $request->amount_paid,
+                'notes'                 => $request->notes,
+                'processType'           => $request->processType,
+                'user_id'               => $user_id,
+                'branch_id'             => $request->branch_id,
+            ]);
+
+            $redirect = redirect()->route('admin.moneySafe.index', $request->branch_id)->with('success', __('trans.the amount has been deposited successfully'));
+        }
+
+        return $redirect;
+    }
+
+    public function money_safe_log(MoneySafeLogDatatable $moneySafeLogDatatable, Request $request)
+    {
+        $branch_id = $request -> branch_id;
+        $branch = Branch::findOrFail($branch_id);
+//        $moneySafe = MoneySafe::where('branch_id', $branch_id)->get();
+        return $moneySafeLogDatatable -> render('admin.moneySafe.log', compact('branch'));
+//        return view('admin.moneySafe.index', compact('moneySafe', 'branch'));
+    }
+}

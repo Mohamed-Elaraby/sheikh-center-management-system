@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<tr class="'+productCode+'">
+    <td><div class="btn btn-danger btn-sm removeField"><i class="fa fa-trash"></i></div></td>
+    <td><input id="item_code_' + count + '" name="product_data[' + count + '][item_code]" type="text" class="form-control item_code" value="'+productCode+'" readonly></td>
+    <td><input id="item_name_' + count + '" name="product_data[' + count + '][item_name]" type="text" class="form-control item_name" value="'+productName+'" readonly title="'+productName+'"></td>
+    <td>
+       <select class="form-control category category_' + count + '" name="product_data[' + count + '][sub_category_id]">
+            <option value="">-- اختر القسم --</option>
+        </select>
+    </td>
+    <td><input id="item_quantity_' + count + '" name="product_data[' + count + '][item_quantity]" type="text" class="form-control item_quantity onlyUsedForValidation" autocomplete="off"></td>
+    <td><input id="item_price_' + count + '" name="product_data[' + count + '][item_price]" type="text" class="form-control item_price onlyUsedForValidation" autocomplete="off"></td>
+    <td><input id="item_amount_taxable_' + count + '" name="product_data[' + count + '][item_amount_taxable]" type="text" class="form-control item_amount_taxable" readonly></td>
+    <td>
+            <div class="input-group my-group">
+                <select id="discount_type_' + count + '" class="form-control discount_type" name="product_data[' + count + '][item_discount_type]">
+                        <option value="0">ريال</option>
+                        <option value="1">%</option>
+                    </select>
+               <input id="item_discount_' + count + '" name="product_data[' + count + '][item_discount]" type="text" class="form-control item_discount" autocomplete="off">
+            </div>
+    </td>
+    <input  type="text" name="product_data[' + count + '][item_discount_amount]" class="item_discount_amount">
+    <input  type="text" name="product_data[' + count + '][item_sub_total_after_discount]" class="item_sub_total_after_discount">
+    <td><input id="item_tax_amount_' + count + '" name="product_data[' + count + '][item_tax_amount]" type="text" class="form-control item_tax_amount" readonly></td>
+    <td><input id="item_sub_total_' + count + '" name="product_data[' + count + '][item_sub_total]" type="text" class="form-control item_sub_total" readonly></td>
+</tr>
+
+// ############################################################### //
+
+$oldProducts = [];
+
+foreach ($openSaleOrder -> openSaleOrderProducts as $oldProduct)
+{
+$oldProducts ['item_code'] = $oldProduct -> item_code;
+$oldProducts ['item_quantity'] = $oldProduct -> item_quantity;
+}
+$openSaleOrder -> update($openSaleOrderData);
+$openSaleOrder -> openSaleOrderProducts() -> delete();
+foreach ($order_products as $product) {
+
+if (in_array($product['item_code'], $oldProducts)) {
+$oldProductQuantity = $oldProducts['item_quantity'];
+// check product exist in product table
+$product_exist = Product::where(['branch_id' => $request -> branch_id, 'code' => $product['item_code']])->first();
+if ($product_exist == true){ // if product is exist
+// update product price and quantity in product table
+//                        dd($product_exist->quantity ,$oldProducts['item_quantity'] ,$product['item_quantity']);
+$product_exist->quantity = $product_exist->quantity + $oldProducts['item_quantity'] - $product['item_quantity'];
+$product_exist->save();
+}
+}else {
+// check product exist in product table
+$product_exist = Product::where(['branch_id' => $request -> branch_id, 'code' => $product['item_code']])->first();
+if ($product_exist == true){ // if product is exist
+// update product price and quantity in product table
+$product_exist->quantity = $product_exist->quantity - $product['item_quantity'];
+$product_exist->save();
+}
+}
+
+$openSaleOrder -> openSaleOrderProducts() -> create($product);
+
+}
+
+
+#################################################################################
+
+
+public function update(Request $request, $id)
+{
+// dd($request -> all());
+$user_id = Auth::user()->id;
+$saleOrder = SaleOrder::findOrFail($id);
+$saleOrderId = $saleOrder -> id;
+$saleOrderData = $request ->except(['product_data']);
+$data_except_amount_paid = $request -> except(['amount_paid', 'amount_paid_bank', 'invoice_number']);
+// if amount paid request empty set amount paid equal zero
+$amount_paid = $request->amount_paid ?? 0;
+$amount_paid_bank = $request->amount_paid_bank ?? 0;
+$order_products = $request->product_data;
+$new_products_codes_array = Arr::pluck($order_products, 'item_code');
+
+$sold_products_list = $saleOrder ->saleOrderProducts;
+
+
+// $duplicate_codes_array = collect($new_products_codes_array)->duplicates()->toArray();
+
+$quantity_with_code_sold = [];
+$quantity_with_code = [];
+foreach ($order_products as $new_product)
+{
+$code = $new_product['item_code'];
+$quantity = $new_product['item_quantity'];
+$quantity_with_code[$code] = isset($quantity_with_code[$code]) ? $quantity_with_code[$code] + $quantity : $quantity;
+
+}
+$quantity_with_code = Arr::dot($quantity_with_code);
+
+
+$product_sold = SaleOrderProducts::where('sale_order_id' , $saleOrder -> id) -> get()->toArray();
+foreach ($product_sold as $sold) {
+$sold_code = $sold['item_code'];
+$sold_quantity = $sold['item_quantity'];
+$quantity_with_code_sold[$sold_code] = isset($quantity_with_code_sold[$sold_code]) ?
+$quantity_with_code_sold[$sold_code] + $sold_quantity : $sold_quantity;
+
+
+}
+$quantity_with_code_sold = Arr::dot($quantity_with_code_sold);
+
+foreach ($order_products as $new_product) {
+// new product info
+$new_product_code = $new_product['item_code'];
+$new_product_quantity = $quantity_with_code[$new_product_code];
+// create new product in SaleOrderProducts table
+$product_sold = SaleOrderProducts::where(['sale_order_id' => $saleOrder -> id, 'item_code' =>
+$new_product['item_code']]) -> first();
+
+if ($product_sold) { // this item already sold // exist in open sale order products table
+
+// sold product info
+$product_sold_code = $product_sold -> item_code;
+$product_sold_quantity = $quantity_with_code_sold[$product_sold_code];
+if ($product_sold_quantity != $new_product_quantity) { // if new quantity not equal old quantity update item quantity in
+products table
+$product_exist = Product::where(['branch_id' => $request -> branch_id, 'code' => $new_product['item_code']])->first();
+// check if new product already exist in products table
+if ($product_exist) {
+// dd($product_exist -> quantity , $product_sold_quantity , $new_product_quantity);
+$product_exist -> update([
+'quantity' => $product_exist -> quantity + $product_sold_quantity - $new_product_quantity
+]);
+}
+}
+} else { // this item already not sold // not exist in open sale order products table
+
+$product_exist = Product::where(['branch_id' => $request -> branch_id, 'code' => $new_product['item_code']])->first();
+// check if new product already exist in products table
+if ($product_exist) {
+$product_exist -> update([
+'quantity' => $product_exist -> quantity - $new_product_quantity
+]);
+}
+}
+
+}
+
+// if product exist in OpenSaleOrderProducts table and not exist in new products list remove this from
+OpenSaleOrderProducts table and subtract this product quantity from products table
+foreach ($sold_products_list as $product)
+{
+$product_sold_code = $product -> item_code;
+if (!in_array($product_sold_code, $new_products_codes_array)) {
+$product_sold_quantity = $product -> item_quantity;
+SaleOrderProducts::where(['sale_order_id' => $saleOrder -> id, 'item_code' => $product_sold_code]) -> delete();
+$item_exist_in_products_table = Product::where(['branch_id' => $request -> branch_id, 'code' =>
+$product_sold_code])->first();
+if ($item_exist_in_products_table) {
+$item_exist_in_products_table -> update([
+'quantity' => $item_exist_in_products_table -> quantity + $product_sold_quantity
+]);
+}
+}
+}
+// delete all sale order products
+// $saleOrder -> saleOrderProducts () ->delete();
+// add new products to sale order products table
+foreach ($order_products as $new_product) {
+// $saleOrder -> saleOrderProducts() -> create($new_product);
+}
+// update sale order data
+// $saleOrder -> update($saleOrderData);
+
+
+if ($request -> soft_save) {
+return redirect() -> back() -> with('success', __('trans.open sale order edit successfully'));
+}
+else {
+
+$saleOrder -> update(['status' => 'close']);
+/* Record Transaction On Client Transaction Table */
+$saleOrder->clientTransactions()->create([
+'total_amount' => $request->total_amount_due,
+'amount_paid' => $amount_paid,
+'amount_paid_bank' => $amount_paid_bank,
+'amount_due' => $request->amount_due,
+'transaction_date' => $request->invoice_date,
+'user_id' => $user_id,
+'client_id' => $request->client_id,
+]);
+
+
+/* Update Supplier balance */
+$client = Client::findOrFail($request->client_id);
+$client->update(['balance' => ($client->balance - ($request->amount_due))]);
+
+/* Update Money Safe Amount */
+$last_amount_money_safe = MoneySafe::where('branch_id', $request -> branch_id)->get()->last();
+$final_amount_money_safe = $last_amount_money_safe ? $last_amount_money_safe->final_amount : 0;
+$saleOrder->moneySafes()->create([
+'amount_paid' => $amount_paid,
+'final_amount' => ($final_amount_money_safe + ($amount_paid)),
+'user_id' => Auth::user()->id,
+'branch_id' => $request -> branch_id,
+]);
+
+/* Update Bank Amount */
+$last_amount_bank = Bank::where('branch_id', $request -> branch_id)->get()->last();
+$final_amount_bank = $last_amount_bank ? $last_amount_bank->final_amount : 0;
+$saleOrder->banks()->create([
+'amount_paid' => $amount_paid_bank,
+'final_amount' => ($final_amount_bank + ($amount_paid_bank)),
+'user_id' => Auth::user()->id,
+'branch_id' => $request -> branch_id,
+]);
+
+return redirect() -> route('admin.saleOrders.show', $saleOrderId) -> with('success', __('trans.sale order added
+successfully'));
+
+}
+}
+
+
+<script>
+
+</script>
+</body>
+</html>
