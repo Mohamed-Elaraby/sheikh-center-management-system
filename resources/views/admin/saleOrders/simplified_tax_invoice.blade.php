@@ -64,9 +64,18 @@
             </table>
             <br><br>
             @php
-                $seller_name                = 'مركز الشيخ لصيانة السيارات';
+                $seller = '';
+                if ($sale_order -> branch -> name === 'شركة جوي غروب للتجارة')
+                {
+                    $seller = 'شركة جوي غروب للتجارة';
+                }else
+                {
+                    $seller = 'مركز الشيخ لصيانة السيارات';
+                }
+
+                $seller_name                = $seller ;
                 $vat_number                 = '300014551300003';
-                $invoice_date               = $sale_order -> updated_at -> format('d/m/Y - h:i:s');
+                $invoice_date               = $sale_order -> created_at -> format('d/m/Y - h:i:s');
                 $total_invoice_amount       = $sale_order -> total_amount_due;
                 $total_vat                  = $sale_order -> total_vat;
                 $generatedString = \App\Traits\HelperTrait::SETQRCODE($seller_name, $vat_number, $invoice_date, $total_invoice_amount,$total_vat);

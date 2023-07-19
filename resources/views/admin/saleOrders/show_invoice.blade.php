@@ -73,7 +73,16 @@
                                         </table>
                                         <br><br>
                                         @php
-                                            $seller_name                = 'مركز الشيخ لصيانة السيارات';
+                                            $seller = '';
+                                            if ($sale_order -> branch -> name === 'شركة جوي غروب للتجارة')
+                                            {
+                                                $seller = 'شركة جوي غروب للتجارة';
+                                            }else
+                                            {
+                                                $seller = 'مركز الشيخ لصيانة السيارات';
+                                            }
+
+                                            $seller_name                = $seller ;
                                             $vat_number                 = '300014551300003';
                                             $invoice_date               = $sale_order -> created_at -> format('d/m/Y - h:i:s');
                                             $total_invoice_amount       = $sale_order -> total_amount_due;

@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sheikh-center-management-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sheikh-center-management-system.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_09_12_095801_create_internal_transfers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_09_12_095801_create_internal_transfers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/internalTransfer/status.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/datatableHtmlBuilderRender/internalTransfer/status.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/purchaseOrders/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/purchaseOrders/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/saleOrders/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/saleOrders/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/saleOrders/show_invoice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/saleOrders/show_invoice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/saleOrders/simplified_tax_invoice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/saleOrders/simplified_tax_invoice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/saleOrders/tax_invoice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/saleOrders/tax_invoice.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +21,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -181,6 +189,10 @@
       <path value="$PROJECT_DIR$/vendor/spatie/temporary-directory" />
       <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
       <path value="$PROJECT_DIR$/vendor/tightenco/ziggy" />
+      <path value="$PROJECT_DIR$/vendor/php-parallel-lint/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/vendor/php-parallel-lint/php-console-color" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/vendor/mpdf/psr-log-aware-trait" />
     </include_path>
   </component>
   <component name="ProjectId" id="22Z696HDmgHBxhfp85JMjwSho8w" />
@@ -204,18 +216,18 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin\datatableHtmlBuilderRender\internalTransfer" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin\products" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin\priceList" />
-      <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes\purchase_order\create" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes\roles_and_permisiions" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\resources\views\admin\includes\js_files\roles_and_permissions" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\app\Http\Controllers\Admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Laravel Projects\sheikh_center_system\uae-system-new\sheikh-center-management-system" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin\datatableHtmlBuilderRender\internalTransfer" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin\products" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin\priceList" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -223,7 +235,7 @@
       <command value="art cache:clear" />
     </option>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -451,25 +463,43 @@
       <workItem from="1666701131553" duration="1349000" />
       <workItem from="1666703515210" duration="98000" />
       <workItem from="1667019326468" duration="10154000" />
+      <workItem from="1689694547771" duration="1478000" />
+      <workItem from="1689745817953" duration="1033000" />
+      <workItem from="1689750287770" duration="438000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1689745847959">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1689745847959" />
+    <state x="656" y="252" width="607" height="536" key="find.popup" timestamp="1689749876824">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="252" width="607" height="536" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1689749876824" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1689750010946">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1689750010946" />
   </component>
 </project>

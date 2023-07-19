@@ -191,7 +191,8 @@ return [
         Yajra\DataTables\ButtonsServiceProvider::class,
 
         // Laravel-mpdf
-        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
+//        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
+        Mccarlosen\LaravelMpdf\LaravelMpdfServiceProvider::class
 
 
     ],
@@ -258,7 +259,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
 
         // Laravel-mpdf
-        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
+//        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
+        'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class
 
 
 
