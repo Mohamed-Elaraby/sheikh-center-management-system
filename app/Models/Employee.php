@@ -63,6 +63,14 @@ class Employee  extends Authenticatable
         'hashed_password',
     ];
 
+    public function scopeCheckEmployeeBranch($query)
+    {
+        if (auth()->user()->branch_id != '')
+        {
+            $query -> where('branch_id', auth()->user()->branch_id);
+        }
+    }
+
 //    protected $appends = ['profile_picture_path'];
 //
 //    public function getProfilePicturePathAttribute()

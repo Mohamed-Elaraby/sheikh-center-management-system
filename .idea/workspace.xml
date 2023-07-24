@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/Advancedatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/Advancedatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/DiscountDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/DiscountDatatable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/DataTables/EmployeeDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/EmployeeDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/RewardDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/RewardDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/SalaryDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/SalaryDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/VacationsDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/VacationsDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Advance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Advance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Discount.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Discount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Reward.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Reward.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Salary.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Salary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Vacation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Vacation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -475,7 +466,7 @@
       <workItem from="1689999828353" duration="18408000" />
       <workItem from="1690095388729" duration="16419000" />
       <workItem from="1690129308028" duration="30000" />
-      <workItem from="1690173376546" duration="10643000" />
+      <workItem from="1690173376546" duration="12659000" />
     </task>
     <servers />
   </component>

@@ -39,7 +39,7 @@ class EmployeeDatatable extends DataTable
      */
     public function query(Employee $model)
     {
-        $employee = $model->newQuery();
+        $employee = $model->newQuery()->checkEmployeeBranch();;
 
 
         return $employee ;
