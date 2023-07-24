@@ -3,7 +3,8 @@
 
 namespace App\Interfaces\discount;
 
-use App\Models\discount;
+
+use App\Models\Discount;
 use Carbon\Carbon;
 
 class Make implements Operations
