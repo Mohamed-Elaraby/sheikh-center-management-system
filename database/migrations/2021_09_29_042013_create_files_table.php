@@ -19,7 +19,8 @@ class CreateFilesTable extends Migration
             $table->tinyInteger('type')->comment('2=>device_report_file');
             $table->string('path')->nullable();
             $table->string('extension');
-            $table->bigInteger('check_id')->unsigned()->unique();
+            $table->bigInteger('check_id') ->nullable()->unsigned()->unique();
+            $table->bigInteger('employee_salary_log_id') -> unsigned() -> nullable();
             $table->timestamps();
         });
     }

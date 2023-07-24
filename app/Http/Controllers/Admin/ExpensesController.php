@@ -131,6 +131,7 @@ class ExpensesController extends Controller
                 'amount_paid' => $expense->amount,
                 'final_amount' => ($final_amount + ($expense->amount)),
                 'processType' => 2,
+                'money_process_type' => 1, // addition
                 'user_id' => $user_id,
                 'branch_id' => $expense -> branch_id,
             ]);

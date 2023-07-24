@@ -136,4 +136,24 @@ class Bank extends Model
         return $this->belongsTo(PurchaseOrderReturn::class);
     }
 
+    public function advance()
+    {
+        return $this->belongsTo(Advance::class);
+    }
+
+    public function reward()
+    {
+        return $this->belongsTo(Reward::class);
+    }
+
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class);
+    }
+
+    public function employeeSalaryLog()
+    {
+        return $this->belongsTo(EmployeeSalaryLog::class);
+    }
+
 }

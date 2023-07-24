@@ -3,6 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Bank;
+use App\Models\EmployeeSalaryLog;
+use Carbon\Carbon;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -114,10 +116,56 @@ class BankLogDatatable extends DataTable
                     }
                     return $trans;
                 }
+                if ($query -> advance_id)
+                {
+                    return '<a class="btn btn-warning" href="#">'.__('trans.advance').'</a>';
+//                    return '<a class="btn btn-warning" href="'. route('admin.supplierPayments.show', $query -> advance_id) .'">'.__('trans.advance').'</a>';
+                }
+
+                if ($query -> reward_id)
+                {
+                    return '<a class="btn btn-warning" href="#">'.__('trans.reward').'</a>';
+//                    return '<a class="btn btn-warning" href="'. route('admin.supplierPayments.show', $query -> reward_id) .'">'.__('trans.reward').'</a>';
+                }
+
+                if ($query -> discount_id)
+                {
+                    return '<a class="btn btn-warning" href="#">'.__('trans.discount').'</a>';
+//                    return '<a class="btn btn-warning" href="'. route('admin.supplierPayments.show', $query -> discount_id) .'">'.__('trans.reward').'</a>';
+                }
+
+                if ($query -> vacation_id)
+                {
+                    return '<a class="btn btn-warning" href="#">'.__('trans.vacation').'</a>';
+//                    return '<a class="btn btn-warning" href="'. route('admin.supplierPayments.show', $query -> vacation_id) .'">'.__('trans.reward').'</a>';
+                }
+
+                if ($query -> employee_salary_log_id)
+                {
+                    $salary_details = $query -> employeeSalaryLog;
+                    $month = $salary_details ? Carbon::parse($salary_details->salary_month) -> month : '';
+                    $year = $salary_details ? Carbon::parse($salary_details->salary_month) -> year : '';
+                    $employee_id = $salary_details -> employee_id ?? '';
+                    $employee_name = $salary_details ? $salary_details -> employee ->name : '';
+//                    dd($month);
+                    return '<a class="btn btn-warning" href="'. route('employee.salaries.salary_month_details', [$employee_id, $month, $year]) .'"> راتب '.$employee_name. ' شهر ' . $month . ' - ' . $year.'</a>';
+                }
             })
             ->rawColumns(['process_type']);
     }
 
+
+//    public function getSalaryLog($query)
+//    {
+//        if ($query -> employee_salary_log_id)
+//        {
+//            $salary_details = EmployeeSalaryLog::find($query -> employee_salary_log_id);
+//            $month = Carbon::parse($salary_details->salary_month)->month;
+//            $year = Carbon::parse($salary_details->salary_month)->year;
+//            $employee_id = $salary_details -> employee_id;
+//            return ['employee_id' => $employee_id, 'month'=> $month, 'year' => $year];
+//        }
+//    }
     /**
      * Get query source of dataTable.
      *

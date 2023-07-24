@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Images extends Model
 {
-    protected $fillable = ['image_name', 'type', 'image_path', 'check_id'];
+    protected $fillable = ['image_name', 'type', 'image_path', 'check_id', 'employee_salary_log_id'];
 
     protected $appends = ['check_images_path'];
 

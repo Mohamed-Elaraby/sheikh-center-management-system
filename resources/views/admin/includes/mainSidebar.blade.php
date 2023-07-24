@@ -59,14 +59,74 @@
                 </a>
             </li>
 
-            <!-- Create Check Route -->
-{{--            <li>--}}
-{{--                <a href="{{ route('admin.check.create') }}">--}}
-{{--                    <i class="fa fa-plus"></i>--}}
-{{--                    <span>@lang('trans.create check')</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            <!-- HR Route -->
+            @if(auth()->user()->hasPermission('read-hr'))
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-handshake-o"></i> <span>{{ __('trans.hr') }}</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <!-- Employees Route -->
+                        <li>
+                            <a href="{{ route('employee.employees.index') }}">
+                                <i class="fa fa-users"></i>
+                                <span>@lang('trans.all employee')</span>
+                            </a>
+                        </li>
 
+                        <!-- Nationality Route -->
+                        <li>
+                            <a href="{{ route('employee.nationalities.index') }}">
+                                <i class="fa fa-flag-checkered"></i>
+                                <span>@lang('trans.all nationalities')</span>
+                            </a>
+                        </li>
+
+                        <!-- Salary Route -->
+                        <li>
+                            <a href="{{ route('employee.salaries.index') }}">
+                                <i class="fa fa-money"></i>
+                                <span>@lang('trans.all salaries')</span>
+                            </a>
+                        </li>
+
+                        <!-- Advance Route -->
+                        <li>
+                            <a href="{{ route('employee.advances.index') }}">
+                                <i class="fa fa-strikethrough"></i>
+                                <span>@lang('trans.all advances')</span>
+                            </a>
+                        </li>
+
+                        <!-- Reward Route -->
+                        <li>
+                            <a href="{{ route('employee.rewards.index') }}">
+                                <i class="fa fa-gift"></i>
+                                <span>@lang('trans.all rewards')</span>
+                            </a>
+                        </li>
+
+                        <!-- Discount Route -->
+                        <li>
+                            <a href="{{ route('employee.discounts.index') }}">
+                                <i class="fa fa-strikethrough"></i>
+                                <span>@lang('trans.all discounts')</span>
+                            </a>
+                        </li>
+
+                        <!-- Vacation Route -->
+                        <li>
+                            <a href="{{ route('employee.vacations.index') }}">
+                                <i class="fa fa-sun-o"></i>
+                                <span>@lang('trans.all vacations')</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
             <!-- Reports Route -->
             @if(auth()->user()->hasPermission('read-reports'))
                 <li>
@@ -552,6 +612,9 @@
                     </ul>
                 </li>
             @endif
+            <li>
+                <a target="_blank" href="http://uae.skbmw-system.com/ar" style=" cursor: pointer; color: #0a0a0a; background-color: #FFF; margin: 3px; text-align: center">الذهاب الى فرع الامارات</a>
+            </li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

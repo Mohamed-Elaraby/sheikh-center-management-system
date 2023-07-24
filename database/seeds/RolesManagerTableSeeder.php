@@ -52,6 +52,13 @@ class RolesManagerTableSeeder extends Seeder
             'purchaseOrderReturns' ,
             'priceList'            ,
             'rolesManager'         ,
+            'nationalities'        ,
+            'salaries'             ,
+            'employees'            ,
+            'advances'             ,
+            'scheduledAdvances'    ,
+            'rewards'              ,
+            'vacations'            ,
         ];
         foreach ($elements as $element)
         {

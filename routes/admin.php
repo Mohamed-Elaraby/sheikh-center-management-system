@@ -8,7 +8,6 @@ use App\Models\RoleElement;
 use App\Models\SaleOrderProducts;
 
 Route::get('test', function () {
-
     $role = Role::findOrFail(6);
     $role -> delete();
     return redirect()->back();

@@ -18,7 +18,8 @@ class CreateImagesTable extends Migration
             $table->string('image_name');
             $table->string('image_path');
             $table->tinyInteger('type') ->comment('1=>chocks, 2=>device_report, 3=>client_signature_entry, 4=>client_signature_exit');
-            $table->bigInteger('check_id') -> unsigned();
+            $table->bigInteger('check_id') -> unsigned() -> nullable();
+            $table->bigInteger('employee_salary_log_id') -> unsigned() -> nullable();
             $table->timestamps();
         });
     }

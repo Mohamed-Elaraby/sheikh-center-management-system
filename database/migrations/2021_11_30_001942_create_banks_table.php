@@ -29,7 +29,14 @@ class CreateBanksTable extends Migration
             $table->bigInteger('supplier_collecting_id')->unsigned()->nullable();
             $table->bigInteger('sale_order_return_id')->unsigned()->nullable();
             $table->bigInteger('purchase_order_return_id')->unsigned()->nullable();
+            $table->bigInteger('salary_id')->unsigned()->nullable();
+            $table->bigInteger('advance_id')->unsigned()->nullable();
+            $table->bigInteger('scheduled_advance_id')->unsigned()->nullable();
+            $table->bigInteger('reward_id')->unsigned()->nullable();
+            $table->bigInteger('vacation_id')->unsigned()->nullable();
+            $table->bigInteger('discount_id')->unsigned()->nullable();
             $table->bigInteger('branch_id')->unsigned()->nullable();
+            $table->bigInteger('employee_salary_log_id')->unsigned()->nullable();
             $table->bigInteger('expenses_id')->unsigned()->nullable();
             $table->timestamps();
         });

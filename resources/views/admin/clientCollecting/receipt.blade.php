@@ -60,7 +60,7 @@
                         <hr style="border-bottom: 1px solid #000; width: 70px; margin: auto">
                     </td>
                     <td style="width: 33.33%; text-align: left">
-                        <img src="{{ asset('storage/logo.png') }}" alt="">
+                        <img src="{{ asset('storage/logo.png') }}" alt="" width="150">
                     </td>
                 </tr>
             </table>

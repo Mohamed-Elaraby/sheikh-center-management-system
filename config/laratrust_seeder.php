@@ -41,6 +41,7 @@ return [
             'purchaseOrderReturns'  => 'c,r',
             'priceList'             => 'c,r,u,d',
             'internalTransfer'      => 'r',
+            'employees'             => 'c,r,u,d',
         ],
         'general_manager' => [
 
@@ -82,6 +83,7 @@ return [
             'purchaseOrderReturns'  => 'c,r',
             'priceList'             => 'c,r,u,d',
             'internalTransfer'      => 'r',
+            'employees'             => 'c,r,u',
         ],
         'branch_manager' => [
             'check'                 => 'c,r,u',
@@ -145,6 +147,14 @@ return [
             'purchaseOrderReturns'  => 'c,r',
             'priceList'             => 'c,r,u,d',
             'internalTransfer'      => 'c,r',
+            'nationalities'         => 'c,r',
+            'salaries'              => 'c,r,u',
+            'advances'              => 'c,r,u,d',
+            'rewards'               => 'c,r,u,d',
+            'vacations'             => 'c,r,u,d',
+            'discounts'             => 'c,r,u,d',
+            'hr'                    => 'c,r,u,d',
+            'employees'             => 'c,r,u,d',
         ],
         'super_owner' => [
             'users'                 => 'c,r,u,d',
@@ -187,6 +197,14 @@ return [
             'priceList'             => 'c,r,u,d',
             'rolesManager'          => 'c,r,u,d',
             'internalTransfer'      => 'c,r,u,d',
+            'hr'                    => 'c,r,u,d',
+            'employees'             => 'c,r,u,d',
+            'nationalities'         => 'c,r,u,d',
+            'salaries'              => 'c,r,u,d',
+            'advances'              => 'c,r,u,d',
+            'rewards'               => 'c,r,u,d',
+            'vacations'             => 'c,r,u,d',
+            'discounts'             => 'c,r,u,d',
         ],
         'general_observer' => [
             'check'                 => 'r',
@@ -254,7 +272,6 @@ return [
             'saleOrderReturns'      => 'r',
             'purchaseOrderReturns'  => 'r',
             'priceList'             => 'r',
-            'rolesManager'          => 'r',
             'internalTransfer'      => 'r',
         ],
     ],

@@ -11,8 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(LaratrustSeeder::class);
-        $this->call(RolesManagerTableSeeder::class);
+//        $this->call(LaratrustSeeder::class);
+//        $this->call(RolesManagerTableSeeder::class);
 //        $this->call(UsersTableSeeder::class);
 //        $this->call(JobTitlesTableSeeder::class);
 //        $this->call(CheckStatusTableSeeder::class);
@@ -32,5 +32,10 @@ class DatabaseSeeder extends Seeder
 //        $this->call(ProductCodeTableSeeder::class);
 //        $this->call(ExpensesTypeTableSeeder::class);
 //        $this->call(ProductsTableSeeder::class);
+//        $this->call(PlateNumberSourceTableSeeder::class);
+//        $this->call(PlateNumberColorTableSeeder::class);
+//        $this->call(PlateNumberColorTableSeeder::class);
+//        $this->call(EmployeesTableSeeder::class);
+        $this->call(NationalitiesTableSeeder::class);
     }
 }

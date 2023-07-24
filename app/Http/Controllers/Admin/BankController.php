@@ -36,6 +36,7 @@ class BankController extends Controller
         }
         else
         {
+
             $bank_addition = Bank::whereDate('created_at', Carbon::today())
                 -> where('branch_id', $branch_id)
                 -> where('money_process_type', 1)
@@ -47,10 +48,14 @@ class BankController extends Controller
                 -> whereNotNull('money_process_type')
                 ->sum('amount_paid');
             $bank= $bank_addition - $bank_subtract;
+
+
+//                $q -> whereNotNull('advance_id');
+
+//            dd($bank_addition,$bank_subtract);
         }
 //        $bank = Bank::whereDate('created_at', Carbon::today()) -> where('branch_id', $branch_id)->sum('amount_paid');
 
-//        dump($bank);
         return view('admin.bank.index', compact('bank', 'branch'));
     }
 

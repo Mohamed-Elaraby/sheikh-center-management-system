@@ -40,6 +40,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|MoneySafe newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|MoneySafe query()
  * @mixin \Eloquent
+ * @property int|null $salary_id
+ * @property int|null $advance_id
+ * @property int|null $scheduled_advance_id
+ * @property int|null $reward_id
+ * @property int|null $vacation_id
+ * @property-read \App\Models\Reward|null $reward
  */
 class MoneySafe extends Model
 {
@@ -127,5 +133,25 @@ class MoneySafe extends Model
     public function purchaseOrderReturn()
     {
         return $this->belongsTo(PurchaseOrderReturn::class);
+    }
+
+    public function reward()
+    {
+        return $this->belongsTo(Reward::class);
+    }
+
+    public function advance()
+    {
+        return $this->belongsTo(Advance::class);
+    }
+
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class);
+    }
+
+    public function employeeSalaryLog()
+    {
+        return $this->belongsTo(EmployeeSalaryLog::class);
     }
 }
