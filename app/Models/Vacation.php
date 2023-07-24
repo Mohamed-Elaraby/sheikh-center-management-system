@@ -30,6 +30,16 @@ class Vacation extends Model
 {
     protected $guarded = [];
 
+    public function scopeCheckEmployeeBranch($query)
+    {
+        if (auth()->user()->branch_id != '')
+        {
+            $query -> whereHas('employee', function ($q){
+                $q -> where('branch_id', auth()->user()->branch_id);
+            });
+        }
+    }
+
     public function scopeGetDataWithEmployee($query)
     {
         if (request('employee_id'))

@@ -42,7 +42,7 @@ class RewardDatatable extends DataTable
      */
     public function query(Reward $model)
     {
-        return $model->newQuery()->getDataWithEmployee();
+        return $model->newQuery()->checkEmployeeBranch();;
     }
 
     /**

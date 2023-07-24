@@ -29,12 +29,30 @@ class Advance extends Model
 {
     protected $guarded = [];
 
-    public function scopeGetDataWithEmployee($query)
+    public function scopeCheckEmployeeBranch($query)
     {
-        if (request('employee_id'))
+        if (auth()->user()->branch_id != '')
         {
-            $employee_id = request('employee_id');
-            $query -> where('employee_id', $employee_id);
+            $query -> whereHas('employee', function ($q){
+                $q -> where('branch_id', auth()->user()->branch_id);
+            });
+        }
+    }
+
+//    public function scopeGetDataWithEmployee($query)
+//    {
+//        if (request('employee_id'))
+//        {
+//            $employee_id = request('employee_id');
+//            $query -> where('employee_id', $employee_id);
+//        }
+//    }
+
+    public function scopeCheckUserRole($query)
+    {
+        if (auth()->user()->branch_id != '')
+        {
+            $query -> where('branch_id', auth()->user()->branch_id);
         }
     }
 

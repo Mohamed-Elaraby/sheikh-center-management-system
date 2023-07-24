@@ -44,7 +44,7 @@ class DiscountDatatable extends DataTable
     {
 //        $employee_id = $this -> request() -> get('employee_id');
 
-        return $model->newQuery()->GetDataWithEmployee();
+        return $model->newQuery()->checkEmployeeBranch();;
     }
 
     /**

@@ -41,10 +41,6 @@ class EmployeeDatatable extends DataTable
     {
         $employee = $model->newQuery();
 
-        if (auth()->user()->branch_id != '')
-        {
-            $employee = $model->newQuery()->where('branch_id', auth()->user()->branch_id);
-        }
 
         return $employee ;
     }

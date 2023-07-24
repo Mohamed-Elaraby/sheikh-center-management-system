@@ -60,7 +60,7 @@ class Advancedatatable extends DataTable
      */
     public function query(Advance $model)
     {
-        return $model->newQuery()->getDataWithEmployee();
+        return $model->newQuery()->checkEmployeeBranch();
     }
 
     /**
