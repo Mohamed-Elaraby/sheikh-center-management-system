@@ -98,7 +98,7 @@ class Employee  extends Authenticatable
         return $this->hasOne(Salary::class);
     }
 
-    public function advance()
+    public function advances()
     {
         return $this->hasMany(Advance::class);
     }

@@ -39,14 +39,14 @@ class Advance extends Model
         }
     }
 
-//    public function scopeGetDataWithEmployee($query)
-//    {
-//        if (request('employee_id'))
-//        {
-//            $employee_id = request('employee_id');
-//            $query -> where('employee_id', $employee_id);
-//        }
-//    }
+    public function scopeGetDataWithEmployee($query)
+    {
+        if (request('employee_id'))
+        {
+            $employee_id = request('employee_id');
+            $query -> where('employee_id', $employee_id);
+        }
+    }
 
     public function scopeCheckUserRole($query)
     {

@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/advances/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/advances/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/Advancedatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/Advancedatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/DiscountDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/DiscountDatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/RewardDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/RewardDatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DataTables/VacationsDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/VacationsDatatable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Advance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Advance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Salary.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Salary.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -467,7 +472,7 @@
       <workItem from="1690095388729" duration="16419000" />
       <workItem from="1690129308028" duration="30000" />
       <workItem from="1690173376546" duration="13445000" />
-      <workItem from="1690359303960" duration="3080000" />
+      <workItem from="1690359303960" duration="6329000" />
     </task>
     <servers />
   </component>
@@ -495,10 +500,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1690179952096" />
-    <state x="926" y="86" key="FileChooserDialogImpl" timestamp="1690182766550">
+    <state x="926" y="86" key="FileChooserDialogImpl" timestamp="1690363346850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="926" y="86" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1690182766550" />
+    <state x="926" y="86" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1690363346850" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1690027615590">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

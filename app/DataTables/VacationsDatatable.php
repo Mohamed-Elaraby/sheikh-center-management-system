@@ -42,7 +42,7 @@ class VacationsDatatable extends DataTable
      */
     public function query(Vacation $model)
     {
-        return $model->newQuery()->checkEmployeeBranch();;
+        return $model->newQuery()->checkEmployeeBranch()->getDataWithEmployee();
     }
 
     /**
