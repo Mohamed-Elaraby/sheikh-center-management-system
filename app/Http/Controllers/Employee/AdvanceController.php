@@ -47,9 +47,10 @@ class AdvanceController extends Controller
         $advance_type = $request->type;
         $branch_id = Employee::findOrFail($request -> employee_id)->branch_id;
         $amount = $request ->amount;
+        $payment_method = $request -> payment_method;
 
         if ($advance_type == 'تخصم مباشرة'){
-            $payment_method = $request -> payment_method;
+
             if ($payment_method === 'cash')
             {
                 $money_safe = new balance();
@@ -59,8 +60,8 @@ class AdvanceController extends Controller
                     return redirect() -> route('employee.advances.index') -> with('delete', __('trans.the amount in the safe is not enough'));
                 }else
                 {
-                    $reward = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
-                    $money_safe -> decreaseBalance($reward, $amount, $branch_id);
+                    $advance = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
+                    $money_safe -> decreaseBalance($advance, $amount, $branch_id);
                 }
 
 
@@ -74,13 +75,44 @@ class AdvanceController extends Controller
                     return redirect() -> route('employee.advances.index') -> with('delete', __('trans.the amount in the bank is not enough'));
                 }else
                 {
-                    $reward = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
-                    $bank -> decreaseBalance($reward, $amount, $branch_id);
+                    $advance = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
+                    $bank -> decreaseBalance($advance, $amount, $branch_id);
                 }
             }
         }else
         {
-            $advance = Advance::create($request -> except(['single_amount', 'pay_method']) + ['user_id' => $user_id] + ['status' => 'غير مسددة']);
+
+
+            if ($payment_method === 'cash')
+            {
+                $money_safe = new balance();
+                $check_balance = $money_safe -> checkBalance($amount, $branch_id);
+                if ($check_balance)
+                {
+                    return redirect() -> route('employee.advances.index') -> with('delete', __('trans.the amount in the safe is not enough'));
+                }else
+                {
+                    $advance = Advance::create($request -> except(['single_amount', 'pay_method']) + ['user_id' => $user_id] + ['status' => 'غير مسددة']);
+                    $money_safe -> decreaseBalance($advance, $amount, $branch_id);
+                }
+
+
+            }else
+            {
+                $bank = new balanceOfBank();
+                $check_balance = $bank -> checkBalance($amount, $branch_id);
+
+                if ($check_balance)
+                {
+                    return redirect() -> route('employee.advances.index') -> with('delete', __('trans.the amount in the bank is not enough'));
+                }else
+                {
+                    $advance = Advance::create($request -> except(['single_amount', 'pay_method']) + ['user_id' => $user_id] + ['status' => 'غير مسددة']);
+                    $bank -> decreaseBalance($advance, $amount, $branch_id);
+                }
+            }
+
+
             if ($request -> single_amount)
             {
                 $single_amount = $request -> single_amount;

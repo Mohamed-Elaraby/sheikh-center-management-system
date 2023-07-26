@@ -153,7 +153,7 @@
                 '        <input type="radio" name="payment_method" id="bank_transfer" value="bank_transfer">\n' +
                 '        <label for="bank_transfer">تحويل بنكى</label>\n' +
                 '    </div>';
-            Generate_content.prepend(content);
+            Generate_content.append(content);
 
         }
 
@@ -245,6 +245,7 @@
                     '    </div>';
                 $('#single_payment_amount_group').remove();
                 Generate_content.append(content);
+                generatePaymentMethod();
             });
         }
     </script>
