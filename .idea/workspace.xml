@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/resources/views/employee/advances/advance_receipt_print.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/employee/advances/receipt.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/employee/advances/signature.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/DataTables/Advancedatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/Advancedatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/DiscountDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/DiscountDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/RewardDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/RewardDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DataTables/VacationsDatatable.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DataTables/VacationsDatatable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Advance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Advance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Salary.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Salary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/RewardsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/RewardsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/SalaryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/SalaryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Interfaces/advance/Make.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Interfaces/advance/Make.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Images.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Images.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_07_191258_create_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_07_191258_create_images_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_09_29_042013_create_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_09_29_042013_create_files_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/advances/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/advances/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/salaries/salary_month_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/salaries/salary_month_details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/salaries/signature.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/salaries/signature.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employee.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +214,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/employee/advances" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -214,11 +222,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\advances" />
       <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Models" />
       <recent name="D:\Laravel Projects\sheikh_center_system\scms\public\js" />
       <recent name="D:\Laravel Projects\sheikh_center_system\uae-system-new\sheikh-center-management-system" />
       <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin\datatableHtmlBuilderRender\internalTransfer" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\sheikh-center-management-system\resources\views\admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes" />
@@ -472,7 +480,22 @@
       <workItem from="1690095388729" duration="16419000" />
       <workItem from="1690129308028" duration="30000" />
       <workItem from="1690173376546" duration="13445000" />
-      <workItem from="1690359303960" duration="6329000" />
+      <workItem from="1690359303960" duration="7129000" />
+      <workItem from="1690440339440" duration="8572000" />
+      <workItem from="1692598461062" duration="6000" />
+      <workItem from="1692598492950" duration="3058000" />
+      <workItem from="1692856588321" duration="6496000" />
+      <workItem from="1698299012105" duration="17000" />
+      <workItem from="1698299060759" duration="652000" />
+      <workItem from="1699510543642" duration="125000" />
+      <workItem from="1699512589405" duration="1222000" />
+      <workItem from="1700825016770" duration="5000" />
+      <workItem from="1700825044374" duration="3812000" />
+      <workItem from="1701066860678" duration="7306000" />
+      <workItem from="1701154875658" duration="11569000" />
+      <workItem from="1701237080211" duration="3899000" />
+      <workItem from="1701327249617" duration="8196000" />
+      <workItem from="1701441851703" duration="757000" />
     </task>
     <servers />
   </component>
@@ -496,29 +519,21 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1690179952096">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1701349541085">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1690179952096" />
-    <state x="926" y="86" key="FileChooserDialogImpl" timestamp="1690363346850">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1701349541085" />
+    <state x="681" y="363" key="com.intellij.ide.util.TipDialog" timestamp="1701441891756">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="926" y="86" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1690363346850" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1690027615590">
+    <state x="681" y="363" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1701441891756" />
+    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1701239920601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1690027615590" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1690359307149">
+    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1701239920601" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1700829180328">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1690359307149" />
-    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1690188455215">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1690188455215" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1690177534160">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1690177534160" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1700829180328" />
   </component>
 </project>

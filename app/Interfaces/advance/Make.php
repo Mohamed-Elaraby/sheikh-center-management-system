@@ -36,16 +36,16 @@ class Make implements Operations
         $current_year = Carbon::now()->year;
 
         $advance = Advance::where(['employee_id' => $employee_id, 'type'=> 'تخصم مباشرة'])
-            ->whereMonth('updated_at', $previous_month)
-            ->whereYear('updated_at', $current_year)
+//            ->whereMonth('updated_at', $previous_month)
+//            ->whereYear('updated_at', $current_year)
             ->get();
-        if ($current_month == 1)
-        {
-            $advance = Advance::where(['employee_id' => $employee_id, 'type'=> 'تخصم مباشرة'])
-                ->whereMonth('updated_at', $previous_month)
-                ->whereYear('updated_at', $previous_year)
-                ->get();
-        }
+//        if ($current_month == 1)
+//        {
+//            $advance = Advance::where(['employee_id' => $employee_id, 'type'=> 'تخصم مباشرة'])
+//                ->whereMonth('updated_at', $previous_month)
+//                ->whereYear('updated_at', $previous_year)
+//                ->get();
+//        }
         return $advance ;
     }
 

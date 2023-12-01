@@ -3,6 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Advance;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
@@ -58,9 +60,27 @@ class Advancedatatable extends DataTable
      * @param \App\Models\Advance $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Advance $model)
+    public function query(Advance $model, Request $request)
     {
-        return $model->newQuery()->checkEmployeeBranch()->getDataWithEmployee();
+
+        // Search Parameters
+        $start_date = $this -> request() -> get('start_date');
+        $end_date = $this -> request() -> get('end_date');
+
+        // Date Range Used With Search => Array
+        $date_range = [$start_date.' 00:00:00', $end_date.' 23:59:59'];
+
+        $advance = $model->newQuery()->checkEmployeeBranch()->getDataWithEmployee();
+
+        if (!empty($start_date) && !empty($end_date)) {
+            $advance = $model->newQuery()->whereBetween('updated_at', $date_range)->checkEmployeeBranch()->getDataWithEmployee();
+        }
+
+        if ($request -> month){
+            $advance = $model ->newQuery()->whereMonth('created_at', Carbon::now()->month)->checkEmployeeBranch()->getDataWithEmployee();
+        }
+        return $advance;
+//        return $model->newQuery()->checkEmployeeBranch()->getDataWithEmployee();
     }
 
     /**

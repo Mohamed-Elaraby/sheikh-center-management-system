@@ -61,7 +61,7 @@ class RewardsController extends Controller
                 }else
                 {
                     $reward = Reward::create($request -> all() + ['user_id' => $user_id, 'status' => 'حصل عليها العامل فورا']);
-                    $money_safe -> increaseBalance($reward, $amount, $branch_id);
+                    $money_safe -> decreaseBalance($reward, $amount, $branch_id);
                 }
 
             }else

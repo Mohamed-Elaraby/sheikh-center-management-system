@@ -10,13 +10,17 @@ use App\Interfaces\moneySafe\balance;
 use App\Interfaces\bank\balance as changeBalanceOfBank;
 use App\Models\Advance;
 use App\Models\Employee;
+use App\Models\Images;
 use App\Models\ScheduledAdvance;
+use App\Traits\HelperTrait;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use PDF;
 
 class AdvanceController extends Controller
 {
+    use HelperTrait;
     public function __construct()
     {
         $this->middleware('permission:read-advances')->only('index');
@@ -123,7 +127,7 @@ class AdvanceController extends Controller
             }
         }
 
-        return redirect() -> route('employee.advances.index') -> with('success', __('trans.advance added successfully'));
+        return redirect() -> route('employee.advance.signature', $advance->id) -> with('success', __('trans.advance added successfully'));
     }
 
     public function show($id)
@@ -159,4 +163,57 @@ class AdvanceController extends Controller
         dd($scheduled_advances);
     }
 
+    public function advance_signature($advance_id)
+    {
+
+        $advance = Advance::findOrFail($advance_id);
+//        $salary_details = EmployeeSalaryLog::with('employee')->where('employee_id', $advance_id) -> whereMonth('salary_month', $previous_salary_month)-> whereYear('salary_month', $current_salary_year) -> first();
+//        return view('employee.advances.receipt', compact('advance'));
+        return view('employee.advances.signature', compact('advance'));
+
+    }
+
+    public function signature(Request $request)
+    {
+        if ($request -> ajax())
+        {
+            $image_data = $this -> uploadSVGImage($request -> advance_id, $request -> image_data, 'employees_signature', 'advance_signature', $request -> advance_id, 'public');
+            // Type => 6 [ 6 For employee advance signature]
+            Images::create($image_data+ ['type' => 6]+ ['advance_id' => $request -> advance_id]);
+        }
+    }
+
+    public function advanceReceipt($advance_id)
+    {
+        $advance = Advance::findOrFail($advance_id);
+        $employee_advance_signature = Images::where('advance_id',$advance ->id)->where('type',6) -> latest() -> first();
+        return view('employee.advances.receipt', compact('advance', 'employee_advance_signature'));
+    }
+
+    public function advance_receipt_print(Request $request)
+    {
+//        dd($request->advance_id);
+        $advance_id = $request -> advance_id;
+//        $data = [];
+        $data['advance'] = Advance::findOrFail($advance_id);
+        $data['employee_advance_signature'] = Images::where('advance_id',$advance_id)->where('type',6) -> latest() -> first();
+        $mpdf = PDF::loadView('employee.advances.advance_receipt_print', $data, [], [
+            'margin_top' => 20,
+            'margin_header' => 10,
+            'margin_footer' => 20,
+
+        ]);
+        $mpdf->autoScriptToLang = true;
+        $mpdf->autoArabic = true;
+        $mpdf->autoLangToFont = true;
+        $mpdf->showImageErrors = true;
+        $mpdf->setAutoBottomMargin = true;
+//         $mpdf->download($data['price_list']->chassis_number.'.pdf');
+        if ($request->download)
+        {
+            return $mpdf->download($data['advance']->id.'.pdf');
+
+        }
+        return $mpdf->stream($data['advance']->id.'.pdf');
+    }
 }

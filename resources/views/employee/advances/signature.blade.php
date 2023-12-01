@@ -25,7 +25,7 @@
                         <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <h3 style="margin: 0; padding: 0; display: inline"> <i class="fa fa-pencil-square-o"></i> {{ __('trans.employee signature') . ' ' . $employee -> name }}</h3>
+                                    <h3 style="margin: 0; padding: 0; display: inline"> <i class="fa fa-pencil-square-o"></i> {{ __('trans.employee signature') . ' ' . $advance -> employee -> name }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -33,10 +33,8 @@
                 </div>
                 <div class="card-body">
 
-
-
                     <div class="text-center">
-                        <h2 style="margin-bottom: 5vw">[ راتب شهر {{ $previous_salary_month . '-' . $current_salary_year }} ]</h2>
+                        <h2 style="margin-bottom: 5vw">سلفة</h2>
                         <div id="signature"></div>
                         <button id="btn_save" onclick="showConfirmMessage($('#signature'))">حفظ التوقيع</button>
                         <button onclick="$('#signature').jSignature('clear')">اعادة التوقيع</button>
@@ -56,9 +54,10 @@
 @push('scripts')
     <script src="{{ asset('assets/signature/js/jSignature.js') }}"></script>
     <!-- Custom Function -->
-
     <script>
+
         $( document ).ready(function() {
+            console.log('start')
             $("#signature").jSignature(
                 {
                     color:"#000",
@@ -71,24 +70,24 @@
         });
         function importImg(sig)
         {
-            console.log('start')
+            var redirect_url = '{{ route('employee.advance.receipt.view', $advance -> id) }}';
+            let advance_id = '{{ $advance -> id }}';
+            let employee_name = '{{ $advance -> employee -> name }}';
             let canvas_image_data = sig.jSignature('getData');
             let image_data = canvas_image_data.replace(/^data:image\/(png|jpg);base64,/, "");
-            let employee_salary_log_id = '{{ $employee_salary_log_id }}';
-            let url = route('employee.salaries.signature');
-            let redirect_url = '{{ route('employee.salaries.salary_month_details', [$employee_id, $previous_salary_month, $current_salary_year]) }}';
-
-
+            let url = '{{ route('employee.advance.employee_signature') }}';
+            console.log('Good')
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type: "POST",
                 url: url,
-                data: {image_data:image_data, employee_salary_log_id:employee_salary_log_id},
+                data: {image_data:image_data, advance_id: advance_id, employee_name: employee_name},
+                dataType: 'json',
                 success: function (data) {
                     if (!data.error){
-                        console.log('OK')
+
                     }
                 }
 
@@ -97,7 +96,6 @@
                 window.location.href = redirect_url;
             },500);
         }
-
         // Show Confirm Message For Delete Any Item
         function showConfirmMessage (signature){
             let confirmMessage = '{{ __('trans.are you sure that this is the correct signature for the employee') }}';

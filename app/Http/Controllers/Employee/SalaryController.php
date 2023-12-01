@@ -199,15 +199,12 @@ class SalaryController extends Controller
             Vacation::whereIn('id', $ids) -> update(['status' => 'تم خصمها من الراتب']);
         }
         return redirect() -> route('employee.salaries.employeeSignature', [$employee_id, $previous_salary_month, $current_salary_year, $registerToEmployeeLog -> id]) -> with('success', __('trans.salary added successfully'));
-
-//        return redirect()-> route('employee.employees.index')->with('success', 'Salary Good');
     }
 
     public function salary_month_details($employee_id, $month, $year)
     {
         $salary_details = EmployeeSalaryLog::with('employee')->where('employee_id', $employee_id) -> whereMonth('salary_month', $month)-> whereYear('salary_month', $year) -> first();
         $employee_salary_signature = Images::where('employee_salary_log_id',$salary_details ->id)->where('type',5) -> latest() -> first();
-//        dd($employee_salary_signature);
         return view('employee.salaries.salary_month_details', compact('salary_details', 'month', 'year', 'employee_salary_signature'));
     }
 
@@ -223,12 +220,11 @@ class SalaryController extends Controller
     {
         if ($request -> ajax())
         {
-//            dd($request->employee_salary_log_id);
             $image_data = $this -> uploadSVGImage($request->employee_salary_log_id,$request -> image_data,'employees_signature', 'salary_signature',$request->employee_salary_log_id,'public');
             // Type => 5 [ 5 For employee salary signature]
             Images::create($image_data+ ['type' => 5]+ ['employee_salary_log_id' => $request -> employee_salary_log_id]);
         }
- }
+    }
 
     public function salary_month_details_print(Request $request)
     {

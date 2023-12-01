@@ -275,7 +275,6 @@
                                                     <div class="text-center col-xs-6">
                                                         {{--@if ($client_signature_exit)--}}
                                                             <p style="margin-bottom: 15px">توقيع الموظف</p>
-{{--                                                            <img src="storage/employees_signature/salary_signature/{{$salary_details -> id}}/{{$client_signature_entry -> image_name}}" alt="" height="100" width="200">--}}
                                                             <img src="{{ asset('storage' . DIRECTORY_SEPARATOR . 'employees_signature' . DIRECTORY_SEPARATOR . 'salary_signature' . DIRECTORY_SEPARATOR . $salary_details -> id  . DIRECTORY_SEPARATOR . $employee_salary_signature -> image_name) }}" alt="" height="100" width="200">
                                                         {{--@endif--}}
 

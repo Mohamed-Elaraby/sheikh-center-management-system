@@ -32,6 +32,20 @@
                             @endif
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-xs-offset-4 col-xs-4">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <input type="text" id="start_date" value="" placeholder="من تاريخ" autocomplete="off" style="width: 90px">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="end_date" value="" placeholder="الى تاريخ" autocomplete="off" style="width: 90px">
+                                </div>
+                                <button type="button" id="filter_date_button" class="btn btn-success btn-xs">بحث <i class="fa fa-search"></i> </button>
+                                <button type="button" id="refresh_date_button" class="btn btn-warning btn-xs">اعادة تحميل <i class="fa fa-refresh"></i> </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     {!! $dataTable->table(['class' => 'table table-bordered table-striped']) !!}
@@ -79,6 +93,8 @@
     <!-- Datatable Bootstrap Css Files -->
     <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dist/css/datatableButtonsCssFiles/buttons.dataTables.min.css') }}">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
     @if (LaravelLocalization::getCurrentLocale() === 'ar')
         <style>
             .date_dir_setting
@@ -103,8 +119,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="{{ asset('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
     {!! $dataTable->scripts() !!}
     <!-- Custom Function -->
+    <script>
+        $('#start_date').datepicker({
+            autoclose: true,
+            todayBtn: "linked",
+            format: "yyyy-mm-dd"
+        });
+        $('#end_date').datepicker({
+            autoclose: true,
+            todayBtn: "linked",
+            format: "yyyy-mm-dd"
+        });
+
+
+        $('#filter_date_button').on('click', function () {
+            let start_date = $('#start_date').val();
+            let end_date    = $('#end_date').val();
+            let table       = $('#advancedatatable-table');
+            table.on('preXhr.dt', function (e, settings, data) {
+                data.start_date  = start_date;
+                data.end_date  = end_date;
+                console.log(data.start_date, data.end_date)
+            })
+
+            table.DataTable().ajax.reload();
+            $('#refresh_date_button').on('click', function () {
+                table.on('preXhr.dt', function (e, settings, data) {
+                    data.start_date  = '';
+                    data.end_date  = '';
+                })
+                table.DataTable().ajax.reload();
+            })
+        })
+
+    </script>
     <script>
 
         // Show Confirm Message For Delete Any Item

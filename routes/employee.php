@@ -16,11 +16,16 @@ Route::group(
         Route::get('salaryReceipt/{employee_id}', 'SalaryController@salaryReceipt')->name('salaries.receipt');
         Route::post('register_to_employee_log/{employee_id}', 'SalaryController@registerToEmployeeLog')->name('salaries.registerToEmployeeLog');
         Route::get('salary_month_details/{employee_id}/{month}/{year}', 'SalaryController@salary_month_details')->name('salaries.salary_month_details');
+
+
         Route::get('employee_signature/{employee_id}/{month}/{year}/{employee_salary_log_id}', 'SalaryController@employee_signature')->name('salaries.employeeSignature');
         Route::post('signature', 'SalaryController@signature')->name('salaries.signature');
-
         Route::get('salary_month_details_print', 'SalaryController@salary_month_details_print')->name('salary_month_details_print');
-
+//
+        Route::get('advance_signature/{advance_id}', 'AdvanceController@advance_signature')->name('advance.signature');
+        Route::post('signature', 'AdvanceController@signature')->name('advance.employee_signature');
+        Route::get('advanceReceiptView/{advance_id}', 'AdvanceController@advanceReceipt')->name('advance.receipt.view');
+        Route::get('advance_receipt_print', 'AdvanceController@advance_receipt_print')->name('advance_receipt_print');
 
 
         Route::resources([

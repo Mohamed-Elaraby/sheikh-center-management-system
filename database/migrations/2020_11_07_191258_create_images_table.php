@@ -20,6 +20,10 @@ class CreateImagesTable extends Migration
             $table->tinyInteger('type') ->comment('1=>chocks, 2=>device_report, 3=>client_signature_entry, 4=>client_signature_exit');
             $table->bigInteger('check_id') -> unsigned() -> nullable();
             $table->bigInteger('employee_salary_log_id') -> unsigned() -> nullable();
+            $table->bigInteger('advance_id') -> unsigned() -> nullable();
+            $table->bigInteger('reward_id')->unsigned()->nullable();
+            $table->bigInteger('vacation_id')->unsigned()->nullable();
+            $table->bigInteger('discount_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
