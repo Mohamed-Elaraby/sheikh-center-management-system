@@ -7,13 +7,17 @@ use App\Interfaces\bank\balance as balanceOfBank;
 use App\Interfaces\moneySafe\balance;
 use App\Models\Branch;
 use App\Models\Employee;
+use App\Models\Images;
 use App\Models\Reward;
+use App\Traits\HelperTrait;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use PDF;
 
 class RewardsController extends Controller
 {
+    use HelperTrait;
     public function __construct()
     {
         $this->middleware('permission:read-rewards')->only('index');
@@ -82,10 +86,11 @@ class RewardsController extends Controller
 //            $reward->update(['status' => 'حصل عليها العامل فورا']);
         }else
         {
-//            dd($request->all());
-            Reward::create($request -> all() + ['user_id' => $user_id]);
+            $reward = Reward::create($request -> all() + ['user_id' => $user_id, 'payment_method' => 'تضاف الى الراتب']);
         }
-        return redirect() -> route('employee.rewards.index') -> with('success', __('trans.reward added successfully'));
+//        dd($request -> all());
+//        return redirect() -> route('employee.rewards.index') -> with('success', __('trans.reward added successfully'));
+        return redirect() -> route('employee.reward.signature', $reward->id) -> with('success', __('trans.reward added successfully'));
 
     }
 
@@ -113,5 +118,57 @@ class RewardsController extends Controller
     {
         Reward::findOrFail($id) -> delete();
         return redirect()->back()->with('delete', __('trans.reward delete successfully'));
+    }
+
+    public function reward_signature($reward_id)
+    {
+
+        $reward = Reward::findOrFail($reward_id);
+        return view('employee.rewards.signature', compact('reward'));
+
+    }
+
+    public function signature(Request $request)
+    {
+        if ($request -> ajax())
+        {
+            $image_data = $this -> uploadSVGImage($request -> reward_id, $request -> image_data, 'employees_signature', 'reward_signature', $request -> reward_id, 'public');
+            // Type => 7 [ 7 For employee reward signature]
+            Images::create($image_data+ ['type' => 7]+ ['reward_id' => $request -> reward_id]);
+        }
+    }
+
+    public function rewardReceipt($reward_id)
+    {
+        $reward = Reward::findOrFail($reward_id);
+        $employee_reward_signature = Images::where('reward_id',$reward ->id)->where('type',7) -> latest() -> first();
+        return view('employee.rewards.receipt', compact('reward', 'employee_reward_signature'));
+    }
+
+    public function reward_receipt_print(Request $request)
+    {
+//        dd($request->reward_id);
+        $reward_id = $request -> reward_id;
+//        $data = [];
+        $data['reward'] = Reward::findOrFail($reward_id);
+        $data['employee_reward_signature'] = Images::where('reward_id',$reward_id)->where('type',7) -> latest() -> first();
+        $mpdf = PDF::loadView('employee.rewards.reward_receipt_print', $data, [], [
+            'margin_top' => 20,
+            'margin_header' => 10,
+            'margin_footer' => 20,
+
+        ]);
+        $mpdf->autoScriptToLang = true;
+        $mpdf->autoArabic = true;
+        $mpdf->autoLangToFont = true;
+        $mpdf->showImageErrors = true;
+        $mpdf->setAutoBottomMargin = true;
+//         $mpdf->download($data['price_list']->chassis_number.'.pdf');
+        if ($request->download)
+        {
+            return $mpdf->download($data['reward']->id.'.pdf');
+
+        }
+        return $mpdf->stream($data['reward']->id.'.pdf');
     }
 }

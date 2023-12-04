@@ -6,12 +6,16 @@ use App\DataTables\DiscountDatatable;
 use App\Interfaces\moneySafe\balance;
 use App\Models\Discount;
 use App\Models\Employee;
+use App\Models\Images;
+use App\Traits\HelperTrait;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use PDF;
 
 class DiscountController extends Controller
 {
+    use HelperTrait;
     public function __construct()
     {
         $this->middleware('permission:read-discounts')->only('index');
@@ -40,7 +44,7 @@ class DiscountController extends Controller
         $user_id = Auth::user()->id;
         $branch_id = Employee::findOrFail($request -> employee_id)->branch_id;
         $amount = $request ->amount;
-        Discount::create($request -> all()+ ['user_id' => $user_id]);
+        $discount = Discount::create($request -> all()+ ['user_id' => $user_id]);
 //        $money_safe = new balance();
 //        $check_balance = $money_safe -> checkBalance($amount, $branch_id);
 //        if ($check_balance)
@@ -53,7 +57,7 @@ class DiscountController extends Controller
 //        }
 
 
-        return redirect() -> route('employee.discounts.index') -> with('success', __('trans.discount added successfully'));
+        return redirect() -> route('employee.discount.signature', $discount->id) -> with('success', __('trans.discount added successfully'));
     }
 
     public function show($id)
@@ -79,5 +83,57 @@ class DiscountController extends Controller
     {
         Discount::findOrFail($id) -> delete();
         return redirect()->back()->with('delete', __('trans.discount delete successfully'));
+    }
+
+    public function discount_signature($discount_id)
+    {
+
+        $discount = Discount::findOrFail($discount_id);
+        return view('employee.discounts.signature', compact('discount'));
+
+    }
+
+    public function signature(Request $request)
+    {
+        if ($request -> ajax())
+        {
+            $image_data = $this -> uploadSVGImage($request -> discount_id, $request -> image_data, 'employees_signature', 'discount_signature', $request -> discount_id, 'public');
+            // Type => 8 [ 8 For employee discount signature]
+            Images::create($image_data+ ['type' => 8]+ ['discount_id' => $request -> discount_id]);
+        }
+    }
+
+    public function discountReceipt($discount_id)
+    {
+        $discount = Discount::findOrFail($discount_id);
+        $employee_discount_signature = Images::where('discount_id',$discount ->id)->where('type',8) -> latest() -> first();
+        return view('employee.discounts.receipt', compact('discount', 'employee_discount_signature'));
+    }
+
+    public function discount_receipt_print(Request $request)
+    {
+//        dd($request->discount_id);
+        $discount_id = $request -> discount_id;
+//        $data = [];
+        $data['discount'] = Discount::findOrFail($discount_id);
+        $data['employee_discount_signature'] = Images::where('discount_id',$discount_id)->where('type',8) -> latest() -> first();
+        $mpdf = PDF::loadView('employee.discounts.discount_receipt_print', $data, [], [
+            'margin_top' => 20,
+            'margin_header' => 10,
+            'margin_footer' => 20,
+
+        ]);
+        $mpdf->autoScriptToLang = true;
+        $mpdf->autoArabic = true;
+        $mpdf->autoLangToFont = true;
+        $mpdf->showImageErrors = true;
+        $mpdf->setAutoBottomMargin = true;
+//         $mpdf->download($data['price_list']->chassis_number.'.pdf');
+        if ($request->download)
+        {
+            return $mpdf->download($data['discount']->id.'.pdf');
+
+        }
+        return $mpdf->stream($data['discount']->id.'.pdf');
     }
 }

@@ -160,7 +160,6 @@ class AdvanceController extends Controller
         $advance_id = $request->advance_id;
         $scheduled_advances = ScheduledAdvance::where('advance_id', $advance_id)->get();
 
-        dd($scheduled_advances);
     }
 
     public function advance_signature($advance_id)

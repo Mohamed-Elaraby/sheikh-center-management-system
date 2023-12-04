@@ -11,8 +11,19 @@
 @section('title', $pageType)
 
 @section('content')
+
     <div class="row">
         <div class="col-xs-6 center-block" style="float: none">
+            <div class="alert alert-danger text-center"
+                 style="display: none;
+               position: fixed;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                 width: 50%;
+                    z-index: 1000"
+                 id="check_salary_value">
+            </div>
             <div class="card card-success">
                 <div class="error_messages">
                     @if ($errors->any())
@@ -89,19 +100,21 @@
                                             <thead>
                                             <th>{{ __('trans.date') }}</th>
                                             <th>{{ __('trans.amount') }}</th>
+                                            <th></th>
                                             </thead>
                                             <tbody>
                                             @foreach ($advance_list as $advance)
                                                 <tr>
                                                     <td>{{ \Carbon\Carbon::parse($advance -> updated_at)->format('d-m-Y') }}</td>
-                                                    <td>{{ $advance -> amount }}</td>
+                                                    <td class="amount">{{ $advance -> amount }}</td>
+                                                    <td><input type="checkbox" name="select_normal_advance_amount[]" id="select_normal_advance_amount" class="select_normal_advance_amount" value="{{ $advance -> id }}"></td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
                                         </table>
                                         <div class="col-md-12">
                                             {!! Form::label('total_advances', __('trans.total'), ['class' => 'control-label']) !!}
-                                            {!! Form::text('total_advances', $totalAdvance, ['class' => 'form-control', 'readonly', 'id' => 'total_advances']) !!}
+                                            {!! Form::text('total_advances', 0, ['class' => 'form-control', 'readonly', 'id' => 'total_advances']) !!}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -292,7 +305,29 @@
 
 @endpush
 @push('scripts')
-    <!-- make total advance -->
+    <!-- make total normal advance -->
+    <script>
+        let sumNormalAdvances = 0;
+        let normalAdvance = $('#total_advances');
+        $(document).on('change', '.select_normal_advance_amount', function() {
+            let normal_advance_amount = parseFloat($(this).closest('tr').find('.amount').text());
+            // let advance_ids = [];
+            let totalNormalAdvances ;
+            if($(this).is(':checked'))
+            {
+                totalNormalAdvances = sumNormalAdvances += normal_advance_amount ;
+                normalAdvance.val(totalNormalAdvances);
+            }
+            else
+            {
+                totalNormalAdvances = sumNormalAdvances -= normal_advance_amount;
+                normalAdvance.val(totalNormalAdvances);
+            }
+
+        });
+    </script>
+
+    <!-- make total scheduled advance -->
     <script>
         let sum = 0;
         let scheduledAdvance = $('#scheduledAdvance');
@@ -300,6 +335,7 @@
             let advance_amount = parseFloat($(this).closest('tr').find('.amount').text());
             // let advance_ids = [];
             let total ;
+            console.log(advance_amount)
             if($(this).is(':checked'))
             {
                 total = sum += advance_amount ;
@@ -377,8 +413,20 @@
     <!-- calc final salary -->
     <script>
         calc_final_salary();
+        checkFinalSalary();
         $(document).on('change', 'input[type="checkbox"]', function() {
             calc_final_salary();
+            if (checkFinalSalary() < 0){
+                $('input[type="submit"]').prop('disabled', true);
+                $('#check_salary_value').css({'display':'block'}).text('عفوا الحد الادنى للراتب لا يسمح بخصم هذا المبلغ');
+                console.log('error');
+            }else
+            {
+                $('input[type="submit"]').prop('disabled', false);
+                $('#check_salary_value').css({'display':'none'}).text('');
+                console.log('ok');
+
+            }
         });
         function calc_final_salary() {
             let total_salary = parseFloat($('#total_salary').val());
@@ -394,10 +442,19 @@
 
             // console.log(total_salary , totalAdvances , scheduledAdvance , totalRewards , scheduledReward , totalDiscounts , vacations_deducted)
 
-            let total =  (total_salary - totalAdvances - scheduledAdvance + totalRewards + scheduledReward - totalDiscounts - vacations_deducted);
+            let total =  (total_salary - totalAdvances - scheduledAdvance + scheduledReward - totalDiscounts - vacations_deducted);
             // console.log(total_salary, totalAdvances, scheduledAdvance, totalRewards, scheduledReward, totalDiscounts, vacations_deducted)
             $('#final_salary').val(parseFloat(total).toFixed(2));
 
         }
+
+        function checkFinalSalary() {
+            let finalSalary = $('#final_salary').val();
+            return parseInt(finalSalary);
+        }
+    </script>
+
+    <script>
+
     </script>
 @endpush

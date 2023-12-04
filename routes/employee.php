@@ -23,9 +23,20 @@ Route::group(
         Route::get('salary_month_details_print', 'SalaryController@salary_month_details_print')->name('salary_month_details_print');
 //
         Route::get('advance_signature/{advance_id}', 'AdvanceController@advance_signature')->name('advance.signature');
-        Route::post('signature', 'AdvanceController@signature')->name('advance.employee_signature');
+        Route::post('advanceSignature', 'AdvanceController@signature')->name('advance.employee_signature');
         Route::get('advanceReceiptView/{advance_id}', 'AdvanceController@advanceReceipt')->name('advance.receipt.view');
         Route::get('advance_receipt_print', 'AdvanceController@advance_receipt_print')->name('advance_receipt_print');
+
+        Route::get('reward_signature/{reward_id}', 'RewardsController@reward_signature')->name('reward.signature');
+        Route::post('rewardSignature', 'RewardsController@signature')->name('reward.employee_signature');
+        Route::get('rewardReceiptView/{reward_id}', 'RewardsController@rewardReceipt')->name('reward.receipt.view');
+        Route::get('reward_receipt_print', 'RewardsController@reward_receipt_print')->name('reward_receipt_print');
+
+        Route::get('discount_signature/{discount_id}', 'DiscountController@discount_signature')->name('discount.signature');
+        Route::post('discountSignature', 'DiscountController@signature')->name('discount.employee_signature');
+        Route::get('discountReceiptView/{discount_id}', 'DiscountController@discountReceipt')->name('discount.receipt.view');
+        Route::get('discount_receipt_print', 'DiscountController@discount_receipt_print')->name('discount_receipt_print');
+
 
 
         Route::resources([
