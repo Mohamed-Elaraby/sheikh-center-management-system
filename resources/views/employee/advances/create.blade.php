@@ -237,15 +237,22 @@
                     single_amount_input += '<div class="col-md-4"><input type="text" name="single_amount[]" '+single_amount_input_status+' value="'+Math.round(single_amount)+'" class="form-control single_payment_amount" id="single_payment_amount"></div>';
                 }
 
-                let content = '<div id="single_payment_amount_group">\n' +
+                let content = '    <div id="single_payment_amount_group">\n' +
                     '        <div class="form-group">\n' +
-                    '            <div class="row">'+single_amount_input+'</div>\n'+
-                    '            <span style="display: none" id="single_payment_amount_error"></span>\n'+
+                    '            <div class="row">'+single_amount_input+'</div><br>\n' +
+                    '            <label class="control-label"><b>طريقة الدفع</b></label>\n' +
+                    '            <div class="form-group">\n' +
+                    '                <input type="radio" name="payment_method" id="cash" value="cash" checked>\n' +
+                    '                <label for="cash">كاش</label>\n' +
+                    '                <input type="radio" name="payment_method" id="bank_transfer" value="bank_transfer">\n' +
+                    '                <label for="bank_transfer">تحويل بنكى</label>\n' +
+                    '            </div>\n' +
+                    '            <span style="display: none" id="single_payment_amount_error"></span>\n' +
                     '        </div>\n' +
                     '    </div>';
                 $('#single_payment_amount_group').remove();
                 Generate_content.append(content);
-                generatePaymentMethod();
+                // generatePaymentMethod();
             });
         }
     </script>
