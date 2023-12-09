@@ -131,7 +131,7 @@ class SalaryController extends Controller
             'total_rewards',
             'select_reward_amount',
             'select_vacations_deducted_amount',
-            'select_normal_advance_amount',
+//            'select_normal_advance_amount',
             'select_advance_amount',
             'select_discount_amount',
             'salary_month'

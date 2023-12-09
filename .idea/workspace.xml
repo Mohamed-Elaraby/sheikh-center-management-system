@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/discounts/discount_receipt_print.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/discounts/receipt.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/discounts/signature.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/rewards/receipt.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/rewards/reward_receipt_print.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employee/rewards/signature.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/DiscountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/DiscountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/RewardsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/RewardsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/SalaryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/SalaryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/advances/signature.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/advances/signature.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Interfaces/advance/Make.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Interfaces/advance/Make.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/employee/salaries/receipt.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/salaries/receipt.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employee.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -496,7 +486,11 @@
       <workItem from="1701441851703" duration="1602000" />
       <workItem from="1701581959177" duration="94000" />
       <workItem from="1701583278176" duration="13004000" />
-      <workItem from="1701692050706" duration="3155000" />
+      <workItem from="1701692050706" duration="4669000" />
+      <workItem from="1701771316068" duration="3004000" />
+      <workItem from="1701842731628" duration="1032000" />
+      <workItem from="1701869416163" duration="1257000" />
+      <workItem from="1702109037685" duration="3451000" />
     </task>
     <servers />
   </component>
@@ -524,10 +518,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1701589800107" />
-    <state x="681" y="363" key="com.intellij.ide.util.TipDialog" timestamp="1701692051647">
+    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1701701349975">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="363" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1701692051647" />
+    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1701701349975" />
+    <state x="681" y="363" key="com.intellij.ide.util.TipDialog" timestamp="1702109109058">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="681" y="363" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1702109109058" />
     <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1701584660917">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
