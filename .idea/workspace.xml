@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -489,6 +487,7 @@
       <workItem from="1701869416163" duration="1257000" />
       <workItem from="1702109037685" duration="10698000" />
       <workItem from="1702198635922" duration="630000" />
+      <workItem from="1702272686855" duration="362000" />
     </task>
     <servers />
   </component>
@@ -516,14 +515,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1701589800107" />
-    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1702136199143">
+    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1702273033799">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1702136199143" />
-    <state x="681" y="363" key="com.intellij.ide.util.TipDialog" timestamp="1702198640429">
+    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1702273033799" />
+    <state x="681" y="363" key="com.intellij.ide.util.TipDialog" timestamp="1702272864891">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="363" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1702198640429" />
+    <state x="681" y="363" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1702272864891" />
     <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1701584660917">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
