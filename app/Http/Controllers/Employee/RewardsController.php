@@ -66,6 +66,15 @@ class RewardsController extends Controller
                 {
                     $reward = Reward::create($request -> all() + ['user_id' => $user_id, 'status' => 'حصل عليها العامل فورا']);
                     $money_safe -> decreaseBalance($reward, $amount, $branch_id);
+
+                    $this -> insertToStatement(
+                        $reward, // relatedModel
+                            [
+                            'advances_and_salaries_cash'        =>  $amount,
+                            'notes'                             =>  $reward -> notes,
+                            'branch_id'                         =>  $branch_id,
+                            ]
+                    );
                 }
 
             }else
@@ -80,6 +89,15 @@ class RewardsController extends Controller
                 {
                     $reward = Reward::create($request -> all() + ['user_id' => $user_id, 'status' => 'حصل عليها العامل فورا']);
                     $bank -> decreaseBalance($reward, $amount, $branch_id);
+
+                    $this -> insertToStatement(
+                        $reward, // relatedModel
+                        [
+                            'advances_and_salaries_network'     =>  $amount,
+                            'notes'                             =>  $reward -> notes,
+                            'branch_id'                         =>  $branch_id,
+                        ]
+                    );
                 }
             }
 

@@ -8,49 +8,7 @@ use App\Models\RoleElement;
 use App\Models\SaleOrderProducts;
 
 Route::get('test', function () {
-    $role = Role::findOrFail(6);
-    $role -> delete();
-    return redirect()->back();
-//    $details = [
-//        'title' => 'Mohamed Alaraby Developer',
-//        'body' => 'This is for testing email using smtp'
-//    ];
-//
-//    \Mail::to('mido.b333@gmail.com')->send(new \App\Mail\MyTestMail($details));
-//
-//    dd("Email is Sent.");
-//    echo QrCode::encoding('UTF-8')->generate($code);
-//    echo base64_encode($content);
-//    echo ConvertDecimalToHexadecimal('Bobs Records');
-//    $categories = Category::all();
-//    foreach ($categories as $category) {
-//        echo $category -> name . '<br>';
-//        foreach ($category -> products as $product) {
-//            echo '* - '. $product -> name. '<br>';
-//        }
-//    }
-//    dd($categories);
-//    die();
-//    $supplier = \App\Models\PurchaseOrderProducts::with('purchaseOrder') -> get();
-//
-//    return $supplier;
-//    return $client -> carTypes;
-//    return Check::where('client_id', 1)->where('car_type_id', 1)->select('client_id', 'car_type_id', 'check_number')->get();
-//   foreach ($client -> carTypes as $car)
-//   {
-//       dump($car ->id);
-//   }
-    // Remove Duplicate Value From Array Script
-//    $object = $array ;
-//
-//    echo 'Original = '.count($object).'<br>';
-//    $new_array = [];
-//    foreach (array_unique($object) as $value)
-//    {
-//        echo "'".$value."',";
-//        $new_array [] = $value;
-//    }
-//    echo '<br> New = '.count($new_array);
+    return view('ws_test');
 });
 
 
@@ -198,6 +156,7 @@ Route::group(
             'priceList'                 => 'PriceListController',
             'rolesManager'              => 'RolesManagerController',
             'roleElements'              => 'RoleElementController',
+            'statement'                 => 'StatementController',
         ]); // end of resources
     }); // enf of group
 }); //end of localization group

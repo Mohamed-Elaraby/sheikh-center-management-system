@@ -9,12 +9,14 @@ use App\Models\Branch;
 use App\Models\Expenses;
 use App\Models\ExpensesType;
 use App\Models\MoneySafe;
+use App\Traits\HelperTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ExpensesController extends Controller
 {
+    use HelperTrait;
     public function __construct()
     {
         $this->middleware('permission:read-expenses')->only('index');
@@ -61,6 +63,7 @@ class ExpensesController extends Controller
         }
 //        dd($request->all());
         $expenses = Expenses::create($request->all() + ['user_id' => $user_id]);
+        $expenses_note = $expenses -> notes ? ' [ ' .$expenses -> notes . ' ]' : '';
 
         if ($request -> payment_method == 'كاش')
         {
@@ -71,6 +74,20 @@ class ExpensesController extends Controller
                 'user_id' => $user_id,
                 'branch_id' => $request -> branch_id,
             ]);
+
+            /* insert into expenses table */
+            $amount_paid = $request->amount ?? null;
+
+
+            /* Record Transaction On Statement Table */
+            $this -> insertToStatement(
+                $expenses, // relatedModel
+                [
+                    'expenses_cash'                 =>  $amount_paid,
+                    'notes'                         =>  $expenses -> expensesType -> name . $expenses_note,
+                    'branch_id'                     =>  $request -> branch_id,
+                ]
+            );
         }else
         {
             /* Update Money Safe Amount */
@@ -81,6 +98,20 @@ class ExpensesController extends Controller
                 'user_id' => $user_id,
                 'branch_id' => $request -> branch_id,
             ]);
+
+            /* insert into expenses table */
+            $amount_paid = $request->amount ?? null;
+
+
+            /* Record Transaction On Statement Table */
+            $this -> insertToStatement(
+                $expenses, // relatedModel
+                [
+                    'expenses_network'              =>  $amount_paid,
+                    'notes'                         =>  $expenses -> expensesType -> name . $expenses_note,
+                    'branch_id'                     =>  $request -> branch_id,
+                ]
+            );
         }
 
         return redirect()->route('admin.expenses.index')->with('success', __('trans.expenses added successfully'));

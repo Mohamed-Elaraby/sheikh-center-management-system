@@ -137,6 +137,7 @@ class SalaryController extends Controller
             'salary_month'
             ]);
         $salary_month = Carbon::now()->subMonth()->toDateString();
+        $salary_month_year = Carbon::parse($salary_month) -> format('Y-m');
 
         $total_advances = $request -> total_advances + $request -> scheduledAdvance ;
         $total_rewards = $request -> total_rewards + $request -> scheduledReward ;
@@ -154,6 +155,15 @@ class SalaryController extends Controller
             {
                 $registerToEmployeeLog = EmployeeSalaryLog::create($total_advances_rewards + ['salary_month' => $salary_month] + $salaryRequest);
                 $moneySafe ->decreaseBalance($registerToEmployeeLog, $request -> final_salary, $branch_id);
+
+                $this -> insertToStatement(
+                        $registerToEmployeeLog, // relatedModel
+                            [
+                            'advances_and_salaries_cash'        =>  $request -> final_salary,
+                            'notes'                             =>   'راتب ' . $registerToEmployeeLog -> employee -> name . ' شهر ' . $salary_month_year,
+                            'branch_id'                         =>  $branch_id,
+                            ]
+                    );
             }
         }else
         {
@@ -166,6 +176,15 @@ class SalaryController extends Controller
             {
                 $registerToEmployeeLog = EmployeeSalaryLog::create($total_advances_rewards + ['salary_month' => $salary_month] + $salaryRequest);
                 $bank ->decreaseBalance($registerToEmployeeLog, $request -> final_salary, $branch_id);
+
+                $this -> insertToStatement(
+                        $registerToEmployeeLog, // relatedModel
+                        [
+                            'advances_and_salaries_network'     =>  $request -> final_salary,
+                            'notes'                             =>  'راتب ' . $registerToEmployeeLog -> employee -> name . ' شهر ' . $salary_month_year,
+                            'branch_id'                         =>  $branch_id,
+                        ]
+                    );
             }
         }
 

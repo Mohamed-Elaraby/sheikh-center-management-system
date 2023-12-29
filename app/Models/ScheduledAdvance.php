@@ -29,4 +29,9 @@ class ScheduledAdvance extends Model
     {
         return $this -> belongsTo(Advance::class);
     }
+
+//    public function statements ()
+//    {
+//        return $this->hasMany(Statement::class);
+//    }
 }

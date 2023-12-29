@@ -108,4 +108,9 @@ class Branch extends Model
     {
         return $this -> hasMany(InternalTransfer::class);
     }
+
+    public function statements ()
+    {
+        return $this->hasMany(Statement::class);
+    }
 }

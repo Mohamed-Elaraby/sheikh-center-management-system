@@ -114,6 +114,16 @@ class SaleOrderReturnController extends Controller
                         'branch_id' => $request -> branch_id,
                     ]);
                     array_push($amount_paid, $item_sub_total);
+
+                    /* Record Transaction On Statement Table */
+                    $this ->insertToStatement(
+                        $sale_order_return, // relatedModel
+                        [
+                            'expenses_cash'                 =>  $product ['item_sub_total'],
+                            'notes'                         =>  'فاتورة مردودات مبيعات رقم / ' . $sale_order_return -> invoice_number,
+                            'branch_id'                     =>  $request -> branch_id,
+                        ]
+                    );
                 }elseif ($return_amount_in == 'bank') {
                     /* Update Bank Amount */
                     $last_amount_bank = Bank::where('branch_id', $request -> branch_id)->get()->last();
@@ -126,6 +136,17 @@ class SaleOrderReturnController extends Controller
                         'branch_id' => $request -> branch_id,
                     ]);
                     array_push($amount_paid_bank, $item_sub_total);
+
+                    /* Record Transaction On Statement Table */
+                    $this ->insertToStatement(
+                        $sale_order_return, // relatedModel
+                        [
+                            'expenses_network'              =>  $product ['item_sub_total'],
+                            'notes'                         =>  'فاتورة مردودات مبيعات رقم / ' . $sale_order_return -> invoice_number,
+                            'branch_id'                     =>  $request -> branch_id,
+                        ]
+                    );
+
                 }elseif ($return_amount_in == 'client_balance') {
                     /* Update client balance */
 //                    $client = Client::whereHas('saleOrders', function ($query)use ($sale_order_id){

@@ -66,8 +66,16 @@ class AdvanceController extends Controller
                 {
                     $advance = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
                     $money_safe -> decreaseBalance($advance, $amount, $branch_id);
-                }
 
+                    $this -> insertToStatement(
+                        $advance, // relatedModel
+                            [
+                            'advances_and_salaries_cash'        =>  $amount,
+                            'notes'                             =>  $advance -> notes,
+                            'branch_id'                         =>  $branch_id,
+                            ]
+                    );
+                }
 
             }else
             {
@@ -81,6 +89,15 @@ class AdvanceController extends Controller
                 {
                     $advance = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
                     $bank -> decreaseBalance($advance, $amount, $branch_id);
+
+                    $this -> insertToStatement(
+                        $advance, // relatedModel
+                        [
+                            'advances_and_salaries_network'     =>  $amount,
+                            'notes'                             =>  $advance -> notes,
+                            'branch_id'                         =>  $branch_id,
+                        ]
+                    );
                 }
             }
         }else

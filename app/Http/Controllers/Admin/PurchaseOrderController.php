@@ -231,6 +231,37 @@ class PurchaseOrderController extends Controller
                 'branch_id' => $request -> branch_id,
             ]);
 
+            /* insert into statement table */
+            $amount_paid = $request->amount_paid ?? null;
+            $amount_paid_bank = $request->amount_paid_bank ?? null;
+            $total_vat = $request -> total_vat  ?? null;
+            $payment_b = 'expenses_network';
+
+            if ($request -> payment_method_bank == 'تحويل بنكى')
+            {
+                $payment_b = 'expenses_network';
+            }
+            elseif ($request -> payment_method_bank == 'شبكة')
+            {
+                $payment_b = 'expenses_network';
+            }
+            elseif ($request -> payment_method_bank == 'STC-Pay')
+            {
+                $payment_b = 'expenses_network';
+            }
+
+            /* Record Transaction On Statement Table */
+            $this -> insertToStatement(
+                $purchaseOrder, // relatedModel
+                [
+                    'expenses_cash'                 =>  $amount_paid,
+                    $payment_b                      =>  $amount_paid_bank,
+                    'card_details_tax'              =>  $total_vat,
+                    'notes'                         =>  'فاتورة مشتريات رقم / ' . $purchaseOrder -> invoice_number,
+                    'branch_id'                     =>  $request -> branch_id,
+                ]
+            );
+
             return redirect() -> route('admin.purchaseOrders.show', $purchaseOrder->id) -> with('success', __('trans.purchase order added successfully'));
 
         }

@@ -59,4 +59,9 @@ class Salary extends Model
     {
         return $this -> belongsTo(Employee::class);
     }
+
+//    public function statements ()
+//    {
+//        return $this->hasMany(Statement::class);
+//    }
 }

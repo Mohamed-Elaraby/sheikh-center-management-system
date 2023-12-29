@@ -112,6 +112,16 @@ class PurchaseOrderReturnController extends Controller
                         'branch_id' => $request -> branch_id,
                     ]);
                     array_push($amount_paid, $item_sub_total);
+
+                    /* Record Transaction On Statement Table */
+                    $this ->insertToStatement(
+                        $purchase_order_return, // relatedModel
+                        [
+                            'imports_cash'                 =>  $product ['item_sub_total'],
+                            'notes'                         =>  'فاتورة مردودات مشتريات رقم / ' . $purchase_order_return -> invoice_number,
+                            'branch_id'                     =>  $request -> branch_id,
+                        ]
+                    );
                 }elseif ($return_amount_in == 'bank') {
                     /* Update Bank Amount */
                     $last_amount_bank = Bank::where('branch_id', $request -> branch_id)->get()->last();
@@ -124,6 +134,16 @@ class PurchaseOrderReturnController extends Controller
                         'branch_id' => $request -> branch_id,
                     ]);
                     array_push($amount_paid_bank, $item_sub_total);
+
+                    /* Record Transaction On Statement Table */
+                    $this ->insertToStatement(
+                        $purchase_order_return, // relatedModel
+                        [
+                            'imports_network'              =>  $product ['item_sub_total'],
+                            'notes'                         =>  'فاتورة مردودات مشتريات رقم / ' . $purchase_order_return -> invoice_number,
+                            'branch_id'                     =>  $request -> branch_id,
+                        ]
+                    );
                 }elseif ($return_amount_in == 'supplier_balance') {
 //                    /* Update supplier balance */
 //                    $supplier_target = Supplier::whereHas('purchaseOrders', function ($query)use ($purchase_order_id){

@@ -6,6 +6,7 @@ use App\DataTables\BankLogDatatable;
 use App\Http\Requests\bankOperations\bankOperationsRequest;
 use App\Models\Bank;
 use App\Models\Branch;
+use App\Traits\HelperTrait;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class BankController extends Controller
 {
+    use HelperTrait;
     public function __construct()
     {
         $this->middleware('permission:read-bank')->only('index');
@@ -96,7 +98,7 @@ class BankController extends Controller
             }
         }else{ // on deposited money
 
-            Bank::create([
+            $bank = Bank::create([
                 'amount_paid'           => $request->amount_paid,
                 'final_amount'          => $final_amount + $request->amount_paid,
                 'money_process_type'    => 1,
@@ -105,6 +107,16 @@ class BankController extends Controller
                 'user_id'               => $user_id,
                 'branch_id'             => $request->branch_id,
             ]);
+            $amount_paid = $request->amount_paid;
+            /* Record Transaction On Statement Table */
+            $this -> insertToStatement(
+                $bank, // relatedModel
+                [
+                    'custody_administration_network'       =>  $amount_paid,
+                    'notes'                             =>  $bank -> notes,
+                    'branch_id'                         =>  $request -> branch_id,
+                ]
+            );
 
             $redirect = redirect()->route('admin.bank.index', $request->branch_id)->with('success', __('trans.the amount has been deposited successfully'));
         }

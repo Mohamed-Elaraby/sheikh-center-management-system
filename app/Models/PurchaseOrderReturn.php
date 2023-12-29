@@ -82,4 +82,9 @@ class PurchaseOrderReturn extends Model
     {
         return $this->hasMany(SupplierTransaction::class);
     }
+
+    public function statements ()
+    {
+        return $this->hasMany(Statement::class);
+    }
 }

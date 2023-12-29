@@ -288,4 +288,94 @@ trait HelperTrait
         $relatedModel ->supplierTransactions()->create($this -> data);
     }
     ####### End insert to supplier transaction with relation Function #########
+
+
+    ####### Begin insert to statement with relation Function #########
+
+    /**
+     * @param object $relatedModel                          Model Object
+     * @param array $data
+     * [
+        * imports_cash
+        * imports_network
+        * imports_bank_transfer
+        * card_details_hand_labour
+        * card_details_new_parts
+        * card_details_used_parts
+        * card_details_tax
+        * expenses_cash
+        * expenses_network
+        * custody_administration_cash
+        * custody_administration_network
+        * cash_to_administration
+        * advances_and_salaries_cash
+        * advances_and_salaries_network
+        * notes
+        * sale_order_id
+        * client_payment_id
+        * client_collecting_id
+        * expenses_id
+        * purchase_order_id
+        * supplier_payment_id
+        * supplier_collecting_id
+        * sale_order_return_id
+        * purchase_order_return_id
+        * advance_id
+        * reward_id
+        * discount_id
+        * employee_salary_log_id
+        * branch_id
+     * ]
+     */
+    public function insertToStatement($relatedModel, $data = [])
+    {
+        $this -> data = array_merge([], $data);
+        $relatedModel ->statements()->create($this -> data);
+    }
+    ####### End insert to statement with relation Function #########
+
+
+    ####### Begin insert to expenses with relation Function #########
+
+    /**
+     * @param object $relatedModel                          Model Object
+     * @param array $data
+     * [
+     * imports_cash
+     * imports_network
+     * imports_bank_transfer
+     * card_details_hand_labour
+     * card_details_new_parts
+     * card_details_used_parts
+     * card_details_tax
+     * expenses_cash
+     * expenses_network
+     * custody_administration_cash
+     * custody_administration_network
+     * cash_to_administration
+     * advances_and_salaries_cash
+     * advances_and_salaries_network
+     * notes
+     * sale_order_id
+     * client_payment_id
+     * client_collecting_id
+     * expenses_id
+     * purchase_order_id
+     * supplier_payment_id
+     * supplier_collecting_id
+     * sale_order_return_id
+     * purchase_order_return_id
+     * advance_id
+     * reward_id
+     * discount_id
+     * employee_salary_log_id
+     * branch_id
+     * ]
+     */
+    public function insertToExpenses($relatedModel, $data = [])
+    {
+        $this -> data = array_merge([], $data);
+        $relatedModel ->expenses()->create($this -> data);
+    }
+    ####### End insert to expenses with relation Function #########
 }

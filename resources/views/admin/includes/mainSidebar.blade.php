@@ -59,6 +59,13 @@
                 </a>
             </li>
 
+            <li class="active">
+                <a href="{{ route('admin.statement.index') }}">
+                    <i class="fa fa-paperclip"></i>
+                    <span>Statement</span>
+                </a>
+            </li>
+
             <!-- HR Route -->
             @if(auth()->user()->hasPermission('read-hr'))
                 <li class="treeview">

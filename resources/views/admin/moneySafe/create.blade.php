@@ -37,7 +37,7 @@ $pageItem = __('trans.operation on the money safe')
                             {!! Form::label('processType', __('trans.type'), ['class' => 'control-label']) !!}
                             {!! Form::select('processType', ['' => '--  اختر العملية  --', 0 => 'سحب', 1 => 'ايداع'] , null , ['class' => 'form-control']) !!}
                         </div>
-
+{{--                        <div id="generate_content"></div>--}}
                         <div class="form-group">
                             {!! Form::label('notes', __('trans.notes'), ['class' => 'control-label']) !!}
                             {!! Form::textarea('notes', null, ['class' => 'form-control']) !!}
@@ -53,5 +53,38 @@ $pageItem = __('trans.operation on the money safe')
     </div>
 @endsection
 @push('scripts')
+
+
+    {{--<script>
+        let Generate_content = $('#generate_content');
+        $('#processType').on('change', function(){
+            let processTypeValue = parseInt($(this).val());
+            if (processTypeValue === 1)
+            {
+                generatePaymentMethod ();
+            }else
+            {
+                Generate_content.empty();
+            }
+
+        });
+
+        function generatePaymentMethod ()
+        {
+
+            Generate_content.empty();
+            let content =
+                '    <label><b>طريقة الدفع</b></label>\n' +
+                '    <div class="form-group">\n' +
+                '        <input type="radio" name="payment_method" id="cash" value="cash" checked>\n' +
+                '        <label for="cash">كاش</label>\n' +
+                '\n' +
+                '        <input type="radio" name="payment_method" id="network" value="network">\n' +
+                '        <label for="network">شبكة</label>\n' +
+                '    </div>';
+            Generate_content.append(content);
+
+        }
+    </script>--}}
 
 @endpush

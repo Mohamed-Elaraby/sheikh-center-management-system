@@ -82,4 +82,9 @@ class SaleOrderReturn extends Model
     {
         return $this->hasMany(ClientTransaction::class);
     }
+
+    public function statements ()
+    {
+        return $this->hasMany(Statement::class);
+    }
 }

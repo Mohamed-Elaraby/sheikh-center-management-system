@@ -154,4 +154,9 @@ class MoneySafe extends Model
     {
         return $this->belongsTo(EmployeeSalaryLog::class);
     }
+
+    public function statements ()
+    {
+        return $this->hasMany(Statement::class);
+    }
 }

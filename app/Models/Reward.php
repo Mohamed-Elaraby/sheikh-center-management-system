@@ -64,4 +64,9 @@ class Reward extends Model
     {
         return $this -> hasMany(Bank::class);
     }
+
+    public function statements ()
+    {
+        return $this->hasMany(Statement::class);
+    }
 }

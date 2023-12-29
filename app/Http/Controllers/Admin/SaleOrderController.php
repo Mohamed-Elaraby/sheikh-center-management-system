@@ -54,7 +54,7 @@ class SaleOrderController extends Controller
     {
 //        dd($request->all());
         $user_id = Auth::user()->id;
-
+        $payment_method = $request -> payment_method ?? null;
         $data_except_amount_paid = $request -> except(['amount_paid', 'amount_paid_bank']);
         // if amount paid request empty set amount paid equal zero
         $amount_paid = $request->amount_paid ?? 0;
@@ -178,11 +178,40 @@ class SaleOrderController extends Controller
                 'user_id' => Auth::user()->id,
                 'branch_id' => $request -> branch_id,
             ]);
-//            {{ route('admin.check.clientSignature', [$query->id, $query->check_number,'exit=true']) }}
+
+
+            /* insert into statement table */
+            $amount_paid = $request->amount_paid ?? null;
+            $amount_paid_bank = $request->amount_paid_bank ?? null;
+            $total_vat = $request -> total_vat  ?? null;
+            $payment_b = 'imports_network';
+
+            if ($request -> payment_method_bank == 'تحويل بنكى')
+            {
+                $payment_b = 'imports_bank_transfer';
+            }
+            elseif ($request -> payment_method_bank == 'شبكة')
+            {
+                $payment_b = 'imports_network';
+            }
+            elseif ($request -> payment_method_bank == 'STC-Pay')
+            {
+                $payment_b = 'imports_network';
+            }
+
+            /* Record Transaction On Statement Table */
+            $this -> insertToStatement(
+                $saleOrder, // relatedModel
+                [
+                    'imports_cash'                  =>  $amount_paid,
+                    $payment_b                      =>  $amount_paid_bank,
+                    'card_details_tax'              =>  $total_vat,
+                    'notes'                         =>  'فاتورة مبيعات رقم / ' . $saleOrder -> invoice_number . ' ' . __('trans.check number') . ' ' . $saleOrder ->check -> check_number,
+                    'branch_id'                     =>  $request -> branch_id,
+                ]
+            );
 
             return redirect() -> route('admin.check.clientSignature', [$saleOrder -> check -> id, $saleOrder -> check -> check_number, 'exit=true', 'redirectToSaleOrder='.$saleOrderId]) -> with('success', __('trans.sale order added successfully'));
-//            return redirect() -> route('admin.saleOrders.show', $saleOrderId) -> with('success', __('trans.sale order added successfully'));
-
         }
     }
 

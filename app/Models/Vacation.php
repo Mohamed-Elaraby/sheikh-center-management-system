@@ -58,4 +58,9 @@ class Vacation extends Model
     {
         return $this -> belongsTo(User::class);
     }
+
+//    public function statements ()
+//    {
+//        return $this->hasMany(Statement::class);
+//    }
 }

@@ -1,7 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes" />
+    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Statement.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/StatementFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2023_12_12_154038_create_statements_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/ws_test.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpensesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpensesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MoneySafeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MoneySafeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderReturnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderReturnController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderReturnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderReturnController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/RewardsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/RewardsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/SalaryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/SalaryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Advance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Advance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Bank.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bank.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Branch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ClientCollecting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ClientCollecting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ClientPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ClientPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Discount.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Discount.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/EmployeeSalaryLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EmployeeSalaryLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Expenses.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Expenses.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/MoneySafe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MoneySafe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PurchaseOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PurchaseOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PurchaseOrderReturn.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PurchaseOrderReturn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Reward.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Reward.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Salary.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Salary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SaleOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SaleOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SaleOrderReturn.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SaleOrderReturn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ScheduledAdvance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ScheduledAdvance.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SupplierCollecting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupplierCollecting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SupplierPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupplierPayment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Vacation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Vacation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/HelperTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/HelperTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/old_transactions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/old_transactions.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/moneySafe/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/moneySafe/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/test.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,26 +243,28 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/employee/discounts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Interfaces" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\admin\statement" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\discounts" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\rewards" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Http\Controllers\Admin" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes\roles_and_permisiions" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\resources\views\admin\includes\js_files\roles_and_permissions" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\app\Http\Controllers\Admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\discounts" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\rewards" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\advances" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Models" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\public\js" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -487,7 +536,22 @@
       <workItem from="1701869416163" duration="1257000" />
       <workItem from="1702109037685" duration="10698000" />
       <workItem from="1702198635922" duration="630000" />
-      <workItem from="1702272686855" duration="362000" />
+      <workItem from="1702272686855" duration="3657000" />
+      <workItem from="1702379220064" duration="8915000" />
+      <workItem from="1702446244902" duration="3860000" />
+      <workItem from="1702532453937" duration="8212000" />
+      <workItem from="1702541427713" duration="7989000" />
+      <workItem from="1702707399470" duration="3146000" />
+      <workItem from="1702793232793" duration="2150000" />
+      <workItem from="1703078951331" duration="392000" />
+      <workItem from="1703079365115" duration="7867000" />
+      <workItem from="1703504538301" duration="7000" />
+      <workItem from="1703566744920" duration="9465000" />
+      <workItem from="1703662208653" duration="3551000" />
+      <workItem from="1703675941855" duration="788000" />
+      <workItem from="1703676779655" duration="3560000" />
+      <workItem from="1703680683688" duration="7643000" />
+      <workItem from="1703742088968" duration="12062000" />
     </task>
     <servers />
   </component>
@@ -511,25 +575,33 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1701589800107">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1703571956637">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1701589800107" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1703571956637" />
     <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1702273033799">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1702273033799" />
-    <state x="681" y="363" key="com.intellij.ide.util.TipDialog" timestamp="1702272864891">
+    <state x="537" y="323" width="998" height="717" key="SettingsEditor" timestamp="1703568513685">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="363" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1702272864891" />
-    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1701584660917">
+    <state x="537" y="323" width="998" height="717" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1703568513685" />
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1703742093782">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1701584660917" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1701594105347">
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1703742093782" />
+    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1703568601535">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1701594105347" />
+    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1703568601535" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1703768189118">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1703768189118" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1702535076808">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1702535076808" />
   </component>
 </project>

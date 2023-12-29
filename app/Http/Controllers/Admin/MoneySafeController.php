@@ -6,12 +6,14 @@ use App\DataTables\MoneySafeLogDatatable;
 use App\Http\Requests\MoneySafeOperations\moneySafeOperationsRequest;
 use App\Models\Branch;
 use App\Models\MoneySafe;
+use App\Traits\HelperTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class MoneySafeController extends Controller
 {
+    use HelperTrait;
     public function __construct()
     {
         $this->middleware('permission:read-moneySafe')->only('index');
@@ -49,7 +51,7 @@ class MoneySafeController extends Controller
 
             }else { // on withdrawn money
 
-                MoneySafe::create([
+                $moneySafe = MoneySafe::create([
                     'amount_paid'           => $request->amount_paid,
                     'final_amount'          => $final_amount - $request->amount_paid,
                     'notes'                 => $request->notes,
@@ -58,12 +60,21 @@ class MoneySafeController extends Controller
                     'branch_id'             => $request->branch_id,
                 ]);
 
+                $this -> insertToStatement(
+                    $moneySafe, // relatedModel
+                    [
+                        'cash_to_administration'            =>  $request -> amount_paid,
+                        'notes'                             =>  $moneySafe -> notes,
+                        'branch_id'                         =>  $request -> branch_id,
+                    ]
+                );
+
                 $redirect = redirect()->route('admin.moneySafe.index', $request->branch_id)->with('success', __('trans.the amount has been withdrawn successfully'));
 
             }
         }else{ // on deposited money
 
-            MoneySafe::create([
+            $moneySafe = MoneySafe::create([
                 'amount_paid'           => $request->amount_paid,
                 'final_amount'          => $final_amount + $request->amount_paid,
                 'notes'                 => $request->notes,
@@ -71,6 +82,28 @@ class MoneySafeController extends Controller
                 'user_id'               => $user_id,
                 'branch_id'             => $request->branch_id,
             ]);
+
+            $amount_paid = $request->amount_paid;
+
+//            if ($request -> payment_method == 'cash')
+//            {
+//                $amount_paid_bank = null;
+//            }
+//            else
+//            {
+//                $amount_paid_bank = $request->amount_paid;
+//                $amount_paid = null;
+//            }
+
+            /* Record Transaction On Statement Table */
+            $this -> insertToStatement(
+                $moneySafe, // relatedModel
+                [
+                    'custody_administration_cash'       =>  $amount_paid,
+                    'notes'                             =>  $moneySafe -> notes,
+                    'branch_id'                         =>  $request -> branch_id,
+                ]
+            );
 
             $redirect = redirect()->route('admin.moneySafe.index', $request->branch_id)->with('success', __('trans.the amount has been deposited successfully'));
         }

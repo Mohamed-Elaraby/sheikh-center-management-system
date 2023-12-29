@@ -130,4 +130,9 @@ class PurchaseOrder extends Model
         return $this->hasMany(PurchaseOrderReturn::class);
     }
 
+    public function statements ()
+    {
+        return $this->hasMany(Statement::class);
+    }
+
 }
