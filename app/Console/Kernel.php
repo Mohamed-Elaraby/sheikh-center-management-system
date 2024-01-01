@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\GetMoneySafeOpeningBalance;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        GetMoneySafeOpeningBalance::class,
     ];
 
     /**
@@ -24,8 +25,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('backup:clean')->everyMinute();
-        $schedule->command('backup:run --only-db') ->everyMinute();
+//        $schedule->command('backup:clean')->everyMinute();
+//        $schedule->command('backup:run --only-db') ->everyMinute();
+
+        $schedule -> command('moneySafe:getOpeningBalance')->dailyAt('07:49')->timezone('Asia/Dubai');
+//        $schedule -> command('moneySafe:getOpeningBalance')->dailyAt('12:44');
 //         $schedule->command('inspire') ->hourly();
     }
 

@@ -4,6 +4,7 @@
 namespace App\Traits;
 
 
+use App\Models\Statement;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use phpDocumentor\Reflection\Types\This;

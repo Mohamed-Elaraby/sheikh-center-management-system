@@ -2,52 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Statement.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/StatementFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2023_12_12_154038_create_statements_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/ws_test.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Console/Commands/GetMoneySafeOpeningBalance.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/MoneySafeOpeneingBalance.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2023_12_31_093623_create_money_safe_openeing_balances_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpensesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpensesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MoneySafeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MoneySafeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderReturnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderReturnController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderReturnController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderReturnController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/RewardsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/RewardsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/SalaryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/SalaryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Advance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Advance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Bank.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Bank.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ClientCollecting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ClientCollecting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ClientPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ClientPayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Discount.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Discount.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/EmployeeSalaryLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EmployeeSalaryLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Expenses.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Expenses.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/MoneySafe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MoneySafe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PurchaseOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PurchaseOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PurchaseOrderReturn.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PurchaseOrderReturn.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Reward.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Reward.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Salary.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Salary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SaleOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SaleOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SaleOrderReturn.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SaleOrderReturn.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ScheduledAdvance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ScheduledAdvance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SupplierCollecting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupplierCollecting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SupplierPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupplierPayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Vacation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Vacation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Traits/HelperTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/HelperTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/old_transactions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/old_transactions.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/moneySafe/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/moneySafe/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/test.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employee/salaries/receipt.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/salaries/receipt.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -552,6 +516,9 @@
       <workItem from="1703676779655" duration="3560000" />
       <workItem from="1703680683688" duration="7643000" />
       <workItem from="1703742088968" duration="12062000" />
+      <workItem from="1703865410108" duration="56000" />
+      <workItem from="1704004730759" duration="15301000" />
+      <workItem from="1704094789070" duration="272000" />
     </task>
     <servers />
   </component>
@@ -575,10 +542,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1703571956637">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1704038049184">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1703571956637" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704038049184" />
     <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1702273033799">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -587,10 +554,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="537" y="323" width="998" height="717" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1703568513685" />
-    <state x="676" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1703742093782">
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1704094791980">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1703742093782" />
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704094791980" />
     <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1703568601535">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

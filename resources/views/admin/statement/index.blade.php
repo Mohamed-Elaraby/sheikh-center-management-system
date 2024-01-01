@@ -189,7 +189,7 @@
                 <th colspan="2">تاريخ اليومية</th>
             </tr>
             <tr>
-                <td width="30%"></td>
+                <td width="30%">{{ $moneySafeOpeningBalance }}</td>
                 <td width="70%">رصيد سابق</td>
             </tr>
             <tr>

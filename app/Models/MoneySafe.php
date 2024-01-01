@@ -159,4 +159,9 @@ class MoneySafe extends Model
     {
         return $this->hasMany(Statement::class);
     }
+
+    public function moneySafeOpeneingBalance()
+    {
+        return $this->belongsTo(MoneySafeOpeneingBalance::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\MoneySafeOpeneingBalance;
 use App\Models\Statement;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class StatementController extends Controller
     public function index()
     {
         $branch_id = 4;
-        $date = '2023-12-26';
+        $date = '2023-12-28';
         $statements = Statement::where('branch_id', $branch_id) -> whereDate('updated_at', Carbon::parse($date))->get();
         $total_imports_cash = Statement::where('branch_id', $branch_id) -> whereDate('updated_at', Carbon::parse($date))->sum('imports_cash');
         $total_imports_network = Statement::where('branch_id', $branch_id) -> whereDate('updated_at', Carbon::parse($date))->sum('imports_network');
@@ -33,6 +34,7 @@ class StatementController extends Controller
         $total_expenses = $total_expenses_cash + $total_expenses_network ;
         $total_custody_administration = $total_custody_administration_cash + $total_custody_administration_network ;
         $total_advances_and_salaries = $total_advances_and_salaries_cash + $total_advances_and_salaries_network ;
+        $moneySafeOpeningBalance = MoneySafeOpeneingBalance::where('branch_id', $branch_id) -> whereDate('updated_at', Carbon::parse($date))->first('balance') -> balance ?? 0;
         return view('admin.statement.index',
             compact(
                 'statements',
@@ -55,6 +57,7 @@ class StatementController extends Controller
                 'total_expenses',
                 'total_custody_administration',
                 'total_advances_and_salaries',
+                'moneySafeOpeningBalance'
             ));
     }
 

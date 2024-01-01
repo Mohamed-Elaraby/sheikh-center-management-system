@@ -441,7 +441,7 @@
 
             // console.log(total_salary , totalAdvances , scheduledAdvance , totalRewards , scheduledReward , totalDiscounts , vacations_deducted)
 
-            let total =  (total_salary - scheduledAdvance + scheduledReward - totalDiscounts - vacations_deducted);
+            let total =  (total_salary - totalAdvances - scheduledAdvance + totalRewards + scheduledReward - totalDiscounts - vacations_deducted);
             // console.log(total_salary, totalAdvances, scheduledAdvance, totalRewards, scheduledReward, totalDiscounts, vacations_deducted)
             $('#final_salary').val(parseFloat(total).toFixed(2));
 
