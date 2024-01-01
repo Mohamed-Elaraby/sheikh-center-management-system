@@ -27,9 +27,8 @@ class Kernel extends ConsoleKernel
     {
 //        $schedule->command('backup:clean')->everyMinute();
 //        $schedule->command('backup:run --only-db') ->everyMinute();
-
-        $schedule -> command('moneySafe:getOpeningBalance')->dailyAt('07:49')->timezone('Asia/Dubai');
-//        $schedule -> command('moneySafe:getOpeningBalance')->dailyAt('12:44');
+//        $schedule -> command('moneySafe:getOpeningBalance')->dailyAt('05:00')->timezone('Asia/Dubai');
+        $schedule -> command('moneySafe:getOpeningBalance')->everyMinute();
 //         $schedule->command('inspire') ->hourly();
     }
 

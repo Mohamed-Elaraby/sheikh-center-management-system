@@ -72,7 +72,7 @@
 
 <div class="body_content">
     <div class="container">
-        <table border="1" width="100%">
+        <table border="1" width="100%" style="font-size: 20px">
 
             <colgroup style="background-color:#56bffa">
                 <col>
@@ -183,7 +183,7 @@
                 </tr>
             </tbody>
         </table>
-        <table border="1" width="50%">
+        <table border="1" width="50%" style="font-size: 20px; background-color:#aeaeae">
             <tbody>
             <tr>
                 <th colspan="2">تاريخ اليومية</th>
@@ -217,7 +217,16 @@
                 <td width="70%">بنك تحويل وشبكة</td>
             </tr>
             <tr>
-                <td width="30%"></td>
+                <td width="30%">
+                    {{
+                        $moneySafeOpeningBalance +
+                        $total_imports_cash -
+                        $total_expenses +
+                        $total_custody_administration -
+                        $total_cash_to_administration -
+                        $total_advances_and_salaries
+                    }}
+                </td>
                 <td width="70%">الرصيد الحالى</td>
             </tr>
 

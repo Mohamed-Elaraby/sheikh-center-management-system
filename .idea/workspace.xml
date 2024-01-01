@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes" />
+    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/statement/selectBranch.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -198,26 +206,26 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/statement" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Interfaces" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\admin\statement" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\discounts" />
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\rewards" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Http\Controllers\Admin" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes\roles_and_permisiions" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\resources\views\admin\includes\js_files\roles_and_permissions" />
       <recent name="D:\Laravel Projects\sheikh-center-management-system\app\Http\Controllers\Admin" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\admin\statement" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Interfaces" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\discounts" />
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\rewards" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -507,7 +515,7 @@
       <workItem from="1703742088968" duration="12062000" />
       <workItem from="1703865410108" duration="56000" />
       <workItem from="1704004730759" duration="15301000" />
-      <workItem from="1704094789070" duration="2617000" />
+      <workItem from="1704094789070" duration="12550000" />
     </task>
     <servers />
   </component>
@@ -531,10 +539,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1704038049184">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1704118986924">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704038049184" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704118986924" />
     <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1704095512926">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -547,17 +555,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704094791980" />
-    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1703568601535">
+    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1704116791555">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1703568601535" />
+    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704116791555" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1703768189118">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1703768189118" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1704095257633">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1704118317224">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704095257633" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704118317224" />
   </component>
 </project>
