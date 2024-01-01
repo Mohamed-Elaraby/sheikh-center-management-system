@@ -521,7 +521,7 @@
                 @php($route = route('admin.statement.index'))
             @endif
             <li class="active">
-                <a href="{{ route('admin.statement.index') }}">
+                <a href="{{ $route }}">
                     <i class="fa fa-paperclip"></i>
                     <span>اليومية</span>
                 </a>
