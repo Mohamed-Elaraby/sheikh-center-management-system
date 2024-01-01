@@ -50,7 +50,7 @@
 
 <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz" crossorigin="anonymous"></script>
 <script>
-    const socket = io('https://skbmw-system.com');
+    const socket = io('https://skbmw-system.com:3000');
 
     $message = $('#message').val();
     // socket.on('notification', function () {
