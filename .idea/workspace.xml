@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/app/Console/Commands/GetMoneySafeOpeningBalance.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/MoneySafeOpeneingBalance.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2023_12_31_093623_create_money_safe_openeing_balances_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/MoneySafe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MoneySafe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/HelperTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/HelperTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/salaries/receipt.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/salaries/receipt.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -518,7 +509,7 @@
       <workItem from="1703742088968" duration="12062000" />
       <workItem from="1703865410108" duration="56000" />
       <workItem from="1704004730759" duration="15301000" />
-      <workItem from="1704094789070" duration="272000" />
+      <workItem from="1704094789070" duration="1236000" />
     </task>
     <servers />
   </component>
@@ -546,10 +537,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704038049184" />
-    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1702273033799">
+    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1704095512926">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1702273033799" />
+    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1704095512926" />
     <state x="537" y="323" width="998" height="717" key="SettingsEditor" timestamp="1703568513685">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -566,9 +557,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1703768189118" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1702535076808">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1704095257633">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1702535076808" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704095257633" />
   </component>
 </project>
