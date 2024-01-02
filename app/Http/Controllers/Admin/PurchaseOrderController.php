@@ -187,6 +187,40 @@ class PurchaseOrderController extends Controller
                     'user_id'                   => $user_id,
                     'supplier_id'               => $request->supplier_id,
                 ]);
+
+                /* insert into statement table */
+                $amount_paid = $request->amount_paid ?? null;
+
+                $total_vat = $request -> total_vat  ?? null;
+
+                if ($request -> payment_method_bank == 'تحويل بنكى')
+                {
+                    $amount_paid_bank = null;
+                    $amount_paid_bank_transfer = $request -> amount_paid_bank;
+                }
+                elseif ($request -> payment_method_bank == 'شبكة')
+                {
+                    $amount_paid_bank = $request -> amount_paid_bank;
+                    $amount_paid_bank_transfer = null;
+                }
+                elseif ($request -> payment_method_bank == 'STC-Pay')
+                {
+                    $amount_paid_bank = $request -> amount_paid_bank;
+                    $amount_paid_bank_transfer = null;
+                }
+
+                /* Record Transaction On Statement Table */
+                $this -> insertToStatement(
+                    $purchaseOrder, // relatedModel
+                    [
+                        'expenses_cash'                 =>  $amount_paid,
+                        'imports_network'               =>  $amount_paid_bank,
+                        'imports_bank_transfer'         =>  $amount_paid_bank_transfer,
+                        'card_details_tax'              =>  $total_vat,
+                        'notes'                         =>  'فاتورة مشتريات رقم / ' . $purchaseOrder -> invoice_number,
+                        'branch_id'                     =>  $request -> branch_id,
+                    ]
+                );
             }
             // if exist supplier discount amount discount this from supplier balance
             if ($request->supplier_discount) {
@@ -231,39 +265,6 @@ class PurchaseOrderController extends Controller
                 'branch_id' => $request -> branch_id,
             ]);
 
-            /* insert into statement table */
-            $amount_paid = $request->amount_paid ?? null;
-
-            $total_vat = $request -> total_vat  ?? null;
-
-            if ($request -> payment_method_bank == 'تحويل بنكى')
-            {
-                $amount_paid_bank = null;
-                $amount_paid_bank_transfer = $request -> amount_paid_bank;
-            }
-            elseif ($request -> payment_method_bank == 'شبكة')
-            {
-                $amount_paid_bank = $request -> amount_paid_bank;
-                $amount_paid_bank_transfer = null;
-            }
-            elseif ($request -> payment_method_bank == 'STC-Pay')
-            {
-                $amount_paid_bank = $request -> amount_paid_bank;
-                $amount_paid_bank_transfer = null;
-            }
-
-            /* Record Transaction On Statement Table */
-            $this -> insertToStatement(
-                $purchaseOrder, // relatedModel
-                [
-                    'expenses_cash'                 =>  $amount_paid,
-                    'imports_network'               =>  $amount_paid_bank,
-                    'imports_bank_transfer'         =>  $amount_paid_bank_transfer,
-                    'card_details_tax'              =>  $total_vat,
-                    'notes'                         =>  'فاتورة مشتريات رقم / ' . $purchaseOrder -> invoice_number,
-                    'branch_id'                     =>  $request -> branch_id,
-                ]
-            );
 
             return redirect() -> route('admin.purchaseOrders.show', $purchaseOrder->id) -> with('success', __('trans.purchase order added successfully'));
 
