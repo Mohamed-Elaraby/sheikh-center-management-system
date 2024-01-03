@@ -190,32 +190,15 @@ class PurchaseOrderController extends Controller
 
                 /* insert into statement table */
                 $amount_paid = $request->amount_paid ?? null;
-
-                $total_vat = $request -> total_vat  ?? null;
-
-                if ($request -> payment_method_bank == 'تحويل بنكى')
-                {
-                    $amount_paid_bank = null;
-                    $amount_paid_bank_transfer = $request -> amount_paid_bank;
-                }
-                elseif ($request -> payment_method_bank == 'شبكة')
-                {
-                    $amount_paid_bank = $request -> amount_paid_bank;
-                    $amount_paid_bank_transfer = null;
-                }
-                elseif ($request -> payment_method_bank == 'STC-Pay')
-                {
-                    $amount_paid_bank = $request -> amount_paid_bank;
-                    $amount_paid_bank_transfer = null;
-                }
+                $amount_paid_bank = $request->amount_paid_bank ?? null;
+//                $total_vat = $request -> total_vat  ?? null;
 
                 /* Record Transaction On Statement Table */
                 $this -> insertToStatement(
                     $purchaseOrder, // relatedModel
                     [
                         'expenses_cash'                 =>  $amount_paid,
-                        'imports_network'               =>  $amount_paid_bank,
-                        'card_details_tax'              =>  $total_vat,
+                        'expenses_network'              =>  $amount_paid_bank,
                         'notes'                         =>  'فاتورة مشتريات رقم / ' . $purchaseOrder -> invoice_number,
                         'branch_id'                     =>  $request -> branch_id,
                     ]

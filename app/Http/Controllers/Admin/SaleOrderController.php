@@ -162,6 +162,8 @@ class SaleOrderController extends Controller
 
                 $total_vat = $request -> total_vat  ?? null;
 
+                $amount_paid_bank_transfer = null ;
+
                 if ($request -> payment_method_bank == 'تحويل بنكى')
                 {
                     $amount_paid_bank = null;
