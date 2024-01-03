@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/GetMoneySafeOpeningBalance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/GetMoneySafeOpeningBalance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -514,7 +511,7 @@
       <workItem from="1704004730759" duration="15301000" />
       <workItem from="1704094789070" duration="15262000" />
       <workItem from="1704176675324" duration="7747000" />
-      <workItem from="1704262240890" duration="11139000" />
+      <workItem from="1704262240890" duration="12994000" />
     </task>
     <servers />
   </component>
