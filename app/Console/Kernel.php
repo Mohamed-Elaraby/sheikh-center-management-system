@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
 //        $schedule -> command('moneySafe:getOpeningBalance')->dailyAt('10:00')->timezone('Asia/Dubai');
 //        $schedule -> command('moneySafe:getOpeningBalance')->dailyAt('10:00')->timezone('Asia/Riyadh');
 //        $schedule->command("moneySafe:getOpeningBalance")->daily()->at("10:39");
-        $schedule -> command('moneySafe:getOpeningBalance')->everyMinute();
+        $schedule -> command('moneySafe:getOpeningBalance')->everyMinute()->timezone('Asia/Riyadh');
 //         $schedule->command('inspire') ->hourly();
     }
 

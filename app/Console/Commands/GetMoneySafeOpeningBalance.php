@@ -5,8 +5,8 @@ namespace App\Console\Commands;
 use App\Models\Branch;
 use App\Models\MoneySafe;
 use App\Models\MoneySafeOpeneingBalance;
-use App\Models\Statement;
 use Illuminate\Console\Command;
+
 
 class GetMoneySafeOpeningBalance extends Command
 {

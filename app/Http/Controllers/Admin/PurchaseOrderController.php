@@ -215,7 +215,6 @@ class PurchaseOrderController extends Controller
                     [
                         'expenses_cash'                 =>  $amount_paid,
                         'imports_network'               =>  $amount_paid_bank,
-                        'imports_bank_transfer'         =>  $amount_paid_bank_transfer,
                         'card_details_tax'              =>  $total_vat,
                         'notes'                         =>  'فاتورة مشتريات رقم / ' . $purchaseOrder -> invoice_number,
                         'branch_id'                     =>  $request -> branch_id,
