@@ -27,10 +27,10 @@ class ExpensesDatatable extends DataTable
                 return $query -> branch -> display_name;
             })
             ->editColumn('user_id', function ($query){
-                return $query -> user -> name;
+                return $query -> user -> name ?? '';
             })
             ->editColumn('expenses_type_id', function ($query){
-                return $query -> expensesType -> name;
+                return $query -> expensesType -> name ?? '';
             })
             ->addColumn('action', function ($query){
                 return view('admin.datatableHtmlBuilderRender.expenses.action', compact('query'));
