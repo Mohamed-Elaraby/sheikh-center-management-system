@@ -103,6 +103,19 @@ class SupplierCollectingController extends Controller
             ]
         );
 
+        /* Record Transaction On Statement Table */
+        $amount_paid = $request->amount_paid ?? null;
+        $amount_paid_bank = $request->amount_paid_bank ?? null;
+        $this -> insertToStatement(
+            $supplierCollecting, // relatedModel
+            [
+                'imports_cash'                  =>  $amount_paid,
+                'imports_network'               =>  $amount_paid_bank,
+                'notes'                         =>  ' سند قبض من المورد ' . $supplierCollecting -> supplier -> name,
+                'branch_id'                     =>  $request -> branch_id,
+            ]
+        );
+
         return redirect()->route('admin.supplierCollecting.show', $collecting_id)->with('success', __('trans.supplier collecting added successfully'));
     }
 

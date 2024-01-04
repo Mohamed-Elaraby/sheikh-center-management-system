@@ -113,6 +113,20 @@ class SupplierPaymentController extends Controller
                 'branch_id' => $request -> branch_id,
             ]);
         }
+
+
+        /* Record Transaction On Statement Table */
+        $amount_paid = $request->amount_paid ?? null;
+        $amount_paid_bank = $request->amount_paid_bank ?? null;
+        $this -> insertToStatement(
+            $supplierPayment, // relatedModel
+            [
+                'expenses_cash'                 =>  $amount_paid,
+                'expenses_network'              =>  $amount_paid_bank,
+                'notes'                         =>  ' سند صرف الى المورد ' . $supplierPayment -> supplier -> name,
+                'branch_id'                     =>  $request -> branch_id,
+            ]
+        );
         return redirect()->route('admin.supplierPayments.show', $payment_id)->with('success', __('trans.supplier payment added successfully'));
     }
 

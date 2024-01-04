@@ -102,6 +102,18 @@ class ClientCollectingController extends Controller
             ]
         );
 
+            /* Record Transaction On Statement Table */
+            $amount_paid = $request->amount_paid ?? null;
+            $amount_paid_bank = $request->amount_paid_bank ?? null;
+            $this -> insertToStatement(
+                $clientCollecting, // relatedModel
+                [
+                    'imports_cash'                  =>  $amount_paid,
+                    'imports_network'               =>  $amount_paid_bank,
+                    'notes'                         =>  ' سند قبض من العميل ' . $clientCollecting -> client -> name,
+                    'branch_id'                     =>  $request -> branch_id,
+                ]
+            );
         return redirect()->route('admin.clientCollecting.show', $collecting_id)->with('success', __('trans.client collecting added successfully'));
     }
 

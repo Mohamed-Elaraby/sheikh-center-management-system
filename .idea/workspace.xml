@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes" />
+    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientCollectingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientCollectingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientPaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierCollectingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierCollectingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierPaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -510,6 +517,7 @@
       <workItem from="1704094789070" duration="15262000" />
       <workItem from="1704176675324" duration="7747000" />
       <workItem from="1704262240890" duration="15881000" />
+      <workItem from="1704347445409" duration="5858000" />
     </task>
     <servers />
   </component>
@@ -533,14 +541,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1704118986924">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1704357719977">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704118986924" />
-    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1704262761351">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704357719977" />
+    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1704347735935">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1704262761351" />
+    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1704347735935" />
     <state x="537" y="323" width="998" height="717" key="SettingsEditor" timestamp="1704177197429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

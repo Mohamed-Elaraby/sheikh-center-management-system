@@ -116,6 +116,19 @@ class ClientPaymentController extends Controller
                 'client_id'                     => $request->client_id,
             ]
         );
+
+        /* Record Transaction On Statement Table */
+        $amount_paid = $request->amount_paid ?? null;
+        $amount_paid_bank = $request->amount_paid_bank ?? null;
+        $this -> insertToStatement(
+            $clientPayment, // relatedModel
+            [
+                'expenses_cash'                 =>  $amount_paid,
+                'expenses_network'              =>  $amount_paid_bank,
+                'notes'                         =>  ' سند صرف الى العميل ' . $clientPayment -> client -> name,
+                'branch_id'                     =>  $request -> branch_id,
+            ]
+        );
         return redirect()->route('admin.clientPayments.show', $payment_id)->with('success', __('trans.client payment added successfully'));
     }
 

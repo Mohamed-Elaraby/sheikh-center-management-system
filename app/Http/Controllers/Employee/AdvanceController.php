@@ -14,6 +14,7 @@ use App\Models\Images;
 use App\Models\ScheduledAdvance;
 use App\Traits\HelperTrait;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use PDF;
@@ -66,12 +67,13 @@ class AdvanceController extends Controller
                 {
                     $advance = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
                     $money_safe -> decreaseBalance($advance, $amount, $branch_id);
-
+                    $salary_month = Carbon::now()->subMonth()->toDateString();
+                    $salary_month_year = Carbon::parse($salary_month) -> format('Y-m');
                     $this -> insertToStatement(
                         $advance, // relatedModel
                             [
                             'advances_and_salaries_cash'        =>  $amount,
-                            'notes'                             =>  $advance -> notes,
+                            'notes'                             =>  'سلفة ' . $advance -> employee -> name . ' شهر ' . $salary_month_year,
                             'branch_id'                         =>  $branch_id,
                             ]
                     );
