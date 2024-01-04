@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" afterDir="false" />
-    </list>
+    <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -513,7 +509,7 @@
       <workItem from="1704004730759" duration="15301000" />
       <workItem from="1704094789070" duration="15262000" />
       <workItem from="1704176675324" duration="7747000" />
-      <workItem from="1704262240890" duration="15060000" />
+      <workItem from="1704262240890" duration="15881000" />
     </task>
     <servers />
   </component>
@@ -549,10 +545,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="537" y="323" width="998" height="717" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1704177197429" />
-    <state x="676" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1704176957882">
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1704347445680">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704176957882" />
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704347445680" />
     <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1704197733808">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
