@@ -177,7 +177,6 @@ $pageItem = __('trans.sale order')
                                         <div class="col-sm-2">
                                             <input type="text" name="hand_labour" class="form-control card_details hand_labour" id="hand_labour">
                                         </div>
-                                        <span id="amount_due_error" style="color: red; display: none"></span>
                                     </div>
 
                                     <div class="form-group row">
@@ -185,7 +184,6 @@ $pageItem = __('trans.sale order')
                                         <div class="col-sm-2">
                                             <input type="text" name="new_parts" class="form-control card_details new_parts" id="new_parts">
                                         </div>
-                                        <span id="amount_due_error" style="color: red; display: none"></span>
                                     </div>
 
                                     <div class="form-group row">
@@ -193,7 +191,13 @@ $pageItem = __('trans.sale order')
                                         <div class="col-sm-2">
                                             <input type="text" name="used_parts" class="form-control card_details used_parts" id="used_parts">
                                         </div>
-                                        <span id="amount_due_error" style="color: red; display: none"></span>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="card_details_tax" class="col-sm-4 col-form-label">تحديد مبلغ الضريبة</label>
+                                        <div class="col-sm-2">
+                                            <input readonly type="text" name="card_details_tax" class="form-control card_details card_details_tax" id="card_details_tax">
+                                        </div>
                                     </div>
                                     <span id="card_details_error" style="color: red; display: none"></span>
 
@@ -357,7 +361,7 @@ $pageItem = __('trans.sale order')
 
         // check if client balance less than amount due of invoice
         $(document).on('keyup', ':input', function () {
-            putHandLabourAndPartsAmount();
+            // putHandLabourAndPartsAmount();
             let client_id = $('#client_id').val();
             // console.log(client_id)
             $.ajax({
@@ -383,29 +387,29 @@ $pageItem = __('trans.sale order')
         //     putHandLabourAndPartsAmount();
         // });
 
-        function putHandLabourAndPartsAmount() {
-
-            let hand_labour = parseFloat($('#hand_labour').val())|| 0;
-            let new_parts = parseFloat($('#new_parts').val())|| 0;
-            let used_parts = parseFloat($('#used_parts').val())|| 0;
-            let total_vat = parseFloat($('#total_vat').val())|| 0;
-            let total_card_details_amount = hand_labour + new_parts + used_parts + total_vat ;
-            let total_amount_due = parseFloat($('#total_amount_due').val());
-
-            if (total_card_details_amount < 1 || total_card_details_amount > total_amount_due)
-            {
-                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('برجاء ادخال اجمالى مبالغ تفاصيل الكارت بشكل صحيح');
-            }
-            else if (total_card_details_amount !== total_amount_due)
-            {
-                let calc = total_amount_due - total_card_details_amount;
-                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' لا يساوى اجمالى مبغ الفاتورة المقدر ب ' + total_amount_due + ' متبقى ' + calc);
-            }
-            else
-            {
-                $('#card_details_error').removeClass('hasError').css('display','none').text();
-            }
-        }
+        // function putHandLabourAndPartsAmount() {
+        //
+        //     let hand_labour = parseFloat($('#hand_labour').val())|| 0;
+        //     let new_parts = parseFloat($('#new_parts').val())|| 0;
+        //     let used_parts = parseFloat($('#used_parts').val())|| 0;
+        //     let total_vat = parseFloat($('#total_vat').val())|| 0;
+        //     let total_card_details_amount = hand_labour + new_parts + used_parts + total_vat ;
+        //     let total_amount_due = parseFloat($('#total_amount_due').val());
+        //
+        //     if (total_card_details_amount < 1 || total_card_details_amount > total_amount_due)
+        //     {
+        //         $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('برجاء ادخال اجمالى مبالغ تفاصيل الكارت بشكل صحيح');
+        //     }
+        //     else if (total_card_details_amount !== total_amount_due)
+        //     {
+        //         let calc = total_amount_due - total_card_details_amount;
+        //         $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' لا يساوى اجمالى مبغ الفاتورة المقدر ب ' + total_amount_due + ' متبقى ' + calc);
+        //     }
+        //     else
+        //     {
+        //         $('#card_details_error').removeClass('hasError').css('display','none').text();
+        //     }
+        // }
     </script>
 
     <script>
