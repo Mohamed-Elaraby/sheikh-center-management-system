@@ -48,6 +48,7 @@ $(document).ready(function () {
         tax_row_removed = $(this).closest('tr').find('.item_tax_amount').val();
         sub_total_row_removed = $(this).closest('tr').find('.item_sub_total').val();
         calc_items_total_amounts(amount_taxable_row_removed, discount_row_removed, tax_row_removed, sub_total_row_removed);
+        putHandLabourAndPartsAmount();
         $(this).closest('tr').remove();
     });
 
@@ -200,6 +201,9 @@ $(document).ready(function () {
             {
                 $('#card_details_error').removeClass('hasError').css('display','none').text();
             }
+        }else
+        {
+            $('#card_details_error').removeClass('hasError').css('display','none').text();
         }
     }
 
