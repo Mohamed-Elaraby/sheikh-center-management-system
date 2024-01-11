@@ -120,7 +120,9 @@ Route::group(
         Route::get('transfer_product/{product_id}', 'InternalTransferController@transfer_product')->name('product.transfer');
         Route::post('transfer_product_store', 'InternalTransferController@transfer_product_store')->name('product.transfer.store');
         Route::get('change_product_status', 'InternalTransferController@change_product_status')->name('product.transfer.status.change');
-        Route::get('statement_selectBranch', 'StatementController@selectBranch')->name('statement.selectBranch');
+//        Route::get('statement_selectBranch', 'StatementController@selectBranch')->name('statement.selectBranch');
+        Route::get('statement_print', 'StatementController@statement_print')->name('statement.print');
+        Route::get('get_tables_of_statement', 'StatementController@get_tables_of_statement')->name('statement.table');
 
 
         Route::resources([

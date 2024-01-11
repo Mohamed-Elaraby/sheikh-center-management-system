@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/statement/statement_print.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/statement/tableOfStatement.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientCollectingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientCollectingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientPaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierCollectingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierCollectingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierPaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SupplierPaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/mainSidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/saleOrders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/saleOrders/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -517,7 +520,12 @@
       <workItem from="1704094789070" duration="15262000" />
       <workItem from="1704176675324" duration="7747000" />
       <workItem from="1704262240890" duration="15881000" />
-      <workItem from="1704347445409" duration="5858000" />
+      <workItem from="1704347445409" duration="7974000" />
+      <workItem from="1704693635491" duration="8226000" />
+      <workItem from="1704784080958" duration="1088000" />
+      <workItem from="1704804318366" duration="2037000" />
+      <workItem from="1704867268535" duration="16647000" />
+      <workItem from="1704947998960" duration="10541000" />
     </task>
     <servers />
   </component>
@@ -553,21 +561,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="537" y="323" width="998" height="717" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1704177197429" />
-    <state x="676" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1704347445680">
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1704948007024">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704347445680" />
-    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1704197733808">
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704948007024" />
+    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1704877183305">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704197733808" />
+    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704877183305" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1703768189118">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1703768189118" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1704118317224">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1704960501688">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704118317224" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704960501688" />
   </component>
 </project>

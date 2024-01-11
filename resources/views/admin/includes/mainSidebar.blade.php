@@ -515,13 +515,13 @@
                 @endif
             @endif
 
-            @if (auth()->user()->branch_id == null)
-                @php($route = route('admin.statement.selectBranch'))
-            @else
-                @php($route = route('admin.statement.index'))
-            @endif
+{{--            @if (auth()->user()->branch_id == null)--}}
+{{--                @php($route = route('admin.statement.selectBranch'))--}}
+{{--            @else--}}
+{{--                @php($route = route('admin.statement.index'))--}}
+{{--            @endif--}}
             <li class="active">
-                <a href="{{ $route }}">
+                <a href="{{ route('admin.statement.index') }}">
                     <i class="fa fa-paperclip"></i>
                     <span>اليومية</span>
                 </a>

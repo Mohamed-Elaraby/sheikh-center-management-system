@@ -1,78 +1,72 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>يومية</title>
-</head>
-<style>
-    .container {
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-    @media (min-width: 768px) {
-        .container {
-            width: 750px;
-        }
-    }
-    @media (min-width: 992px) {
-        .container {
-            width: 970px;
-        }
-    }
-    @media (min-width: 1200px) {
-        .container {
-            width: 1170px;
-        }
-    }
-    .items, .items th, .items td,
-    .notes_table, .notes_table th, .notes_table td
-    {
-        border: #0a0a0a 1px solid;
-        border-collapse: collapse;
-    }
-    .footer-info td{
-        padding-left: 10px;
-    }
-    .lightgrey
-    {
-        background-color: lightgrey;
-    }
-    .report-container {
-        page-break-after:always;
-    }
-    .repair_order
-    {
-        padding: 5px 2px;
-        border: 1px solid #000;
-        text-align: center;
-        width: 200px;
-        margin: 0 auto;
-    }
-    body {
+@extends('admin.layouts.app')
 
-        direction: rtl;
-        font-size: 10px;
-    }
-    @page {
-        header: page-header;
-        footer: page-footer;
-    }
-</style>
-<body>
+@section('title', 'Statement')
 
-<htmlpageheader name="page-header">
-    <div class="header">
+@section('content')
 
-    </div>
-</htmlpageheader>
+        <div class="row">
+            <div class="text-center">
+                <div class="col-xs-offset-3 col-xs-6">
+                    <div class="">
+{{--                        <form>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="branch_id">اختر الفرع</label>--}}
+{{--                                <select class="form-control" name="branch_id" id="branch_id">--}}
+{{--                                    <option value=""></option>--}}
+{{--                                    @foreach ($branch_list as $branch)--}}
+{{--                                        <option value="{{ $branch -> id }}">{{ $branch -> display_name }}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="start_date">من تاريخ</label>--}}
+{{--                                <input class="form-control" type="text" id="start_date" value="" placeholder="من تاريخ" autocomplete="off">--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="end_date">الى تاريخ</label>--}}
+{{--                                <input class="form-control" type="text" id="end_date" value="" placeholder="الى تاريخ" autocomplete="off">--}}
+{{--                            </div>--}}
+{{--                            <button type="button" id="filter_date_button" class="btn btn-success">بحث <i class="fa fa-search"></i> </button>--}}
+{{--                            <button type="reset" id="filter_date_button" class="btn btn-danger"><i class="fa fa-remove"></i> تفريغ خانات البحث </button>--}}
+{{--                            --}}{{--                    <button type="button" id="refresh_date_button" class="btn btn-warning btn-xs">اعادة تحميل <i class="fa fa-refresh"></i> </button>--}}
+{{--                        </form>--}}
 
-<div class="body_content">
-    <div class="container">
-        <table border="1" width="100%" style="font-size: 20px">
+<!-- Date and time range -->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form class="form-inline" style=" text-align: center; margin-top: 20px">
+                                    <!-- Date and time range -->
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                                <span>
+                                                  <i class="fa fa-calendar"></i> اختر تاريخ البحث
+                                                </span>
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                        </div>
+                                        <div class="input-group">
+                                            <select id="branch_id" class="form-control">
+                                                <option value="">اختر الفرع</option>
+                                                @foreach ($branch_list as $branch)
+                                                    <option value="{{ $branch -> id }}">{{ $branch -> display_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.form group -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="show_data">
+
+        </div>
+        {{--<table border="1" width="100%" style="font-size: 20px" class="text-center">
 
             <colgroup style="background-color:#56bffa">
                 <col>
@@ -183,7 +177,7 @@
                 </tr>
             </tbody>
         </table>
-        <table border="1" width="50%" style="font-size: 20px; background-color:#aeaeae">
+        <table border="1" width="50%" style="font-size: 20px; background-color:#aeaeae; margin: 0 auto" class="text-center">
             <tbody>
             <tr>
                 <th colspan="2">تاريخ اليومية</th>
@@ -231,15 +225,132 @@
             </tr>
 
             </tbody>
-        </table>
-    </div>
-</div>
+        </table>--}}
+@endsection
+@push('links')
+    <link rel="stylesheet" href="{{ asset('assets/receipt/css/orders.css') }}">
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+{{--    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">--}}
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+@endpush
 
-<htmlpagefooter name="page-footer">
-{{--    <hr style="border-top: 1px solid #000">--}}
-    <div class="footer-info" style=" margin-top: 10px; ">
+@push('scripts')
+    <script src="{{ asset('assets/receipt/js/mainReceipt.js') }}"></script>
 
-    </div>
-</htmlpagefooter>
-</body>
-</html>
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
+{{--    <script src="{{ asset('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>--}}
+
+    {{--<script>
+        $('#start_date').datepicker({
+            autoclose: true,
+            todayBtn: "linked",
+            format: "yyyy-mm-dd"
+        });
+        $('#end_date').datepicker({
+            autoclose: true,
+            todayBtn: "linked",
+            format: "yyyy-mm-dd"
+        });
+
+
+        // $('#filter_date_button').on('click', function () {
+        $(document).on('change', 'input, select', function () {
+            let start_date = $('#start_date').val();
+            let end_date    = $('#end_date').val();
+            let branch_id    = $('#branch_id').val();
+            getStatementByBranchAndDate(start_date, end_date, branch_id);
+
+        });
+
+        function getStatementByBranchAndDate(startDate, endDate, branchId) {
+            // console.log(startDate, endDate, branchId);
+
+            $.ajax({
+                url: "{{ route('admin.statement.table') }}",
+                method: 'GET',
+                data: {startDate: startDate, endDate: endDate, branchId: branchId},
+                success: function (data) {
+                    let show_data = $('.show_data');
+                        show_data.empty();
+                        show_data.html(data);
+                }
+            })
+        }
+
+    </script>--}}
+
+    <!-- date-range-picker -->
+    <script src="{{ asset('assets/bower_components/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+    <script>
+        let startDate,
+            endDate;
+            // branch_selected_name,
+            // table = $('#filter_result'),
+            // title_table = $('#title_result');
+
+        //Date range as a button
+
+            let branch_id = $('#branch_id').val();
+            $('#daterange-btn').daterangepicker(
+                {
+                    ranges: {
+                        'اليوم': [moment(), moment()],
+                        'امس': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'اخر 7 ايام': [moment().subtract(6, 'days'), moment()],
+                        'اخر 30 يوم': [moment().subtract(29, 'days'), moment()],
+                        'الشهر الحالى': [moment().startOf('month'), moment().endOf('month')],
+                        'الشهر الماضي': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                        'العام الحالى': [moment().startOf('year'), moment().endOf('year')],
+                        'العام الماضي': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment()
+                },
+                function (start, end) {
+                    // $(document).on('change', 'input, select', function () {
+                    // function getFilterResultByDate() {
+                    startDate = start.format('YYYY-M-D');
+                    endDate = end.format('YYYY-M-D');
+                    getFilterResult(startDate, endDate);
+                    // $('#daterange-btn span').text(start.format('YYYY-M-D') + ' - ' + end.format('YYYY-M-D'));
+                    // getStatementByBranchAndDate(startDate, endDate, branch_id);
+                    // });
+
+                }
+            );
+
+        function getFilterResult(start_d, end_d) {
+            start_d = startDate || '';
+            end_d = endDate || '';
+            branch_id = $('#branch_id').val();
+            getStatementByBranchAndDate(start_d, end_d, branch_id);
+            console.log(start_d, end_d, branch_id)
+
+        }
+
+        $('#branch_id').on('change', function () {
+            getFilterResult();
+        });
+
+        function getStatementByBranchAndDate(startDate, endDate, branchId) {
+            // console.log(startDate, endDate, branchId);
+
+            $.ajax({
+                url: "{{ route('admin.statement.table') }}",
+                method: 'GET',
+                data: {startDate: startDate, endDate: endDate, branchId: branchId},
+                success: function (data) {
+                    let show_data = $('.show_data');
+                    show_data.empty();
+                    show_data.html(data);
+                }
+            })
+        }
+    </script>
+@endpush
