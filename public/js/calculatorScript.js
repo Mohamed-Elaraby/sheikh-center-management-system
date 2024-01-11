@@ -203,6 +203,7 @@ $(document).ready(function () {
             }
         }else
         {
+            $('#hand_labour, #new_parts, #used_parts').val('');
             $('#card_details_error').removeClass('hasError').css('display','none').text();
         }
     }
