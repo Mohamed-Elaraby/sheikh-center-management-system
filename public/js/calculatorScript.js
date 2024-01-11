@@ -159,6 +159,7 @@ $(document).ready(function () {
         calc_subTotal = (calc_amount_taxable - discount_amount_or_percentage + calc_tax_amount).toFixed(2); // calculation sub total for item
         row.find('.item_sub_total').val(calc_subTotal); // insert sub total items into sub total field
         calc_items_total_amounts();
+        putHandLabourAndPartsAmount();
         $('#supplier_discount_amount').val(calc_supplier_discount_amount());
     });
 
@@ -170,7 +171,7 @@ $(document).ready(function () {
 
         let total_amount_due = _total_amount_due_element.val() || 0;
 
-        discount_amount_or_percentage = supplier_discount_type == 1 ? ( total_amount_due * supplier_discount /100):supplier_discount;
+        discount_amount_or_percentage = supplier_discount_type === 1 ? ( total_amount_due * supplier_discount /100):supplier_discount;
 
         return discount_amount_or_percentage  || 0;
     }
@@ -181,26 +182,29 @@ $(document).ready(function () {
         let new_parts = parseFloat($('#new_parts').val())|| 0;
         let used_parts = parseFloat($('#used_parts').val())|| 0;
         let total_vat = parseFloat(_total_vat_element.val())|| 0;
-        let total_card_details_amount = hand_labour + new_parts + used_parts + total_vat;
         let total_amount_due = parseFloat($('#total_amount_due').val());
+        let total_card_details_amount = hand_labour + new_parts + used_parts + total_vat;
 
-        if (total_card_details_amount < 1 || total_card_details_amount > total_amount_due)
+        if (total_amount_due > 0)
         {
-            $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('برجاء ادخال اجمالى مبالغ تفاصيل الكارت بشكل صحيح بحيث يكون الاجمالى = ' + total_amount_due);
-        }
-        else if (total_card_details_amount !== total_amount_due)
-        {
-            let calc = total_amount_due - total_card_details_amount;
-            $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' مع الضريبة لا يساوى اجمالى مبلغ الفاتورة المقدر ب ' + total_amount_due + ' متبقى ' + calc);
-        }
-        else
-        {
-            $('#card_details_error').removeClass('hasError').css('display','none').text();
+            if (total_card_details_amount < 1 || total_card_details_amount > total_amount_due)
+            {
+                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('برجاء ادخال اجمالى مبالغ تفاصيل الكارت بشكل صحيح بحيث يكون الاجمالى = ' + total_amount_due);
+            }
+            else if (total_card_details_amount !== total_amount_due)
+            {
+                let calc = total_amount_due - total_card_details_amount;
+                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' مع الضريبة لا يساوى اجمالى مبلغ الفاتورة المقدر ب ' + total_amount_due + ' متبقى ' + calc);
+            }
+            else
+            {
+                $('#card_details_error').removeClass('hasError').css('display','none').text();
+            }
         }
     }
 
-    $(document).on('keyup', ':input', function () {
-        putHandLabourAndPartsAmount();
-    });
+    // $(document).on('keyup', ':input', function () {
+    //     putHandLabourAndPartsAmount();
+    // });
 
 });

@@ -4,7 +4,6 @@
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/calculatorScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculatorScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/saleOrders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/saleOrders/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -519,7 +518,7 @@
       <workItem from="1704784080958" duration="1088000" />
       <workItem from="1704804318366" duration="2037000" />
       <workItem from="1704867268535" duration="16647000" />
-      <workItem from="1704947998960" duration="20176000" />
+      <workItem from="1704947998960" duration="21684000" />
     </task>
     <servers />
   </component>
@@ -547,10 +546,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1704357719977" />
-    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1704962773059">
+    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1704984242379">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1704962773059" />
+    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1704984242379" />
     <state x="537" y="323" width="998" height="717" key="SettingsEditor" timestamp="1704177197429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
