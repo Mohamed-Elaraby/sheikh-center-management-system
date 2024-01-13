@@ -57,7 +57,29 @@ use Illuminate\Support\Facades\Auth;
 class SaleOrder extends Model
 {
     protected $fillable = [
-        'invoice_number', 'invoice_date', 'total', 'discount', 'taxable_amount', 'total_vat', 'total_amount_due', 'amount_paid', 'amount_paid_bank', 'amount_due', 'status', 'user_id', 'branch_id', 'client_id', 'check_id', 'payment_method', 'payment_method_bank', 'payment_receipt_number', 'notes', 'date_of_supply'
+        'invoice_number',
+        'invoice_date',
+        'total',
+        'discount',
+        'taxable_amount',
+        'total_vat',
+        'total_amount_due',
+        'amount_paid',
+        'amount_paid_bank',
+        'amount_due',
+        'status',
+        'user_id',
+        'branch_id',
+        'client_id',
+        'check_id',
+        'payment_method',
+        'payment_method_bank',
+        'payment_receipt_number',
+        'notes',
+        'date_of_supply',
+        'hand_labour',
+        'new_parts',
+        'used_parts',
     ];
 
     protected $appends = ['date_supply', 'time_supply'];

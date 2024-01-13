@@ -26,6 +26,9 @@ class CreateSaleOrdersTable extends Migration
             $table->double('amount_paid')->nullable();
             $table->double('amount_paid_bank')->nullable();
             $table->double('amount_due');
+            $table->double('hand_labour')->nullable();
+            $table->double('new_parts')->nullable();
+            $table->double('used_parts')->nullable();
             $table->enum('status', ['close', 'open'])->default('close');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('branch_id')->unsigned();

@@ -48,8 +48,8 @@ $(document).ready(function () {
         tax_row_removed = $(this).closest('tr').find('.item_tax_amount').val();
         sub_total_row_removed = $(this).closest('tr').find('.item_sub_total').val();
         calc_items_total_amounts(amount_taxable_row_removed, discount_row_removed, tax_row_removed, sub_total_row_removed);
-        putHandLabourAndPartsAmount();
         $(this).closest('tr').remove();
+        putHandLabourAndPartsAmount();
     });
 
     // calculating invoice data
@@ -160,8 +160,8 @@ $(document).ready(function () {
         calc_subTotal = (calc_amount_taxable - discount_amount_or_percentage + calc_tax_amount).toFixed(2); // calculation sub total for item
         row.find('.item_sub_total').val(calc_subTotal); // insert sub total items into sub total field
         calc_items_total_amounts();
-        putHandLabourAndPartsAmount();
         $('#supplier_discount_amount').val(calc_supplier_discount_amount());
+        putHandLabourAndPartsAmount();
     });
 
     function calc_supplier_discount_amount() {
@@ -207,9 +207,5 @@ $(document).ready(function () {
             $('#card_details_error').removeClass('hasError').css('display','none').text();
         }
     }
-
-    // $(document).on('keyup', ':input', function () {
-    //     putHandLabourAndPartsAmount();
-    // });
 
 });

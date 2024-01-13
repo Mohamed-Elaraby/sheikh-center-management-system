@@ -400,6 +400,45 @@ class SaleOrderController extends Controller
                     'user_id'                   => $user_id,
                     'client_id'                 => $request->client_id,
                 ]);
+
+                /* insert into statement table */
+                $amount_paid = $request->amount_paid ?? null;
+
+                $total_vat = $request -> total_vat  ?? null;
+
+                $amount_paid_bank_transfer = null ;
+
+                if ($request -> payment_method_bank == 'تحويل بنكى')
+                {
+                    $amount_paid_bank = null;
+                    $amount_paid_bank_transfer = $request -> amount_paid_bank;
+                }
+                elseif ($request -> payment_method_bank == 'شبكة')
+                {
+                    $amount_paid_bank = $request -> amount_paid_bank;
+                    $amount_paid_bank_transfer = null;
+                }
+                elseif ($request -> payment_method_bank == 'STC-Pay')
+                {
+                    $amount_paid_bank = $request -> amount_paid_bank;
+                    $amount_paid_bank_transfer = null;
+                }
+
+                /* Record Transaction On Statement Table */
+                $this -> insertToStatement(
+                    $saleOrder, // relatedModel
+                    [
+                        'imports_cash'                  =>  $amount_paid,
+                        'imports_network'               =>  $amount_paid_bank,
+                        'imports_bank_transfer'         =>  $amount_paid_bank_transfer,
+                        'card_details_hand_labour'      =>  $request -> hand_labour,
+                        'card_details_new_parts'        =>  $request -> new_parts,
+                        'card_details_used_parts'       =>  $request -> used_parts,
+                        'card_details_tax'              =>  $total_vat,
+                        'notes'                         =>  'فاتورة مبيعات رقم / ' . $saleOrder -> invoice_number . ' ' . __('trans.check number') . ' ' . $saleOrder ->check -> check_number,
+                        'branch_id'                     =>  $request -> branch_id,
+                    ]
+                );
             }
 
             /* Update Money Safe Amount */
