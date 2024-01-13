@@ -213,18 +213,33 @@
                 <td width="70%">نقدى للادارة</td>
             </tr>
             <tr>
-                <td width="30%">{{ $total_imports_network + $total_imports_bank_transfer }}</td>
+                @php($total_bank_transfer_and_network = $total_imports_network + $total_imports_bank_transfer)
+                <td width="30%">{{ $total_bank_transfer_and_network }}</td>
                 <td width="70%">بنك تحويل وشبكة</td>
             </tr>
             <tr>
                 <td width="30%">
+{{--                    {{--}}
+{{--                        $moneySafeOpeningBalance +--}}
+{{--                        $total_imports_cash ---}}
+{{--                        $total_expenses +--}}
+{{--                        $total_custody_administration ---}}
+{{--                        $total_cash_to_administration ---}}
+{{--                        $total_advances_and_salaries--}}
+{{--                    }}--}}
+
                     {{
                         $moneySafeOpeningBalance +
-                        $total_imports_cash -
-                        $total_expenses +
+                        $total_imports +
                         $total_custody_administration -
+                        $total_expenses -
+                        $total_advances_and_salaries -
                         $total_cash_to_administration -
-                        $total_advances_and_salaries
+                        $total_bank_transfer_and_network
+
+
+
+
                     }}
                 </td>
                 <td width="70%">الرصيد الحالى</td>

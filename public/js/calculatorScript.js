@@ -194,7 +194,7 @@ $(document).ready(function () {
             }
             else if (total_card_details_amount !== total_amount_due)
             {
-                let calc = total_amount_due - total_card_details_amount;
+                let calc = parseFloat(total_amount_due - total_card_details_amount).toFixed(2);
                 $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' مع الضريبة لا يساوى اجمالى مبلغ الفاتورة المقدر ب ' + total_amount_due + ' متبقى ' + calc);
             }
             else
