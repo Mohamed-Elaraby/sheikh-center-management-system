@@ -43,7 +43,14 @@
             <col>
             <thead>
             <tr>
-                <th colspan="15">تاريخ اليومية</th>
+                <th colspan="15">
+                    يومية فرع
+                        [ {{ $branch -> display_name }} ]
+                    من تاريخ
+                        [ {{ \Carbon\Carbon::parse($startDate)->dayName . ' ' . $startDate }} ]
+                    حتى تاريخ
+                        [ {{ \Carbon\Carbon::parse($endDate)->dayName . ' ' . $endDate }} ]
+                </th>
             </tr>
             <tr>
                 <th colspan="3">الوارد</th>
@@ -128,7 +135,14 @@
         <table border="1" width="50%" style="font-size: 20px; background-color:#aeaeae; margin: 0 auto" class="text-center">
             <tbody>
             <tr>
-                <th colspan="2">تاريخ اليومية</th>
+                <th colspan="2">
+                    يومية فرع
+                    [ {{ $branch -> display_name }} ]
+                    من تاريخ
+                    [ {{ \Carbon\Carbon::parse($startDate)->dayName . ' ' . $startDate }} ]
+                    حتى تاريخ
+                    [ {{ \Carbon\Carbon::parse($endDate)->dayName . ' ' . $endDate }} ]
+                </th>
             </tr>
             <tr>
                 <td width="30%">{{ $moneySafeOpeningBalance }}</td>

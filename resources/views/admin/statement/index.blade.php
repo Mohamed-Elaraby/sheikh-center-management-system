@@ -8,30 +8,6 @@
             <div class="text-center">
                 <div class="col-xs-offset-3 col-xs-6">
                     <div class="">
-{{--                        <form>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label for="branch_id">اختر الفرع</label>--}}
-{{--                                <select class="form-control" name="branch_id" id="branch_id">--}}
-{{--                                    <option value=""></option>--}}
-{{--                                    @foreach ($branch_list as $branch)--}}
-{{--                                        <option value="{{ $branch -> id }}">{{ $branch -> display_name }}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label for="start_date">من تاريخ</label>--}}
-{{--                                <input class="form-control" type="text" id="start_date" value="" placeholder="من تاريخ" autocomplete="off">--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label for="end_date">الى تاريخ</label>--}}
-{{--                                <input class="form-control" type="text" id="end_date" value="" placeholder="الى تاريخ" autocomplete="off">--}}
-{{--                            </div>--}}
-{{--                            <button type="button" id="filter_date_button" class="btn btn-success">بحث <i class="fa fa-search"></i> </button>--}}
-{{--                            <button type="reset" id="filter_date_button" class="btn btn-danger"><i class="fa fa-remove"></i> تفريغ خانات البحث </button>--}}
-{{--                            --}}{{--                    <button type="button" id="refresh_date_button" class="btn btn-warning btn-xs">اعادة تحميل <i class="fa fa-refresh"></i> </button>--}}
-{{--                        </form>--}}
-
-<!-- Date and time range -->
                         <div class="row">
                             <div class="col-xs-12">
                                 <form class="form-inline" style=" text-align: center; margin-top: 20px">

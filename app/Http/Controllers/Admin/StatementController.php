@@ -28,6 +28,9 @@ class StatementController extends Controller
 //            $date = $date_range;
 
             if (!empty($start_date) && !empty($end_date) && !empty($branch_id)){
+                $branch = Branch::findOrFail($branch_id);
+                $startDate  = $start_date;
+                $endDate    = $end_date;
                 $statements = Statement::where('branch_id', $branch_id) -> whereBetween('updated_at', $date_range)->get();
                 $total_imports_cash = Statement::where('branch_id', $branch_id) -> whereBetween('updated_at', $date_range)->sum('imports_cash');
                 $total_imports_network = Statement::where('branch_id', $branch_id) -> whereBetween('updated_at', $date_range)->sum('imports_network');
@@ -51,6 +54,9 @@ class StatementController extends Controller
                 $moneySafeOpeningBalance = MoneySafeOpeneingBalance::where('branch_id', $branch_id) -> whereDate('updated_at', $start_date)->first('balance') -> balance ?? 0;
                 return view('admin.statement.tableOfStatement',
                     compact(
+                        'branch',
+                        'startDate',
+                        'endDate',
                         'statements',
                         'total_imports_cash',
                         'total_imports_network',
