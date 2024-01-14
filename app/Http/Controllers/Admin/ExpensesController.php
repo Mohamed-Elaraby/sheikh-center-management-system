@@ -9,6 +9,7 @@ use App\Models\Branch;
 use App\Models\Expenses;
 use App\Models\ExpensesType;
 use App\Models\MoneySafe;
+use App\Models\Statement;
 use App\Traits\HelperTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -102,6 +103,12 @@ class ExpensesController extends Controller
             /* insert into expenses table */
             $amount_paid = $request->amount ?? null;
 
+            /* insert record under field custody administration network */
+            Statement::create([
+                'custody_administration_network'    => $amount_paid,
+                'notes'                             => 'عهدة من الادارة',
+                'branch_id'                         =>  $request -> branch_id,
+            ]);
 
             /* Record Transaction On Statement Table */
             $this -> insertToStatement(

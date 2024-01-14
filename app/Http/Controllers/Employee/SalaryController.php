@@ -20,6 +20,7 @@ use App\Models\MoneySafe;
 use App\Models\Reward;
 use App\Models\SalaryYears;
 use App\Models\ScheduledAdvance;
+use App\Models\Statement;
 use App\Models\Vacation;
 use App\Traits\HelperTrait;
 use Carbon\Carbon;
@@ -176,15 +177,21 @@ class SalaryController extends Controller
             {
                 $registerToEmployeeLog = EmployeeSalaryLog::create($total_advances_rewards + ['salary_month' => $salary_month] + $salaryRequest);
                 $bank ->decreaseBalance($registerToEmployeeLog, $request -> final_salary, $branch_id);
-
+                /* insert record under field custody administration network */
+                Statement::create([
+                    'custody_administration_network'    => $request -> final_salary,
+                    'notes'                             => 'عهدة من الادارة',
+                    'branch_id'                         =>  $branch_id,
+                ]);
+                /* Record Transaction On Statement Table */
                 $this -> insertToStatement(
-                        $registerToEmployeeLog, // relatedModel
-                        [
-                            'advances_and_salaries_network'     =>  $request -> final_salary,
-                            'notes'                             =>  'راتب ' . $registerToEmployeeLog -> employee -> name . ' شهر ' . $salary_month_year,
-                            'branch_id'                         =>  $branch_id,
-                        ]
-                    );
+                    $registerToEmployeeLog, // relatedModel
+                    [
+                        'advances_and_salaries_network'     =>  $request -> final_salary,
+                        'notes'                             =>  'راتب ' . $registerToEmployeeLog -> employee -> name . ' شهر ' . $salary_month_year,
+                        'branch_id'                         =>  $branch_id,
+                    ]
+                );
             }
         }
 

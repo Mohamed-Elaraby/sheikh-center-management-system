@@ -12,6 +12,7 @@ use App\Models\Advance;
 use App\Models\Employee;
 use App\Models\Images;
 use App\Models\ScheduledAdvance;
+use App\Models\Statement;
 use App\Traits\HelperTrait;
 use Auth;
 use Carbon\Carbon;
@@ -79,6 +80,7 @@ class AdvanceController extends Controller
                     );
                 }
 
+
             }else
             {
                 $bank = new balanceOfBank();
@@ -92,11 +94,21 @@ class AdvanceController extends Controller
                     $advance = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
                     $bank -> decreaseBalance($advance, $amount, $branch_id);
 
+                    $salary_month = Carbon::now()->toDateString();
+                    $salary_month_year = Carbon::parse($salary_month) -> format('Y-m');
+
+                    /* insert record under field custody administration network */
+                    Statement::create([
+                        'custody_administration_network'    => $amount,
+                        'notes'                             => 'عهدة من الادارة',
+                        'branch_id'                         =>  $branch_id,
+                    ]);
+                    /* Record Transaction On Statement Table */
                     $this -> insertToStatement(
                         $advance, // relatedModel
                         [
                             'advances_and_salaries_network'     =>  $amount,
-                            'notes'                             =>  $advance -> notes,
+                            'notes'                             =>  'سلفة ' . $advance -> employee -> name . ' شهر ' . $salary_month_year,
                             'branch_id'                         =>  $branch_id,
                         ]
                     );
