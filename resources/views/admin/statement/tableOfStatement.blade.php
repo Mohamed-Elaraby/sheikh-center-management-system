@@ -114,9 +114,9 @@
                 @foreach($statements as $statement)
                     <tr id="{{ $statement -> id }}">
                         <td>
-                            @if($statement -> imports_cash || $statement -> imports_network || $statement -> imports_bank_transfer)
+{{--                            {{ dd($statement -> imports_cash, $statement -> imports_network ,$statement -> imports_bank_transfer) }}--}}
+                            @if($statement -> card_details_hand_labour || $statement -> card_details_new_parts || $statement -> card_details_used_parts)
                                     <i class="fa fa-edit card_details_edit" data-toggle="modal" data-target="#modal-default"></i>
-
                             @endif
                         </td>
                         <td class="imports_cash">{{ $statement -> imports_cash }}</td>

@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/statement/card_details_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2023_12_12_154038_create_statements_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_12_12_154038_create_statements_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/trans.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/trans.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/saleOrders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/saleOrders/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/statement_print.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/statement_print.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/tableOfStatement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/tableOfStatement.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -543,7 +529,7 @@
       <workItem from="1705300759535" duration="16707000" />
       <workItem from="1705382881391" duration="23237000" />
       <workItem from="1705555217349" duration="24412000" />
-      <workItem from="1705730535177" duration="11287000" />
+      <workItem from="1705730535177" duration="13008000" />
     </task>
     <servers />
   </component>
@@ -571,14 +557,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1705565836677" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1705748647266">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1705753775823">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1705748647266" />
-    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1705588318686">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1705753775823" />
+    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1705754355234">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1705588318686" />
+    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1705754355234" />
     <state x="537" y="323" width="998" height="717" key="SettingsEditor" timestamp="1704177197429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
