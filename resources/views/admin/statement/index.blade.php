@@ -182,7 +182,10 @@
             let content = $('.card_details_content');
             let url = "{{ route('admin.statement.edit', ':id') }}";
             url = url.replace(':id', id);
-
+            console.log(imports_cash);
+            console.log(imports_network);
+            console.log(imports_bank_transfer);
+            console.log(total_imports);
             $.ajax({
                 url: url,
                 method: 'GET',
