@@ -2,10 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/statement/card_details_edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BankController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PurchaseOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SaleOrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Employee/AdvanceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2023_12_12_154038_create_statements_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2023_12_12_154038_create_statements_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/trans.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/trans.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/trans.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/saleOrders/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/saleOrders/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/statement_print.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/statement_print.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/statement/tableOfStatement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/statement/tableOfStatement.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +51,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -210,19 +225,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Http\Controllers\Admin" />
-      <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes" />
-      <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes\roles_and_permisiions" />
-      <recent name="D:\Laravel Projects\sheikh-center-management-system\resources\views\admin\includes\js_files\roles_and_permissions" />
-      <recent name="D:\Laravel Projects\sheikh-center-management-system\app\Http\Controllers\Admin" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\admin\statement" />
       <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views" />
       <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Interfaces" />
       <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\discounts" />
       <recent name="D:\Laravel Projects\sheikh_center_system\scms\resources\views\employee\rewards" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Laravel Projects\sheikh_center_system\scms\app\Http\Controllers\Admin" />
+      <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes" />
+      <recent name="D:\Laravel Projects\sheikh-center-management-system\public\js\includes\roles_and_permisiions" />
+      <recent name="D:\Laravel Projects\sheikh-center-management-system\resources\views\admin\includes\js_files\roles_and_permissions" />
+      <recent name="D:\Laravel Projects\sheikh-center-management-system\app\Http\Controllers\Admin" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -524,7 +539,11 @@
       <workItem from="1705075557714" duration="121000" />
       <workItem from="1705128385935" duration="11117000" />
       <workItem from="1705211851200" duration="18000" />
-      <workItem from="1705211909636" duration="8399000" />
+      <workItem from="1705211909636" duration="17158000" />
+      <workItem from="1705300759535" duration="16707000" />
+      <workItem from="1705382881391" duration="23237000" />
+      <workItem from="1705555217349" duration="24412000" />
+      <workItem from="1705730535177" duration="11287000" />
     </task>
     <servers />
   </component>
@@ -548,33 +567,37 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1705213985046">
+    <state x="552" y="178" key="#Inspections" timestamp="1705565836677">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1705213985046" />
-    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1705221412993">
+    <state x="552" y="178" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1705565836677" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1705748647266">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1705221412993" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1705748647266" />
+    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1705588318686">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1705588318686" />
     <state x="537" y="323" width="998" height="717" key="SettingsEditor" timestamp="1704177197429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="537" y="323" width="998" height="717" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1704177197429" />
-    <state x="676" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1705212016667">
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog" timestamp="1705730738339">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1705212016667" />
-    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1704877183305">
+    <state x="676" y="359" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1705730738339" />
+    <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1705589763581">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704877183305" />
+    <state x="227" y="85" width="1567" height="865" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1705589763581" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1703768189118">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1703768189118" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1704960501688">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1705589339250">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1704960501688" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1705589339250" />
   </component>
 </project>

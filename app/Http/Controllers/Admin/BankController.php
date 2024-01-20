@@ -112,9 +112,9 @@ class BankController extends Controller
             $this -> insertToStatement(
                 $bank, // relatedModel
                 [
-                    'custody_administration_network'       =>  $amount_paid,
-                    'notes'                             =>  $bank -> notes,
-                    'branch_id'                         =>  $request -> branch_id,
+                    'custody_administration_network'        =>  $amount_paid,
+                    'notes'                                 =>  'عهدة من الادارة',
+                    'branch_id'                             =>  $request -> branch_id,
                 ]
             );
 

@@ -14,6 +14,7 @@ use App\Models\Product;
 use App\Models\ProductCode;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderProducts;
+use App\Models\Statement;
 use App\Models\Supplier;
 use App\Models\SupplierTransaction;
 use App\Models\User;
@@ -192,6 +193,16 @@ class PurchaseOrderController extends Controller
                 $amount_paid = $request->amount_paid ?? null;
                 $amount_paid_bank = $request->amount_paid_bank ?? null;
 //                $total_vat = $request -> total_vat  ?? null;
+
+                if ($amount_paid_bank > 0)
+                {
+                    /* insert record under field custody administration network */
+                    Statement::create([
+                        'custody_administration_network'    => $amount_paid_bank,
+                        'notes'                             => 'عهدة من الادارة',
+                        'branch_id'                         =>  $request -> branch_id,
+                    ]);
+                }
 
                 /* Record Transaction On Statement Table */
                 $this -> insertToStatement(
@@ -526,6 +537,31 @@ class PurchaseOrderController extends Controller
                 'user_id' => $user_id,
                 'branch_id' => $request -> branch_id,
             ]);
+
+            /* insert into statement table */
+            $amount_paid = $request->amount_paid ?? null;
+            $amount_paid_bank = $request->amount_paid_bank ?? null;
+
+            if ($amount_paid_bank > 0)
+            {
+                /* insert record under field custody administration network */
+                Statement::create([
+                    'custody_administration_network'    => $amount_paid_bank,
+                    'notes'                             => 'عهدة من الادارة',
+                    'branch_id'                         =>  $request -> branch_id,
+                ]);
+            }
+
+            /* Record Transaction On Statement Table */
+            $this -> insertToStatement(
+                $purchaseOrder, // relatedModel
+                [
+                    'expenses_cash'                 =>  $amount_paid,
+                    'expenses_network'              =>  $amount_paid_bank,
+                    'notes'                         =>  'فاتورة مشتريات رقم / ' . $purchaseOrder -> invoice_number,
+                    'branch_id'                     =>  $request -> branch_id,
+                ]
+            );
 
             return redirect() -> route('admin.purchaseOrders.show', $purchaseOrder->id) -> with('success', __('trans.purchase order added successfully'));
 

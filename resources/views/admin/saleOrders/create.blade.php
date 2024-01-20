@@ -383,33 +383,7 @@ $pageItem = __('trans.sale order')
                 }
             })
         });
-        // $(document).on('keyup', '.card_details', function () {
-        //     putHandLabourAndPartsAmount();
-        // });
 
-        // function putHandLabourAndPartsAmount() {
-        //
-        //     let hand_labour = parseFloat($('#hand_labour').val())|| 0;
-        //     let new_parts = parseFloat($('#new_parts').val())|| 0;
-        //     let used_parts = parseFloat($('#used_parts').val())|| 0;
-        //     let total_vat = parseFloat($('#total_vat').val())|| 0;
-        //     let total_card_details_amount = hand_labour + new_parts + used_parts + total_vat ;
-        //     let total_amount_due = parseFloat($('#total_amount_due').val());
-        //
-        //     if (total_card_details_amount < 1 || total_card_details_amount > total_amount_due)
-        //     {
-        //         $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('برجاء ادخال اجمالى مبالغ تفاصيل الكارت بشكل صحيح');
-        //     }
-        //     else if (total_card_details_amount !== total_amount_due)
-        //     {
-        //         let calc = total_amount_due - total_card_details_amount;
-        //         $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' لا يساوى اجمالى مبغ الفاتورة المقدر ب ' + total_amount_due + ' متبقى ' + calc);
-        //     }
-        //     else
-        //     {
-        //         $('#card_details_error').removeClass('hasError').css('display','none').text();
-        //     }
-        // }
     </script>
 
     <script>

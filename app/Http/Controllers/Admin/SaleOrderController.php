@@ -159,7 +159,7 @@ class SaleOrderController extends Controller
 
                 /* insert into statement table */
                 $amount_paid = $request->amount_paid ?? null;
-
+                $amount_paid_bank = $request->amount_paid_bank ?? null;
                 $total_vat = $request -> total_vat  ?? null;
 
                 $amount_paid_bank_transfer = null ;

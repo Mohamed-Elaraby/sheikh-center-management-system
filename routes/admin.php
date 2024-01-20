@@ -77,8 +77,8 @@ Route::group(
         Route::get('saleOrderReturnProducts/{sale_order_return_id}', 'SaleOrderReturnController@saleOrderReturnProducts')->name('saleOrderReturnProducts');
         Route::get('purchaseOrderReturnProducts/{purchase_order_return_id}', 'PurchaseOrderReturnController@purchaseOrderReturnProducts')->name('purchaseOrderReturnProducts');
 
-        Route::get('openSaleOrderProducts/{open_sale_order_id}', 'OpenSaleOrderController@openSaleOrderProducts')->name('openSaleOrderProducts');
-        Route::get('openPurchaseOrderProducts/{purchase_order_id}', 'OpenPurchaseOrderController@openPurchaseOrderProducts')->name('openPurchaseOrderProducts');
+//        Route::get('openSaleOrderProducts/{open_sale_order_id}', 'OpenSaleOrderController@openSaleOrderProducts')->name('openSaleOrderProducts');
+//        Route::get('openPurchaseOrderProducts/{purchase_order_id}', 'OpenPurchaseOrderController@openPurchaseOrderProducts')->name('openPurchaseOrderProducts');
 
         Route::get('moneySafe/{branch_id}', 'MoneySafeController@index')->name('moneySafe.index');
         Route::get('moneySafeOperations/{branch_id}', 'MoneySafeController@operations')->name('moneySafe.operations');
@@ -146,13 +146,13 @@ Route::group(
             'products'                  => 'ProductController',
             'productCodes'              => 'ProductCodeController',
             'purchaseOrders'            => 'PurchaseOrderController',
-            'openPurchaseOrders'        => 'OpenPurchaseOrderController',
+//            'openPurchaseOrders'        => 'OpenPurchaseOrderController',
             'supplierPayments'          => 'SupplierPaymentController',
             'supplierCollecting'        => 'SupplierCollectingController',
             'clientPayments'            => 'ClientPaymentController',
             'clientCollecting'          => 'ClientCollectingController',
             'saleOrders'                => 'SaleOrderController',
-            'openSaleOrders'            => 'OpenSaleOrderController',
+//            'openSaleOrders'            => 'OpenSaleOrderController',
             'expenses'                  => 'ExpensesController',
             'expensesTypes'             => 'ExpensesTypeController',
             'saleOrderReturns'          => 'SaleOrderReturnController',

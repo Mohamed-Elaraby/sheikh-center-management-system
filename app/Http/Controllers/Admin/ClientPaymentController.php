@@ -9,6 +9,7 @@ use App\Models\Branch;
 use App\Models\Client;
 use App\Models\ClientPayment;
 use App\Models\MoneySafe;
+use App\Models\Statement;
 use App\Traits\HelperTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -118,6 +119,14 @@ class ClientPaymentController extends Controller
         );
 
         /* Record Transaction On Statement Table */
+
+        /* insert record under field custody administration network */
+        Statement::create([
+            'custody_administration_network'    => $amount_paid_bank,
+            'notes'                             => 'عهدة من الادارة',
+            'branch_id'                         =>  $request -> branch_id,
+        ]);
+
         $amount_paid = $request->amount_paid ?? null;
         $amount_paid_bank = $request->amount_paid_bank ?? null;
         $this -> insertToStatement(

@@ -7,6 +7,7 @@ use App\Http\Requests\supplierPayment\AddAndUpdateSupplierPaymentRequest;
 use App\Models\Bank;
 use App\Models\Branch;
 use App\Models\MoneySafe;
+use App\Models\Statement;
 use App\Models\Supplier;
 use App\Models\SupplierPayment;
 use App\Traits\HelperTrait;
@@ -112,12 +113,20 @@ class SupplierPaymentController extends Controller
                 'user_id' => $user_id,
                 'branch_id' => $request -> branch_id,
             ]);
+
+            /* insert record under field custody administration network */
+            Statement::create([
+                'custody_administration_network'    => $amount_paid_bank,
+                'notes'                             => 'عهدة من الادارة',
+                'branch_id'                         =>  $request -> branch_id,
+            ]);
         }
 
 
         /* Record Transaction On Statement Table */
         $amount_paid = $request->amount_paid ?? null;
         $amount_paid_bank = $request->amount_paid_bank ?? null;
+
         $this -> insertToStatement(
             $supplierPayment, // relatedModel
             [

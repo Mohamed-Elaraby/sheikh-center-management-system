@@ -15,20 +15,20 @@ class CreateStatementsTable extends Migration
     {
         Schema::create('statements', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->double('imports_cash')->nullable();
-            $table->double('imports_network')->nullable();
-            $table->double('imports_bank_transfer')->nullable();
-            $table->double('card_details_hand_labour')->nullable();
-            $table->double('card_details_new_parts')->nullable();
-            $table->double('card_details_used_parts')->nullable();
-            $table->double('card_details_tax')->nullable();
-            $table->double('expenses_cash')->nullable();
-            $table->double('expenses_network')->nullable();
-            $table->double('custody_administration_cash')->nullable();
-            $table->double('custody_administration_network')->nullable();
-            $table->double('cash_to_administration')->nullable();
-            $table->double('advances_and_salaries_cash')->nullable();
-            $table->double('advances_and_salaries_network')->nullable();
+            $table->decimal('imports_cash', 10, 2)->nullable();
+            $table->decimal('imports_network', 10, 2)->nullable();
+            $table->decimal('imports_bank_transfer', 10, 2)->nullable();
+            $table->decimal('card_details_hand_labour', 10, 2)->nullable();
+            $table->decimal('card_details_new_parts', 10, 2)->nullable();
+            $table->decimal('card_details_used_parts', 10, 2)->nullable();
+            $table->decimal('card_details_tax', 10, 2)->nullable();
+            $table->decimal('expenses_cash', 10, 2)->nullable();
+            $table->decimal('expenses_network', 10, 2)->nullable();
+            $table->decimal('custody_administration_cash', 10, 2)->nullable();
+            $table->decimal('custody_administration_network', 10, 2)->nullable();
+            $table->decimal('cash_to_administration', 10, 2)->nullable();
+            $table->decimal('advances_and_salaries_cash', 10, 2)->nullable();
+            $table->decimal('advances_and_salaries_network', 10, 2)->nullable();
             $table->longText('notes')->nullable();
             $table->bigInteger('sale_order_id')->unsigned()->nullable();
             $table->bigInteger('client_payment_id')->unsigned()->nullable();

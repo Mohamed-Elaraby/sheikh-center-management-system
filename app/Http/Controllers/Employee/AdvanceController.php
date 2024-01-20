@@ -68,7 +68,7 @@ class AdvanceController extends Controller
                 {
                     $advance = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
                     $money_safe -> decreaseBalance($advance, $amount, $branch_id);
-                    $salary_month = Carbon::now()->subMonth()->toDateString();
+                    $salary_month = Carbon::now();
                     $salary_month_year = Carbon::parse($salary_month) -> format('Y-m');
                     $this -> insertToStatement(
                         $advance, // relatedModel
@@ -94,9 +94,8 @@ class AdvanceController extends Controller
                     $advance = Advance::create($request -> all() + ['user_id' => $user_id, 'status' => 'مسددة بالكامل']);
                     $bank -> decreaseBalance($advance, $amount, $branch_id);
 
-                    $salary_month = Carbon::now()->toDateString();
+                    $salary_month = Carbon::now();
                     $salary_month_year = Carbon::parse($salary_month) -> format('Y-m');
-
                     /* insert record under field custody administration network */
                     Statement::create([
                         'custody_administration_network'    => $amount,

@@ -41,12 +41,11 @@
             </div>
         </div>
         <br><br>
-        <div class="show_data">
-
-        </div>
+        <div class="show_data"></div>
 
 @endsection
 @push('links')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('assets/receipt/css/orders.css') }}">
     <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
 {{--    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">--}}
@@ -54,6 +53,15 @@
     <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+    <style>
+        .table_striped_class tr:nth-child(odd) {
+            background-color: #d4cfcf;
+        }
+        .card_details_edit:hover
+        {
+            cursor: pointer;
+        }
+    </style>
 @endpush
 
 @push('scripts')
@@ -100,8 +108,6 @@
             end_d = endDate || '';
             branch_id = $('#branch_id').val();
             getStatementByBranchAndDate(start_d, end_d, branch_id);
-            console.log(start_d, end_d, branch_id)
-
         }
 
         $('#branch_id').on('change', function () {
@@ -120,5 +126,176 @@
                 }
             })
         }
+
+        $(document).on('click', '#update_button', function () {
+            let id = $('#statement_id').val();
+            let hand_labour = $('#hand_labour').val() || null;
+            let new_parts = $('#new_parts').val() || null;
+            let used_parts = $('#used_parts').val() || null;
+            let total_imports = $('#total_imports_area').text();
+            let start_date = $('#start_date').val();
+            let end_date = $('#end_date').val();
+            let branch_id = $('#branch_id').val();
+            let url = "{{ route('admin.statement.update', ':id') }}";
+            url = url.replace(':id', id);
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: url,
+                method: 'PUT',
+                data: {'card_details_hand_labour': hand_labour, 'card_details_new_parts': new_parts, 'card_details_used_parts': used_parts, 'total_imports': total_imports},
+                success: function (data) {
+                    getStatementByBranchAndDate(start_date, end_date, branch_id);
+                    console.log(data)
+                    // getStatementByBranchAndDate();
+                    // getStatementByBranchAndDate(start_d, end_d, branch_id);
+                    // content.empty();
+                    // content.html(data);
+                }
+            })
+        })
+    </script>
+
+    <script>
+
+
+
+        function showCardDetails (cardDetailsClass)
+        {
+            let that = cardDetailsClass;
+            let row = that.closest('tr');
+            let imports_cash = parseFloat(row.find('.imports_cash').text()).toFixed(2) || 0 ;
+            let imports_network = parseFloat(row.find('.imports_network').text()).toFixed(2) || 0 ;
+            let imports_bank_transfer = parseFloat(row.find('.imports_bank_transfer').text()).toFixed(2) || 0 ;
+            let total_imports = parseFloat(imports_cash + imports_network + imports_bank_transfer).toFixed(2);
+            let total_imports_result = $('.total_imports_area');
+            let hand_labour = row.find('.hand_labour_edit').text();
+            let new_parts = row.find('.new_parts_edit').text();
+            let used_parts = row.find('.used_parts_edit').text();
+            let total_vat = row.find('.tax_edit').text();
+            let id = row.attr('id');
+            let start_date = $('#start_date').val();
+            let end_date = $('#end_date').val();
+            let branch_id = $('#branch_id').val();
+            let content = $('.card_details_content');
+            let url = "{{ route('admin.statement.edit', ':id') }}";
+            url = url.replace(':id', id);
+
+            $.ajax({
+                url: url,
+                method: 'GET',
+                data: {
+                    'id': id,
+                    'hand_labour': hand_labour,
+                    'new_parts': new_parts,
+                    'used_parts': used_parts,
+                    'total_imports': total_imports,
+                    'total_vat': total_vat,
+                    'start_date': start_date,
+                    'end_date': end_date,
+                    'branch_id': branch_id,
+                },
+                success: function (data) {
+                    content.empty();
+                    content.html(data);
+                }
+            })
+        }
+
+        $(document).on('click', '.card_details_edit', function () {
+            showCardDetails ($(this));
+        });
+
+        $(document).on('mouseenter', '.card_details_edit', function () {
+            make_row_hover($(this));
+        });
+
+        $(document).on('mouseleave', '.card_details_edit', function () {
+            remove_row_hover($(this));
+        });
+
+        function make_row_hover (cardDetailsClass)
+        {
+            let that = cardDetailsClass;
+            let row = that.closest('tr');
+            let card_details_title = $('.card_details_title');
+            that.css({'color': 'red'});
+            row.find('.card_details_item').css({'color': 'red'});
+            card_details_title.css({'color': 'red'});
+        }
+
+        function remove_row_hover (cardDetailsClass)
+        {
+            let that = cardDetailsClass;
+            let row = that.closest('tr');
+            let card_details_title = $('.card_details_title');
+            that.css({'color': '#333'});
+            row.find('.card_details_item').css({'color': '#333'});
+            card_details_title.css({'color': '#333'});
+        }
+        function convertStringToNumber (string)
+        {
+            return parseFloat(parseFloat(string).toFixed(2));
+        }
+        // convertStringToNumber('1350.00');
+        $(document).on('keyup', ':input', function () {
+            let update_button = $('#update_button');
+            let hand_labour = convertStringToNumber($('#hand_labour').val() || 0);
+            let new_parts = convertStringToNumber($('#new_parts').val() || 0);
+            let used_parts = convertStringToNumber($('#used_parts').val() || 0);
+            let total_vat = convertStringToNumber($('#total_vat').val());
+
+            let sum_card_amounts = hand_labour + new_parts + used_parts + total_vat;
+            sum_card_amounts = convertStringToNumber(sum_card_amounts).toFixed(2);
+
+            let total_imports_area = $('#total_imports_area');
+
+            let total_imports_amounts = convertStringToNumber(total_imports_area.text()).toFixed(2);
+
+            // console.log(typeof hand_labour);
+            // console.log(typeof new_parts);
+            // console.log(typeof used_parts);
+            // console.log(typeof total_vat);
+            // console.log(typeof sum_card_amounts);
+            // console.log(typeof total_imports_amounts);
+            // console.log( total_vat);
+            // console.log(typeof sum_card_amounts + ' - ' + typeof total_imports_amounts);
+            // console.log(sum_card_amounts + ' - ' + total_imports_amounts);
+
+
+            if (sum_card_amounts === total_imports_amounts)
+            {
+                total_imports_area.removeClass('bg-danger').addClass('bg-success');
+                update_button.css({'display': 'inline-block'});
+                $('#card_details_validation_error').removeClass('hasError').css('display','none').text();
+            }
+            else
+            {
+                if (total_imports_amounts > 0)
+                {
+                    // if (sum_card_amounts < $('#total_vat').val() || sum_card_amounts > total_imports_amounts)
+                    // {
+                    //     console.log(sum_card_amounts + ' - ' + total_imports_amounts + ' - ' + $('#total_vat').val());
+                    //     console.log(typeof sum_card_amounts+ ' - ' + typeof total_imports_amounts + ' - ' + typeof $('#total_vat').val());
+                    //     $('#card_details_validation_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('برجاء ادخال اجمالى مبالغ تفاصيل الكارت بشكل صحيح بحيث يكون الاجمالى = ' + total_imports_amounts);
+                    // }
+                    if (sum_card_amounts !== total_imports_amounts)
+                    {
+                        let calc = parseFloat(total_imports_amounts - sum_card_amounts).toFixed(2);
+                        $('#card_details_validation_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + sum_card_amounts + ' مع الضريبة لا يساوى اجمالى مبلغ الفاتورة المقدر ب ' + total_imports_amounts + ' متبقى ' + calc);
+                    }
+                }
+                total_imports_area.removeClass('bg-success').addClass('bg-danger');
+                update_button.css({'display': 'none'});
+            }
+
+        })
+
+    </script>
+
+    <script>
+
     </script>
 @endpush
