@@ -186,10 +186,10 @@
             let url = "{{ route('admin.statement.edit', ':id') }}";
             url = url.replace(':id', id);
 
-            // console.log('imports_cash = ' + typeof imports_cash + ' - ' + imports_cash);
-            // console.log('imports_network = ' + typeof imports_network + ' - ' + imports_network);
-            // console.log('imports_bank_transfer = ' + typeof imports_bank_transfer + ' - ' + imports_bank_transfer);
-            // console.log('total_imports = ' + typeof total_imports + ' - ' + total_imports);
+            console.log('imports_cash = ' + typeof imports_cash + ' - ' + imports_cash);
+            console.log('imports_network = ' + typeof imports_network + ' - ' + imports_network);
+            console.log('imports_bank_transfer = ' + typeof imports_bank_transfer + ' - ' + imports_bank_transfer);
+            console.log('total_imports = ' + typeof total_imports + ' - ' + total_imports);
             $.ajax({
                 url: url,
                 method: 'GET',
@@ -261,12 +261,12 @@
 
             let total_imports_amounts = makeToFixedNumber(total_imports_area.text());
 
-            // console.log('hand_labour = ' + typeof hand_labour + ' - ' + hand_labour);
-            // console.log('new_parts = ' + typeof new_parts + ' - ' + new_parts);
-            // console.log('used_parts = ' + typeof used_parts + ' - ' + used_parts);
-            // console.log('total_vat = ' + typeof total_vat + ' - ' + total_vat);
-            // console.log('sum_card_amounts = ' + typeof sum_card_amounts + ' - ' + sum_card_amounts);
-            // console.log('total_imports_amounts = ' + typeof total_imports_amounts + ' - ' + total_imports_amounts);
+            console.log('hand_labour = ' + typeof hand_labour + ' - ' + hand_labour);
+            console.log('new_parts = ' + typeof new_parts + ' - ' + new_parts);
+            console.log('used_parts = ' + typeof used_parts + ' - ' + used_parts);
+            console.log('total_vat = ' + typeof total_vat + ' - ' + total_vat);
+            console.log('sum_card_amounts = ' + typeof sum_card_amounts + ' - ' + sum_card_amounts);
+            console.log('total_imports_amounts = ' + typeof total_imports_amounts + ' - ' + total_imports_amounts);
 
 
             if (sum_card_amounts === total_imports_amounts)
