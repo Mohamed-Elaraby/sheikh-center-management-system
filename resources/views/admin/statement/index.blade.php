@@ -161,15 +161,18 @@
     <script>
 
 
+        function makeToFixedNumber(num) {
+            return Math.trunc(num*100)/100;
+        }
 
         function showCardDetails (cardDetailsClass)
         {
             let that = cardDetailsClass;
             let row = that.closest('tr');
-            let imports_cash = parseFloat(row.find('.imports_cash').text()).toFixed(2) || 0 ;
-            let imports_network = parseFloat(row.find('.imports_network').text()).toFixed(2) || 0 ;
-            let imports_bank_transfer = parseFloat(row.find('.imports_bank_transfer').text()).toFixed(2) || 0 ;
-            let total_imports = parseFloat(imports_cash + imports_network + imports_bank_transfer).toFixed(2);
+            let imports_cash = makeToFixedNumber(row.find('.imports_cash').text()) || 0 ;
+            let imports_network = makeToFixedNumber(row.find('.imports_network').text()) || 0 ;
+            let imports_bank_transfer = makeToFixedNumber(row.find('.imports_bank_transfer').text()) || 0 ;
+            let total_imports = makeToFixedNumber(imports_cash + imports_network + imports_bank_transfer);
             let total_imports_result = $('.total_imports_area');
             let hand_labour = row.find('.hand_labour_edit').text();
             let new_parts = row.find('.new_parts_edit').text();
@@ -182,10 +185,11 @@
             let content = $('.card_details_content');
             let url = "{{ route('admin.statement.edit', ':id') }}";
             url = url.replace(':id', id);
-            console.log(imports_cash);
-            console.log(imports_network);
-            console.log(imports_bank_transfer);
-            console.log(total_imports);
+
+            // console.log('imports_cash = ' + typeof imports_cash + ' - ' + imports_cash);
+            // console.log('imports_network = ' + typeof imports_network + ' - ' + imports_network);
+            // console.log('imports_bank_transfer = ' + typeof imports_bank_transfer + ' - ' + imports_bank_transfer);
+            // console.log('total_imports = ' + typeof total_imports + ' - ' + total_imports);
             $.ajax({
                 url: url,
                 method: 'GET',
@@ -238,34 +242,31 @@
             row.find('.card_details_item').css({'color': '#333'});
             card_details_title.css({'color': '#333'});
         }
-        function convertStringToNumber (string)
-        {
-            return parseFloat(parseFloat(string).toFixed(2));
-        }
+        // function convertStringToNumber (string)
+        // {
+        //     return parseFloat(parseFloat(string).toFixed(2));
+        // }
         // convertStringToNumber('1350.00');
         $(document).on('keyup', ':input', function () {
             let update_button = $('#update_button');
-            let hand_labour = convertStringToNumber($('#hand_labour').val() || 0);
-            let new_parts = convertStringToNumber($('#new_parts').val() || 0);
-            let used_parts = convertStringToNumber($('#used_parts').val() || 0);
-            let total_vat = convertStringToNumber($('#total_vat').val());
+            let hand_labour = makeToFixedNumber($('#hand_labour').val() || 0);
+            let new_parts = makeToFixedNumber($('#new_parts').val() || 0);
+            let used_parts = makeToFixedNumber($('#used_parts').val() || 0);
+            let total_vat = makeToFixedNumber($('#total_vat').val());
 
             let sum_card_amounts = hand_labour + new_parts + used_parts + total_vat;
-            sum_card_amounts = convertStringToNumber(sum_card_amounts).toFixed(2);
+            sum_card_amounts = makeToFixedNumber(sum_card_amounts);
 
             let total_imports_area = $('#total_imports_area');
 
-            let total_imports_amounts = convertStringToNumber(total_imports_area.text()).toFixed(2);
+            let total_imports_amounts = makeToFixedNumber(total_imports_area.text());
 
-            // console.log(typeof hand_labour);
-            // console.log(typeof new_parts);
-            // console.log(typeof used_parts);
-            // console.log(typeof total_vat);
-            // console.log(typeof sum_card_amounts);
-            // console.log(typeof total_imports_amounts);
-            // console.log( total_vat);
-            // console.log(typeof sum_card_amounts + ' - ' + typeof total_imports_amounts);
-            // console.log(sum_card_amounts + ' - ' + total_imports_amounts);
+            // console.log('hand_labour = ' + typeof hand_labour + ' - ' + hand_labour);
+            // console.log('new_parts = ' + typeof new_parts + ' - ' + new_parts);
+            // console.log('used_parts = ' + typeof used_parts + ' - ' + used_parts);
+            // console.log('total_vat = ' + typeof total_vat + ' - ' + total_vat);
+            // console.log('sum_card_amounts = ' + typeof sum_card_amounts + ' - ' + sum_card_amounts);
+            // console.log('total_imports_amounts = ' + typeof total_imports_amounts + ' - ' + total_imports_amounts);
 
 
             if (sum_card_amounts === total_imports_amounts)
