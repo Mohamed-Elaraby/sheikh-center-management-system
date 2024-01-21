@@ -177,25 +177,49 @@ $(document).ready(function () {
         return discount_amount_or_percentage  || 0;
     }
 
+    function makeToFixedNumber(num) {
+        // return Math.trunc(num*100)/100;
+        return Math.round(num * 100) / 100;
+    }
+
     function putHandLabourAndPartsAmount() {
+
+        let amount_paid = parseFloat($('#amount_paid').val())|| 0;
+        let amount_paid_bank = parseFloat($('#amount_paid_bank').val())|| 0;
+
+        let total_amounts_paid  = parseFloat(amount_paid + amount_paid_bank);
+        console.log('total_amounts_paid = ' + total_amounts_paid, typeof total_amounts_paid);
 
         let hand_labour = parseFloat($('#hand_labour').val())|| 0;
         let new_parts = parseFloat($('#new_parts').val())|| 0;
         let used_parts = parseFloat($('#used_parts').val())|| 0;
-        let total_vat = parseFloat(_total_vat_element.val())|| 0;
-        let total_amount_due = parseFloat($('#total_amount_due').val());
-        let total_card_details_amount = hand_labour + new_parts + used_parts + total_vat;
 
-        if (total_amount_due > 0)
+
+        let calculate_tax_amount = makeToFixedNumber(total_amounts_paid - ( total_amounts_paid / 1.15)); /* 15% */
+        let card_details_tax = $('#card_details_tax');
+        let total_card_details_amount = hand_labour + new_parts + used_parts + calculate_tax_amount;
+
+        card_details_tax.val(calculate_tax_amount);
+        console.log('total_card_details_amount = ' + total_card_details_amount, typeof total_card_details_amount);
+        console.log('calculate_tax_amount = ' + calculate_tax_amount, typeof calculate_tax_amount);
+
+
+
+
+        // let total_vat = parseFloat(_total_vat_element.val())|| 0;
+        // let total_amount_due = parseFloat($('#total_amount_due').val());
+        // let total_card_details_amount = hand_labour + new_parts + used_parts + total_vat;
+
+        if (total_amounts_paid > 0)
         {
-            if (total_card_details_amount < 1 || total_card_details_amount > total_amount_due)
+            if (total_card_details_amount < 1 || total_card_details_amount > total_amounts_paid)
             {
-                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('برجاء ادخال اجمالى مبالغ تفاصيل الكارت بشكل صحيح بحيث يكون الاجمالى = ' + total_amount_due);
+                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('برجاء ادخال اجمالى مبالغ تفاصيل الكارت بشكل صحيح بحيث يكون الاجمالى = ' + total_amounts_paid);
             }
-            else if (total_card_details_amount !== total_amount_due)
+            else if (total_card_details_amount !== total_amounts_paid)
             {
-                let calc = parseFloat(total_amount_due - total_card_details_amount).toFixed(2);
-                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' مع الضريبة لا يساوى اجمالى مبلغ الفاتورة المقدر ب ' + total_amount_due + ' متبقى ' + calc);
+                let calc = parseFloat(total_amounts_paid - total_card_details_amount).toFixed(2);
+                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' مع الضريبة لا يساوى اجمالى مبلغ الفاتورة المقدر ب ' + total_amounts_paid + ' متبقى ' + calc);
             }
             else
             {

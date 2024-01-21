@@ -132,6 +132,7 @@
             let hand_labour = $('#hand_labour').val() || null;
             let new_parts = $('#new_parts').val() || null;
             let used_parts = $('#used_parts').val() || null;
+            let tax_amount = $('#total_vat').val() || null;
             let total_imports = $('#total_imports_area').text();
             let start_date = $('#start_date').val();
             let end_date = $('#end_date').val();
@@ -145,7 +146,7 @@
                 },
                 url: url,
                 method: 'PUT',
-                data: {'card_details_hand_labour': hand_labour, 'card_details_new_parts': new_parts, 'card_details_used_parts': used_parts, 'total_imports': total_imports},
+                data: {'card_details_hand_labour': hand_labour, 'card_details_new_parts': new_parts, 'card_details_used_parts': used_parts, 'tax_amount': tax_amount, 'total_imports': total_imports},
                 success: function (data) {
                     getStatementByBranchAndDate(start_date, end_date, branch_id);
                     console.log(data)

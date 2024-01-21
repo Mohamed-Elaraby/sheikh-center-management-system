@@ -275,11 +275,11 @@ class StatementController extends Controller
     {
         if ($request->ajax())
         {
-            $total_vat = ['total_vat' => $statement->card_details_tax];
-            $card_amounts = array_sum($request->except('total_imports')+ $total_vat);
+//            $total_vat = ['total_vat' => $statement->card_details_tax];
+            $card_amounts = array_sum($request->except('total_imports'));
 //            dd($card_amounts, gettype($card_amounts));
             if ($card_amounts === floatval($request->total_imports)){
-                $statement -> update($request->except('total_imports'));
+                $statement -> update($request->except(['total_imports', 'tax_amount']));
                 return response() ->json('updated success', 200);
             }
         }
