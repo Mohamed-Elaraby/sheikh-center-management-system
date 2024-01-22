@@ -79,6 +79,39 @@ $pageItem = __('trans.client collecting')
                         {!! Form::textarea('notes', null, ['class' => 'form-control']) !!}
 
                     </div>
+
+                    <div>
+                        <label for="" class="text-center"><h3>تفاصيل الكارت</h3></label>
+                        <div class="form-group row">
+                            <label for="hand_labour" class="col-sm-4 col-form-label">تحديد مبلغ اجور اليد</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="hand_labour" class="form-control card_details hand_labour" id="hand_labour">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="new_parts" class="col-sm-4 col-form-label">تحديد مبلغ القطع الجديدة</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="new_parts" class="form-control card_details new_parts" id="new_parts">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="used_parts" class="col-sm-4 col-form-label">تحديد مبلغ القطع المستعملة</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="used_parts" class="form-control card_details used_parts" id="used_parts">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="card_details_tax" class="col-sm-4 col-form-label">تحديد مبلغ الضريبة</label>
+                            <div class="col-sm-8">
+                                <input readonly type="text" name="card_details_tax" class="form-control card_details card_details_tax" id="card_details_tax">
+                            </div>
+                        </div>
+                        <span id="card_details_error" style="color: red; display: none"></span>
+
+                    </div>
                 </div>
                     <div class="form-group">
                             {!! Form::submit($pageType, ['class' => 'form-control btn btn-success']) !!}
@@ -149,5 +182,65 @@ $pageItem = __('trans.client collecting')
                 }
             }
         })
+    </script>
+    <script>
+        $(document).on('keyup change', ':input', function () {
+            putHandLabourAndPartsAmount();
+        });
+
+        function makeToFixedNumber(num) {
+            // return Math.trunc(num*100)/100;
+            return Math.round(num * 100) / 100;
+        }
+
+        function putHandLabourAndPartsAmount() {
+
+            let amount_paid = parseFloat($('#amount_paid').val())|| 0;
+            let amount_paid_bank = parseFloat($('#amount_paid_bank').val())|| 0;
+
+            let total_amounts_paid  = parseFloat(amount_paid + amount_paid_bank);
+            console.log('total_amounts_paid = ' + total_amounts_paid, typeof total_amounts_paid);
+
+            let hand_labour = parseFloat($('#hand_labour').val())|| 0;
+            let new_parts = parseFloat($('#new_parts').val())|| 0;
+            let used_parts = parseFloat($('#used_parts').val())|| 0;
+
+
+            let calculate_tax_amount = Math.round(total_amounts_paid - ( total_amounts_paid / 1.15)); /* 15% */
+            let card_details_tax = $('#card_details_tax');
+            let total_card_details_amount = makeToFixedNumber(hand_labour + new_parts + used_parts + calculate_tax_amount);
+
+            card_details_tax.val(calculate_tax_amount);
+            console.log('total_card_details_amount = ' + total_card_details_amount, typeof total_card_details_amount);
+            console.log('calculate_tax_amount = ' + calculate_tax_amount, typeof calculate_tax_amount);
+
+
+
+
+            // let total_vat = parseFloat(_total_vat_element.val())|| 0;
+            // let total_amount_due = parseFloat($('#total_amount_due').val());
+            // let total_card_details_amount = hand_labour + new_parts + used_parts + total_vat;
+
+            if (total_amounts_paid > 0)
+            {
+                if (total_card_details_amount < 1 || total_card_details_amount > total_amounts_paid)
+                {
+                    $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('برجاء ادخال اجمالى مبالغ تفاصيل الكارت بشكل صحيح بحيث يكون الاجمالى = ' + total_amounts_paid);
+                }
+                else if (total_card_details_amount !== total_amounts_paid)
+                {
+                    let calc = parseFloat(total_amounts_paid - total_card_details_amount).toFixed(2);
+                    $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' مع الضريبة لا يساوى اجمالى مبلغ السند المقدر ب ' + total_amounts_paid + ' متبقى ' + calc);
+                }
+                else
+                {
+                    $('#card_details_error').removeClass('hasError').css('display','none').text();
+                }
+            }else
+            {
+                $('#hand_labour, #new_parts, #used_parts').val('');
+                $('#card_details_error').removeClass('hasError').css('display','none').text();
+            }
+        }
     </script>
 @endpush

@@ -111,6 +111,10 @@ class ClientCollectingController extends Controller
                     'imports_cash'                  =>  $amount_paid,
                     'imports_network'               =>  $amount_paid_bank,
                     'notes'                         =>  ' سند قبض من العميل ' . $clientCollecting -> client -> name,
+                    'card_details_hand_labour'      =>  $request -> hand_labour,
+                    'card_details_new_parts'        =>  $request -> new_parts,
+                    'card_details_used_parts'       =>  $request -> used_parts,
+                    'card_details_tax'              =>  $request -> card_details_tax,
                     'branch_id'                     =>  $request -> branch_id,
                 ]
             );

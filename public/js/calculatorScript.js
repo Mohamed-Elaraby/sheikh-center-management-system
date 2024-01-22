@@ -195,9 +195,9 @@ $(document).ready(function () {
         let used_parts = parseFloat($('#used_parts').val())|| 0;
 
 
-        let calculate_tax_amount = makeToFixedNumber(total_amounts_paid - ( total_amounts_paid / 1.15)); /* 15% */
+        let calculate_tax_amount = Math.round(total_amounts_paid - ( total_amounts_paid / 1.15)); /* 15% */
         let card_details_tax = $('#card_details_tax');
-        let total_card_details_amount = hand_labour + new_parts + used_parts + calculate_tax_amount;
+        let total_card_details_amount = makeToFixedNumber(hand_labour + new_parts + used_parts + calculate_tax_amount);
 
         card_details_tax.val(calculate_tax_amount);
         console.log('total_card_details_amount = ' + total_card_details_amount, typeof total_card_details_amount);

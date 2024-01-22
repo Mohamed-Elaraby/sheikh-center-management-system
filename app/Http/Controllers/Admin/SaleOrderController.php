@@ -160,7 +160,7 @@ class SaleOrderController extends Controller
                 /* insert into statement table */
                 $amount_paid = $request->amount_paid ?? null;
                 $amount_paid_bank = $request->amount_paid_bank ?? null;
-                $total_vat = $request -> total_vat  ?? null;
+                $total_vat = $request -> card_details_tax  ?? null;
 
                 $amount_paid_bank_transfer = null ;
 
@@ -404,7 +404,7 @@ class SaleOrderController extends Controller
                 /* insert into statement table */
                 $amount_paid = $request->amount_paid ?? null;
 
-                $total_vat = $request -> total_vat  ?? null;
+                $total_vat = $request -> card_details_tax  ?? null;
 
                 $amount_paid_bank_transfer = null ;
 
