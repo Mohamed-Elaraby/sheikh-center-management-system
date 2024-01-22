@@ -130,7 +130,40 @@ $(document).ready(function () {
             _total_amount_due_element.val(total_amount_due_with_round); // insert total amount inside total input
             _amount_due_element.val(amount_due_with_round); // insert total amount inside total input
         }
+        check_client_balance();
     });
+
+    function makeToFixedNumber(num) {
+        // return Math.trunc(num*100)/100;
+        return Math.round(num * 100) / 100;
+    }
+
+    // check if client balance less than amount due of invoice
+    function check_client_balance (){
+        let client_id = $('#client_id').val();
+        // console.log(client_id)
+        $.ajax({
+            url:  route('admin.getClientBalance'),
+            method: 'GET',
+            data: {client_id: client_id},
+            success: function (client_balance) {
+                let amount_due = makeToFixedNumber($('#amount_due').val());
+                client_balance = makeToFixedNumber(client_balance);
+                let calc_difference_amounts = makeToFixedNumber(amount_due - client_balance);
+                console.log(amount_due, ' - ' , calc_difference_amounts);
+                console.log(typeof amount_due, ' - ' , typeof calc_difference_amounts);
+                if(amount_due != 0 && client_balance < amount_due)
+                {
+                    $('#amount_due_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('رصيد حساب العميل ' + client_balance + ' وهذا المبلغ لا يغطى قيمة المبلغ المتبقى المقدر ب ' + amount_due + ' يرجى تحصيل مبلغ ' + calc_difference_amounts + ' من العميل .');
+                }
+                else
+                {
+                    $('#amount_due_error').removeClass('hasError').css('display','none').text();
+                }
+            }
+        });
+    }
+
 
     // calculating sub total amount per item
     $(document).on('keyup change', ':input', function () {
@@ -162,6 +195,7 @@ $(document).ready(function () {
         calc_items_total_amounts();
         $('#supplier_discount_amount').val(calc_supplier_discount_amount());
         putHandLabourAndPartsAmount();
+        check_client_balance();
     });
 
     function calc_supplier_discount_amount() {
@@ -177,10 +211,6 @@ $(document).ready(function () {
         return discount_amount_or_percentage  || 0;
     }
 
-    function makeToFixedNumber(num) {
-        // return Math.trunc(num*100)/100;
-        return Math.round(num * 100) / 100;
-    }
 
     function putHandLabourAndPartsAmount() {
 

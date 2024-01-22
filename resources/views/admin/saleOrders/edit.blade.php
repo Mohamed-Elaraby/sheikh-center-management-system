@@ -354,16 +354,12 @@
         })
 
         // if page contain any class hasError stop submitted form
-        $('input[type="submit"]').on('click', function (e) {
+        $('input[name="final_save"]').on('click', function (e) {
             if ($('.hasError').length > 0)
             {
                 e.preventDefault();
             }
-        })
-        // editQuantity();
-        function editQuantity() {
-
-        }
+        });
 
 
         $(document).on('keyup', '.item_quantity', function () {

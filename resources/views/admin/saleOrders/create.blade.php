@@ -315,12 +315,12 @@ $pageItem = __('trans.sale order')
         })
 
         // if page contain any class hasError stop submitted form
-        // $('input[type="submit"]').on('click', function (e) {
-        //     if ($('.hasError').length > 0)
-        //     {
-        //         e.preventDefault();
-        //     }
-        // })
+        $('input[name="final_save"]').on('click', function (e) {
+            if ($('.hasError').length > 0)
+            {
+                e.preventDefault();
+            }
+        });
 
         // check if item quantity of product want to selling less than item quantity in branch
         $(document).on('keyup', '.item_quantity', function () {
@@ -359,30 +359,6 @@ $pageItem = __('trans.sale order')
 
         });
 
-        // check if client balance less than amount due of invoice
-        $(document).on('keyup', ':input', function () {
-            // putHandLabourAndPartsAmount();
-            let client_id = $('#client_id').val();
-            // console.log(client_id)
-            $.ajax({
-                url: "{{ route('admin.getClientBalance') }}",
-                method: 'GET',
-                data: {client_id: client_id},
-                success: function (client_balance) {
-                    let amount_due = $('#amount_due').val();
-                    // console.log(amount_due)
-                    // console.log(client_balance)
-                    if(amount_due != 0 && client_balance < amount_due)
-                    {
-                        $('#amount_due_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('رصيد حساب العميل لا يغطى قيمة المبلغ المتبقى');
-                    }
-                    else
-                    {
-                        $('#amount_due_error').removeClass('hasError').css('display','none').text();
-                    }
-                }
-            })
-        });
 
     </script>
 
