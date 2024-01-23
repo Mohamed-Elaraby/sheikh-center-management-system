@@ -422,30 +422,6 @@
         //     }
         // });
 
-        // check if client balance less than amount due of invoice
-        $(document).on('keyup', ':input', function () {
-            let client_id = $('#client_id').val();
-            // console.log(client_id)
-            $.ajax({
-                url: "{{ route('admin.getClientBalance') }}",
-                method: 'GET',
-                data: {client_id: client_id},
-                success: function (balance_of_client) {
-                    let client_balance = parseFloat(balance_of_client);
-                    let amount_due = parseFloat($('#amount_due').val());
-                    // console.log(amount_due)
-                    // console.log(client_balance)
-                    if(amount_due != 0 && client_balance < amount_due)
-                    {
-                        $('#amount_due_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('رصيد حساب العميل لا يغطى قيمة المبلغ المتبقى');
-                    }
-                    else
-                    {
-                        $('#amount_due_error').removeClass('hasError').css('display','none').text();
-                    }
-                }
-            })
-        })
     </script>
 
     <script>

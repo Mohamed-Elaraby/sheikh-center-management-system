@@ -229,7 +229,7 @@ $(document).ready(function () {
             else if (total_card_details_amount !== total_amounts_paid)
             {
                 let calc = parseFloat(total_amounts_paid - total_card_details_amount).toFixed(2);
-                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' مع الضريبة لا يساوى اجمالى مبلغ الفاتورة المقدر ب ' + total_amounts_paid + ' متبقى ' + calc);
+                $('#card_details_error').addClass('hasError').css({'display': 'inline', 'font-size': 'small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('اجمالى المبلغ الذى ادخلته ' + total_card_details_amount + ' مع الضريبة لا يساوى اجمالى المبلغ المدفوع المقدر ب ' + total_amounts_paid + ' متبقى ' + calc);
             }
             else
             {
