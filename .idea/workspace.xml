@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7dc241fc-3029-4213-8e12-d79c00ee3e9e" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/calculatorScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculatorScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/calculatorScript_edit_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculatorScript_edit_page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/saleOrders/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/saleOrders/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StatementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/clientCollecting/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clientCollecting/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -535,7 +534,8 @@
       <workItem from="1705817334286" duration="12446000" />
       <workItem from="1705898633105" duration="6379000" />
       <workItem from="1705926355371" duration="6078000" />
-      <workItem from="1705988870084" duration="1532000" />
+      <workItem from="1705988870084" duration="2274000" />
+      <workItem from="1706163256505" duration="1956000" />
     </task>
     <servers />
   </component>
@@ -567,18 +567,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1705753775823" />
-    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1705931206292">
+    <state x="744" y="293" key="FileChooserDialogImpl" timestamp="1705992247639">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1705931206292" />
+    <state x="744" y="293" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1705992247639" />
     <state x="537" y="323" width="998" height="717" key="SettingsEditor" timestamp="1704177197429">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="537" y="323" width="998" height="717" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1704177197429" />
-    <state x="562" y="226" key="com.intellij.ide.util.TipDialog" timestamp="1705989056944">
+    <state x="562" y="226" key="com.intellij.ide.util.TipDialog" timestamp="1706163259791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="562" y="226" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1705989056944" />
+    <state x="562" y="226" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1706163259791" />
     <state x="227" y="85" width="1567" height="865" key="find.popup" timestamp="1705589763581">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
