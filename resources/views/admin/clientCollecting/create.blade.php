@@ -123,6 +123,12 @@ $pageItem = __('trans.client collecting')
     </div>
 @endsection
 @push('links')
+
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+
+
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{ asset('assets') }}/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
