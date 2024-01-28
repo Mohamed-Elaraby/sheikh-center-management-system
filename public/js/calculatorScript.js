@@ -150,8 +150,8 @@ $(document).ready(function () {
                 let amount_due = makeToFixedNumber($('#amount_due').val());
                 client_balance = makeToFixedNumber(client_balance);
                 let calc_difference_amounts = makeToFixedNumber(amount_due - client_balance);
-                console.log(amount_due, ' - ' , calc_difference_amounts);
-                console.log(typeof amount_due, ' - ' , typeof calc_difference_amounts);
+                // console.log(amount_due, ' - ' , calc_difference_amounts);
+                // console.log(typeof amount_due, ' - ' , typeof calc_difference_amounts);
                 if(amount_due != 0 && client_balance < amount_due)
                 {
                     $('#amount_due_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('رصيد حساب العميل ' + client_balance + ' وهذا المبلغ لا يغطى قيمة المبلغ المتبقى المقدر ب ' + amount_due + ' يرجى تحصيل مبلغ ' + calc_difference_amounts + ' من العميل .');
