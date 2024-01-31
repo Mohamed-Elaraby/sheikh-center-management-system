@@ -179,7 +179,7 @@ class SaleOrderController extends Controller
                     $amount_paid_bank = $request -> amount_paid_bank;
                     $amount_paid_bank_transfer = null;
                 }
-
+//                dd($amount_paid, $amount_paid_bank, $amount_paid_bank_transfer);
                 /* Record Transaction On Statement Table */
                 $this -> insertToStatement(
                     $saleOrder, // relatedModel
@@ -423,7 +423,7 @@ class SaleOrderController extends Controller
                     $amount_paid_bank = $request -> amount_paid_bank;
                     $amount_paid_bank_transfer = null;
                 }
-
+//dd($amount_paid, $amount_paid_bank, $amount_paid_bank_transfer);
                 /* Record Transaction On Statement Table */
                 $this -> insertToStatement(
                     $saleOrder, // relatedModel
