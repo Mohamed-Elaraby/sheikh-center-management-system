@@ -22,6 +22,42 @@
                         </div>
                     @endif
                 </div>
+                <div class="error_messages text-center">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('delete'))
+                        <div class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle text-yellow"></i> {{ session('delete') }} <i class="fa fa-exclamation-triangle text-yellow"></i>
+                            <table class="table table-bordered table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>{{ __('trans.required advance') }}</th>
+                                    <td>{{ session('details')['advance_amount']. ' ريال ' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{  __('trans.salary') }}</th>
+                                    <td>{{ session('details')['employee_salary']. ' ريال ' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ __('trans.total rewards') }}</th>
+                                    <td>{{ session('details')['rewards_during_the_month']. ' ريال ' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ __('trans.total advances') }}</th>
+                                    <td>{{ session('details')['advances_during_the_month']. ' ريال ' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ __('trans.remaining amount') }}</th>
+                                    <td>{{ session('details')['total_employee_receives']. ' ريال ' }}</td>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    @endif
+                </div>
                 <div class="card-header">
                     <h3 class="text-center"><i class="fa fa-child"></i> {{ $pageType .' '. $pageItem }}</h3>
                 </div>
@@ -30,7 +66,7 @@
                     {!! Form::hidden('employee_id', $employee -> id) !!}
                     <div class="form-group">
                         {!! Form::label('amount', __('trans.amount'), ['class' => 'control-label']) !!}
-                        {!! Form::text('amount', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('amount', old('amount'), ['class' => 'form-control']) !!}
                         <span style="display: none" id="amount_error"></span>
                     </div>
                     <div id="type_group">

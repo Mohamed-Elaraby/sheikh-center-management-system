@@ -10,6 +10,7 @@ use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderProducts;
 use App\Models\PurchaseOrderReturn;
 use App\Models\PurchaseOrderReturnProducts;
+use App\Models\Statement;
 use App\Models\Supplier;
 use App\Models\SupplierTransaction;
 use App\Traits\HelperTrait;
@@ -113,15 +114,7 @@ class PurchaseOrderReturnController extends Controller
                     ]);
                     array_push($amount_paid, $item_sub_total);
 
-                    /* Record Transaction On Statement Table */
-                    $this ->insertToStatement(
-                        $purchase_order_return, // relatedModel
-                        [
-                            'imports_cash'                 =>  $product ['item_sub_total'],
-                            'notes'                         =>  'فاتورة مردودات مشتريات رقم / ' . $purchase_order_return -> invoice_number,
-                            'branch_id'                     =>  $request -> branch_id,
-                        ]
-                    );
+
                 }elseif ($return_amount_in == 'bank') {
                     /* Update Bank Amount */
                     $last_amount_bank = Bank::where('branch_id', $request -> branch_id)->get()->last();
@@ -135,15 +128,15 @@ class PurchaseOrderReturnController extends Controller
                     ]);
                     array_push($amount_paid_bank, $item_sub_total);
 
-                    /* Record Transaction On Statement Table */
-                    $this ->insertToStatement(
-                        $purchase_order_return, // relatedModel
-                        [
-                            'imports_network'              =>  $product ['item_sub_total'],
-                            'notes'                         =>  'فاتورة مردودات مشتريات رقم / ' . $purchase_order_return -> invoice_number,
-                            'branch_id'                     =>  $request -> branch_id,
-                        ]
-                    );
+//                    /* Record Transaction On Statement Table */
+//                    $this ->insertToStatement(
+//                        $purchase_order_return, // relatedModel
+//                        [
+//                            'expenses_network'              =>  $product ['item_sub_total'],
+//                            'notes'                         =>  'فاتورة مردودات مشتريات رقم / ' . $purchase_order_return -> invoice_number,
+//                            'branch_id'                     =>  $request -> branch_id,
+//                        ]
+//                    );
                 }elseif ($return_amount_in == 'supplier_balance') {
 //                    /* Update supplier balance */
 //                    $supplier_target = Supplier::whereHas('purchaseOrders', function ($query)use ($purchase_order_id){
@@ -212,36 +205,26 @@ class PurchaseOrderReturnController extends Controller
             ]);
         }
 
-//        if ($amount_post > 0)
-//        {
-//            $supplier_balance_after_subtract_amount_post = $supplier->balance - $amount_post ;
-//            /* Update supplier balance */
-//            $supplier_target = Supplier::whereHas('purchaseOrders', function ($query)use ($purchase_order_id){
-//                $query -> where('id', $purchase_order_id);
-//            })->first();
-//            if ($supplier_target)
-//            {
-//                /* Update Supplier balance after add total amounts paid plus bank*/
-//                $supplier_target -> update(
-//                    [
-//                        'balance' => $supplier_balance_after_subtract_amount_post
-//                    ]
-//                );
-//            }
-//
-//
-//            SupplierTransaction::create([
-//                'total_amount'                          => $amount_post,
-//                'supplier_balance'                      => $supplier_balance_after_subtract_amount_post,
-//                'details'                               => 'مبلغ آجل من قيمة فاتورة مردودات مشتريات رقم / ' . $purchase_order_return -> invoice_number,
-//                'amount_paid_subtract_from_supplier_balance'    => $amount_post,
-//                'transaction_date'                      => $invoice_date,
-//                'transaction_type'                      => 'credit',
-//                'credit'                                => $amount_post,
-//                'user_id'                               => $user_id,
-//                'supplier_id'                           => $supplier_id,
-//            ]);
-//        }
+        if ($amount_paid_bank > 0)
+        {
+            /* insert record under field custody administration network */
+            Statement::create([
+                'custody_administration_network'    => '-'.$amount_paid_bank,
+                'notes'                             => 'عهدة من الادارة',
+                'branch_id'                         =>  $request -> branch_id,
+            ]);
+        }
+
+        /* Record Transaction On Statement Table */
+        $this ->insertToStatement(
+            $purchase_order_return, // relatedModel
+            [
+                'expenses_cash'                     =>  $amount_paid ? '-'.$amount_paid : null,
+                'expenses_network'                  =>  $amount_paid_bank ? '-'.$amount_paid_bank : null,
+                'notes'                             =>  'فاتورة مردودات مشتريات رقم / ' . $purchase_order_return -> invoice_number,
+                'branch_id'                         =>  $request -> branch_id,
+            ]
+        );
 
         return redirect() -> route('admin.purchaseOrderReturns.show', $purchase_order_return_id);
     }

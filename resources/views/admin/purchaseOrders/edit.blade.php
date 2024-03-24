@@ -164,10 +164,31 @@
                                     <label for="total_amount_due" class="col-sm-4 col-form-label">اجمالى المبلغ المستحق</label>
                                     <div class="col-sm-2">
                                         <input readonly type="text" name="total_amount_due" class="form-control total_amount_due" id="total_amount_due" value="{{ $purchaseOrder -> total_amount_due }}">
+                                        <input type="hidden" class="form-control total_amount_due_hidden_input_without_round" id="total_amount_due_hidden_input_without_round" value="{{ $purchaseOrder -> total_amount_due }}">
                                     </div>
                                     <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>
                                 </div>
                                 <hr>
+                                <div class="col-xs-12 col-custom-style">
+                                        <div class="form-group">
+                                            <input class="supplier_discount_button" type="checkbox" name="supplier_discount" id="supplier_discount_button" {{ $purchaseOrder -> supplier_discount ? 'checked': '' }}>
+                                            <label for="supplier_discount_button">خصم المورد</label>
+                                        </div>
+                                        <div class="supplier_discount_container">
+                                            @if ($purchaseOrder -> supplier_discount)
+                                                <label for="supplier_discount_calculator">مبلغ الخصم</label>
+                                                <div class="input-group my-group supplier_discount_amount" id="supplier_discount_calculator">
+                                                    <select id="supplier_discount_type" class="form-control supplier_discount_type" name="supplier_discount_type">
+                                                        <option value="0" {{ $purchaseOrder -> supplier_discount_type == 0 ? 'selected': '' }}>ريال</option>
+                                                        <option value="1" {{ $purchaseOrder -> supplier_discount_type == 1 ? 'selected': '' }}>%</option>
+                                                    </select>
+                                                    <input id="supplier_discount" name="supplier_discount" type="text" class="form-control" value="{{ $purchaseOrder -> supplier_discount }}" autocomplete="off">
+                                                    <input id="supplier_discount_amount" name="supplier_discount_amount" type="hidden">
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                </div><!-- end col 12 -->
                                 <div>
                                     <label for=""><b>طريقة الدفع</b></label>
                                     <div class="form-group">
@@ -215,24 +236,7 @@
                                 </div>
 
                             </div> <!-- end col 12 -->
-                            <div class="col-xs-12 col-custom-style">
-                                @if ($purchaseOrder -> supplier_discount_amount)
-                                    <div class="form-group">
-                                        <input class="supplier_discount" type="checkbox" name="supplier_discount" id="supplier_discount">
-                                        <label for="supplier_discount">خصم المورد</label>
-                                    </div>
-                                    <div class="supplier_discount_container">
-                                        <label for="supplier_discount_amount">مبلغ الخصم</label>
-                                        <div class="input-group my-group supplier_discount_amount">
-                                            <select id="supplier_discount_type" class="form-control supplier_discount_type" name="supplier_discount_type">
-                                                <option value="0" {{ $purchaseOrder -> supplier_discount_type == 0 ? 'selected': '' }}>ريال</option>
-                                                <option value="1" {{ $purchaseOrder -> supplier_discount_type == 1 ? 'selected': '' }}>%</option>
-                                            </select>
-                                            <input id="supplier_discount_amount" name="supplier_discount_amount" type="text" class="form-control" value="{{ $purchaseOrder -> supplier_discount_amount }}" autocomplete="off">
-                                        </div>
-                                    </div>
-                                @endif
-                            </div><!-- end col 12 -->
+
                             <div class="col-xs-12 col-custom-style">
                                 <div class="form-group">
                                     <lable><b>ملاحظات</b></lable>
@@ -291,8 +295,8 @@
     <script src="{{ asset('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <!-- Calculator Script -->
-    <script src="{{ asset('js/calculatorScript_edit_page.js') }}"></script>
-
+    <script src="{{ asset('js/includes/purchase_order/edit/calculatorScript_edit_page.js') }}"></script>
+    <script src="{{ asset('js/includes/purchase_order/edit/supplier_discount.js') }}"></script>
     <script src="{{ asset('js/jquryValidation/jquery.form.js') }}"></script>
     <script src="{{ asset('js/jquryValidation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('js/jquryValidation/additional-methods.min.js') }}"></script>

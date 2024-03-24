@@ -121,8 +121,11 @@
                                     <div class="col-sm-2">
                                         <input readonly type="text" name="total_return_items" class="form-control total_return_items" id="total_return_items">
                                     </div>
-                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>
+{{--                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>--}}
                                 </div>
+                                <input type="hidden" name="amount_paid" class="form-control amount_paid" id="amount_paid">
+                                <input type="hidden" name="amount_paid_bank" class="form-control amount_paid_bank" id="amount_paid_bank">
+
                                 <div class="col-xs-12 col-custom-style">
                                     <div class="form-group">
                                         <lable><b>ملاحظات</b></lable>
@@ -162,7 +165,7 @@
 @endpush
 @push('scripts')
     <!-- Calculator Script -->
-    <script src="{{ asset('js/orderReturnsScript.js') }}"></script>
+    <script src="{{ asset('js/purchaseOrderReturnsScript.js') }}"></script>
     <!-- Jquery Validation -->
     <script src="{{ asset('js/jquryValidation/jquery.form.js') }}"></script>
     <script src="{{ asset('js/jquryValidation/jquery.validate.min.js') }}"></script>

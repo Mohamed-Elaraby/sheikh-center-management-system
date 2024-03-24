@@ -137,8 +137,9 @@ $pageItem = __('trans.sale order')
                                     <label for="total_amount_due" class="col-sm-4 col-form-label">اجمالى المبلغ المستحق</label>
                                     <div class="col-sm-2">
                                         <input readonly type="text" name="total_amount_due" class="form-control total_amount_due" id="total_amount_due">
+                                        <input type="hidden" class="form-control total_amount_due_hidden_input_without_round" id="total_amount_due_hidden_input_without_round">
                                     </div>
-                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>
+{{--                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>--}}
                                 </div>
                                 <hr>
                                 <div>
@@ -287,7 +288,7 @@ $pageItem = __('trans.sale order')
                     $('#safe_amount_field').remove();
                 }
             }
-        })
+        });
 
         // on change payment method create new field to pay into bank
         $('input[name="payment_method_bank"]').on('change', function () {

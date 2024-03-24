@@ -158,8 +158,9 @@
                                     <label for="total_amount_due" class="col-sm-4 col-form-label">اجمالى المبلغ المستحق</label>
                                     <div class="col-sm-2">
                                         <input readonly type="text" name="total_amount_due" class="form-control total_amount_due" id="total_amount_due" value="{{ $saleOrder -> total_amount_due }}">
+                                        <input type="hidden" class="form-control total_amount_due_hidden_input_without_round" id="total_amount_due_hidden_input_without_round" value="{{ $saleOrder -> total_amount_due }}">
                                     </div>
-                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>
+{{--                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>--}}
                                 </div>
                                 <hr>
                                 <div>
@@ -272,7 +273,6 @@
     <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/dist/css/createPurchase&SalePages.css') }}">
-
 
     <style>
         .info th, .info td {

@@ -75,7 +75,7 @@ $(document).ready(function () {
             tax_value += +$(this).val() || 0;
             calc_tax = (tax_value);
             _total_vat_element.val(round_amount(calc_tax - tax_removed).toFixed(2)); // insert total amount inside total input
-            _card_details_tax_element.val(round_amount(calc_tax - tax_removed)); // insert total amount inside total input
+            _card_details_tax_element.val(round_amount(calc_tax - tax_removed).toFixed(2)); // insert total amount inside total input
 
         });
 
@@ -85,7 +85,6 @@ $(document).ready(function () {
             subtotal_value += +$(this).val() || 0;
             calcSubTotal = (subtotal_value);
 
-            // console.log('sub_dis : ' + calc_supplier_discount_amount());
             _total_amount_due_element.val(round_amount(calcSubTotal - subtotal_removed));
             _amount_due_element.val(toTwoDecimalPlaces(_total_amount_due_element.val() - total_amounts));
 
@@ -103,7 +102,7 @@ $(document).ready(function () {
 
 
     function round_amount(amount) {
-        return parseFloat(Math.round(amount).toFixed(2));
+        return Math.round(amount);
     }
 
     function makeToFixedNumber(num) {
@@ -183,7 +182,6 @@ $(document).ready(function () {
         calc_subTotal = (calc_amount_taxable - discount_amount_or_percentage + calc_tax_amount).toFixed(2); // calculation sub total for item
         row.find('.item_sub_total').val(calc_subTotal); // insert sub total items into sub total field
         calc_items_total_amounts();
-        // $('#supplier_discount_amount').val(calc_supplier_discount_amount());
         putHandLabourAndPartsAmount();
         check_client_balance();
     });
@@ -213,18 +211,13 @@ $(document).ready(function () {
         let hand_labour = parseFloat($('#hand_labour').val())|| 0;
         let new_parts = parseFloat($('#new_parts').val())|| 0;
         let used_parts = parseFloat($('#used_parts').val())|| 0;
-        let card_details_tax_element = parseFloat(_card_details_tax_element.val()) || 0;
 
-        // console.log(hand_labour);
-        // console.log(new_parts);
-        // console.log(used_parts);
-        // console.log(parseFloat(_card_details_tax_element.val()));
+
         // let calculate_tax_amount = Math.round(total_amounts_paid - ( total_amounts_paid / 1.15)); /* 15% */
 
-        let total_card_details_amount = makeToFixedNumber(hand_labour + new_parts + used_parts + card_details_tax_element);
+        let total_card_details_amount = makeToFixedNumber(hand_labour + new_parts + used_parts + _card_details_tax_element.val());
 
-        // console.log('total_card_details_amount = ' + total_card_details_amount);
-        // console.log('total_amounts_paid = ' + total_amounts_paid);
+
         if (total_amounts_paid > 0)
         {
             if (total_card_details_amount < 1 || total_card_details_amount > total_amounts_paid)

@@ -6,6 +6,8 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="buttons_area">
+                <a href="{{ route('admin.priceList.edit', $price_list -> id) }}"
+                   class="btn btn-info btn-sm btn-block">edit <i class="fa fa-edit"></i></a>
                 <button
                     id="tax_invoice_print"
                     class="btn btn-primary btn-sm btn-block"
@@ -208,6 +210,7 @@
                                                 <td align="center">{{ $price_list -> total_amount_due }} ريال</td>
                                             </tr>
                                         </table>
+                                        <div style="page-break-after: always;"></div> <!-- page break -->
                                         @if ($price_list -> notes)
                                             <div class="notes" style="padding-top: 20px">
                                                 <table class="notes_table" width="100%">
@@ -218,6 +221,11 @@
                                                 </table>
                                             </div>
                                         @endif
+                                        <br><br>
+                                        <div class="terms">
+                                            <h5 class="lightgrey terms_of_repair_title">شروط الاصلاح</h5>
+                                            @include('admin.includes.terms_of_price_list')
+                                        </div>
                                     </div>
                                 </div> <!-- end main -->
                             </td>

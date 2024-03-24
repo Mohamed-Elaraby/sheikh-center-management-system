@@ -41,6 +41,7 @@ class ClientCollectingController extends Controller
 
     public function store(AddAndUpdateClientCollectingRequest $request)
     {
+//        dd($request->payment_method_bank);
         $user_id = Auth::user()->id;
         $amount_paid = $request->amount_paid ?? 0;
         $amount_paid_bank = $request->amount_paid_bank ?? 0;
@@ -105,11 +106,32 @@ class ClientCollectingController extends Controller
             /* Record Transaction On Statement Table */
             $amount_paid = $request->amount_paid ?? null;
             $amount_paid_bank = $request->amount_paid_bank ?? null;
+            $amount_paid_network = null;
+            $amount_paid_bank_transfer = null;
+            if ($request->payment_method_bank)
+            {
+                $method = $request->payment_method_bank ;
+                if ($method == 'شبكة')
+                {
+                    $amount_paid_network = $amount_paid_bank;
+                }
+                elseif ($method == 'تحويل بنكى')
+                {
+                    $amount_paid_bank_transfer = $amount_paid_bank;
+                }
+                elseif ($method == 'STC-Pay')
+                {
+                    $amount_paid_network = $amount_paid_bank;
+                }
+
+            }
+//        dd($amount_paid,$amount_paid_bank,$amount_paid_network,$amount_paid_bank_transfer);
             $this -> insertToStatement(
                 $clientCollecting, // relatedModel
                 [
                     'imports_cash'                  =>  $amount_paid,
-                    'imports_network'               =>  $amount_paid_bank,
+                    'imports_network'               =>  $amount_paid_network,
+                    'imports_bank_transfer'         =>  $amount_paid_bank_transfer,
                     'notes'                         =>  ' سند قبض من العميل ' . $clientCollecting -> client -> name,
                     'card_details_hand_labour'      =>  $request -> hand_labour,
                     'card_details_new_parts'        =>  $request -> new_parts,

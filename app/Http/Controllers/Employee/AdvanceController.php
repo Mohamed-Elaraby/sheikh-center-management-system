@@ -8,6 +8,7 @@ use App\Interfaces\advance\Scheduled;
 use App\Interfaces\bank\balance as balanceOfBank;
 use App\Interfaces\moneySafe\balance;
 use App\Interfaces\bank\balance as changeBalanceOfBank;
+use App\Interfaces\salary\Calculate;
 use App\Models\Advance;
 use App\Models\Employee;
 use App\Models\Images;
@@ -54,6 +55,13 @@ class AdvanceController extends Controller
         $branch_id = Employee::findOrFail($request -> employee_id)->branch_id;
         $amount = $request ->amount;
         $payment_method = $request -> payment_method;
+
+
+        $salary = new Calculate();
+        $advance_greater_than_limit = $salary ->check_advance_greater_than_limit($amount, $request -> employee_id);
+        if ($advance_greater_than_limit)
+            return redirect()->back()->with('details', $advance_greater_than_limit)->withInput()-> with('delete', __('trans.advance alert'));
+//            return redirect() -> back() ->withInput()-> with('delete', __('trans.advance alert'));
 
         if ($advance_type == 'تخصم مباشرة'){
 
@@ -129,8 +137,14 @@ class AdvanceController extends Controller
                     $advance = Advance::create($request -> except(['single_amount', 'pay_method']) + ['user_id' => $user_id] + ['status' => 'غير مسددة']);
                     $money_safe -> decreaseBalance($advance, $amount, $branch_id);
                 }
-
-
+                $this -> insertToStatement(
+                        $advance, // relatedModel
+                            [
+                            'advances_and_salaries_cash'        =>  $amount,
+                            'notes'                             =>  'سلفة ' . $advance -> employee -> name . ' شهر ' . $salary_month_year,
+                            'branch_id'                         =>  $branch_id,
+                            ]
+                    );
             }else
             {
                 $bank = new balanceOfBank();
@@ -144,6 +158,20 @@ class AdvanceController extends Controller
                     $advance = Advance::create($request -> except(['single_amount', 'pay_method']) + ['user_id' => $user_id] + ['status' => 'غير مسددة']);
                     $bank -> decreaseBalance($advance, $amount, $branch_id);
                 }
+                Statement::create([
+                        'custody_administration_network'    => $amount,
+                        'notes'                             => 'عهدة من الادارة',
+                        'branch_id'                         =>  $branch_id,
+                    ]);
+                    /* Record Transaction On Statement Table */
+                    $this -> insertToStatement(
+                        $advance, // relatedModel
+                        [
+                            'advances_and_salaries_network'     =>  $amount,
+                            'notes'                             =>  'سلفة ' . $advance -> employee -> name . ' شهر ' . $salary_month_year,
+                            'branch_id'                         =>  $branch_id,
+                        ]
+                    );
             }
 
 

@@ -57,6 +57,10 @@
         direction: rtl;
         font-size: 10px;
     }
+    .no_wrapping
+    {
+        white-space: nowrap;
+    }
     @page {
         header: page-header;
         footer: page-footer;
@@ -66,7 +70,14 @@
 
 <htmlpageheader name="page-header">
     <div class="header">
-
+        <h2 class="lightgrey" style="text-align: center">
+            يومية فرع
+            [ {{ $branch -> display_name }} ]
+            من تاريخ
+            [ {{ \Carbon\Carbon::parse($startDate)->dayName . ' ' . $startDate }} ]
+            حتى تاريخ
+            [ {{ \Carbon\Carbon::parse($endDate)->dayName . ' ' . $endDate }} ]
+        </h2>
     </div>
 </htmlpageheader>
 
@@ -100,9 +111,6 @@
             </colgroup>
             <col>
             <thead>
-            <tr>
-                <th colspan="15">تاريخ اليومية</th>
-            </tr>
             <tr>
                 <th colspan="3">الوارد</th>
                 <th colspan="4">تفاصيل الكارت</th>
@@ -152,7 +160,7 @@
                         <td>{{ $statement -> cash_to_administration }}</td>
                         <td>{{ $statement -> advances_and_salaries_cash }}</td>
                         <td>{{ $statement -> advances_and_salaries_network }}</td>
-                        <td>{{ $statement -> notes }}</td>
+                        <td class="no_wrapping">{{ $statement -> notes }}</td>
                     </tr>
                 @endforeach
                 <tr>
@@ -183,8 +191,9 @@
                 </tr>
             </tbody>
         </table>
-        <br><br>
-        <table border="1" width="50%" style="font-size: 20px; background-color:#aeaeae">
+        <div style="page-break-after: always;"></div> <!-- page break -->
+
+        <table border="1" width="100%" style="font-size: 20px; background-color:#aeaeae">
             <tbody>
             <tr>
                 <th colspan="2">تاريخ اليومية</th>
@@ -254,7 +263,7 @@
 <htmlpagefooter name="page-footer">
 {{--    <hr style="border-top: 1px solid #000">--}}
     <div class="footer-info" style=" margin-top: 10px; ">
-
+        Page {PAGENO} of {nb}
     </div>
 </htmlpagefooter>
 </body>

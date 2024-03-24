@@ -105,7 +105,7 @@ class PriceListDatatable extends DataTable
                         ]
                     )
                     ->languageUrl('//cdn.datatables.net/plug-ins/1.10.22/i18n/Arabic.json')
-                    ->orderBy(5)
+                    ->orderBy(7)
                     ->buttons(
                         Button::make('export'),
                         Button::make('print'),

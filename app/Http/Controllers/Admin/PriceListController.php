@@ -69,7 +69,7 @@ class PriceListController extends Controller
         {
             $priceList -> priceListProducts() -> create($product);
         }
-        return redirect() -> back();
+        return redirect() -> route('admin.priceList.index');
     }
 
     public function show($id)
@@ -101,7 +101,7 @@ class PriceListController extends Controller
         $mpdf = PDF::loadView('admin.priceList.download_price_list', $data, [], [
             'margin_top' => 80,
             'margin_header' => 10,
-            'margin_footer' => 20,
+            'margin_footer' => 10,
 
         ]);
         $mpdf->autoScriptToLang = true;

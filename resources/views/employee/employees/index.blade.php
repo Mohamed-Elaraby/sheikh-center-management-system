@@ -21,6 +21,7 @@
                 <div class="card-header" style="margin: 20px 0">
                     <div class="row">
                         <div class="col-xs-6">
+
                             <h3 style="margin: 0; padding: 0; display: inline">{{ request('branch_id')?__('trans.all employees list').'['.$branchName.']': __('trans.all employees list')}}</h3>
                         </div>
                         <div class="col-xs-6">

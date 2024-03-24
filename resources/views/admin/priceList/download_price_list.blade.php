@@ -170,6 +170,7 @@
             </tr>
 
         </table>
+        <div style="page-break-after: always;"></div> <!-- page break -->
         @if ($price_list -> notes)
             <div class="notes" style="padding-top: 20px">
                 <table class="notes_table" width="100%">
@@ -180,6 +181,11 @@
                 </table>
             </div>
         @endif
+        <br><br>
+        <div class="terms">
+            <h5 class="lightgrey terms_of_repair_title">شروط الاصلاح</h5>
+            @include('admin.includes.terms_of_price_list')
+        </div>
     </div>
 
     <htmlpagefooter name="page-footer">

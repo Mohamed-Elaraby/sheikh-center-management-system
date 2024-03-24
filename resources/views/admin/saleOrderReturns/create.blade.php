@@ -121,7 +121,42 @@
                                     <div class="col-sm-2">
                                         <input readonly type="text" name="total_return_items" class="form-control total_return_items" id="total_return_items">
                                     </div>
-                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>
+{{--                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>--}}
+                                </div>
+                                <div>
+                                    <label for="" class="text-center"><h3>تفاصيل الكارت</h3></label>
+                                    <div class="form-group row">
+                                        <label for="hand_labour" class="col-sm-4 col-form-label">تحديد مبلغ اجور اليد</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" name="hand_labour" class="form-control card_details hand_labour" id="hand_labour">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="new_parts" class="col-sm-4 col-form-label">تحديد مبلغ القطع الجديدة</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" name="new_parts" class="form-control card_details new_parts" id="new_parts">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="used_parts" class="col-sm-4 col-form-label">تحديد مبلغ القطع المستعملة</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" name="used_parts" class="form-control card_details used_parts" id="used_parts">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="card_details_tax" class="col-sm-4 col-form-label">تحديد مبلغ الضريبة</label>
+                                        <div class="col-sm-2">
+                                            <input readonly type="text" name="card_details_tax" class="form-control card_details card_details_tax" id="card_details_tax">
+                                            <input type="hidden" name="amount_paid" class="form-control amount_paid" id="amount_paid">
+                                            <input type="hidden" name="amount_paid_bank" class="form-control amount_paid_bank" id="amount_paid_bank">
+
+                                        </div>
+                                    </div>
+                                    <span id="card_details_error" style="color: red; display: none"></span>
+
                                 </div>
                                 <div class="col-xs-12 col-custom-style">
                                     <div class="form-group">

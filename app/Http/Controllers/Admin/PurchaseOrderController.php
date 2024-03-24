@@ -68,6 +68,7 @@ class PurchaseOrderController extends Controller
         $order_products = $request->product_data;
         $total_amounts_paid_plus_bank = $amount_paid + $amount_paid_bank ;
         $supplier = Supplier::findOrFail($request->supplier_id);
+        $supplier_discount_amount = '';
 
         if ($request -> soft_save) {
             $status = 'open';
@@ -148,6 +149,11 @@ class PurchaseOrderController extends Controller
                     ]);
                 }
             }
+
+//            if ($request -> supplier_discount_amount)
+//            {
+//                $supplier_discount_amount = $request -> supplier_discount_amount;
+//            }
 
             /* Update Supplier balance after add total amount duo */
             $supplier_balance_after_add_total_amount_due = $supplier->balance + $request->total_amount_due ;
@@ -518,6 +524,42 @@ class PurchaseOrderController extends Controller
                     'user_id'                   => $user_id,
                     'supplier_id'               => $request->supplier_id,
                 ]);
+
+                /* Record Transaction On Statement Table */
+                $this -> insertToStatement(
+                    $purchaseOrder, // relatedModel
+                    [
+                        'expenses_cash'                 =>  $amount_paid,
+                        'expenses_network'              =>  $amount_paid_bank,
+                        'notes'                         =>  'فاتورة مشتريات رقم / ' . $purchaseOrder -> invoice_number,
+                        'branch_id'                     =>  $request -> branch_id,
+                    ]
+                );
+            }
+
+            // if exist supplier discount amount discount this from supplier balance
+            if ($request->supplier_discount) {
+                $supplier_discount_type = $request->supplier_discount_type;
+                $supplier_discount = $request->supplier_discount;
+                $total_amount_due = $request->total_amount_due;
+                $supplier_discount_amount_or_percentage = $supplier_discount_type == 1 ? ($total_amount_due * $supplier_discount / 100) : $supplier_discount;
+                /* Update Supplier balance after subtract supplier discount amount or percentage */
+                $supplier_balance_after_subtract_supplier_discount_amount_or_percentage = $supplier->balance - $supplier_discount_amount_or_percentage ;
+                $supplier->update(['balance' => $supplier_balance_after_subtract_supplier_discount_amount_or_percentage ]);
+                /* Record Transaction On Supplier Transaction Table */
+                $this -> insertToSupplierTransaction($purchaseOrder,
+                    [
+                        'supplier_discount_on_purchase_order'       => $supplier_discount_amount_or_percentage,
+                        'total_amount'                              => $supplier_discount_amount_or_percentage,
+                        'supplier_balance'                          => $supplier_balance_after_subtract_supplier_discount_amount_or_percentage,
+                        'details'                                   => 'خصم المورد على فاتورة مشتريات رقم / ' . $purchaseOrder -> invoice_number,
+                        'transaction_date'                          => $request->invoice_date,
+                        'transaction_type'                          => 'credit',
+                        'credit'                                    => $supplier_discount_amount_or_percentage,
+                        'user_id'                                   => $user_id,
+                        'supplier_id'                               => $request->supplier_id,
+                    ]
+                );
             }
 
             /* Update Money Safe Amount */
@@ -552,16 +594,7 @@ class PurchaseOrderController extends Controller
                 ]);
             }
 
-            /* Record Transaction On Statement Table */
-            $this -> insertToStatement(
-                $purchaseOrder, // relatedModel
-                [
-                    'expenses_cash'                 =>  $amount_paid,
-                    'expenses_network'              =>  $amount_paid_bank,
-                    'notes'                         =>  'فاتورة مشتريات رقم / ' . $purchaseOrder -> invoice_number,
-                    'branch_id'                     =>  $request -> branch_id,
-                ]
-            );
+
 
             return redirect() -> route('admin.purchaseOrders.show', $purchaseOrder->id) -> with('success', __('trans.purchase order added successfully'));
 

@@ -161,7 +161,7 @@ $pageItem = __('trans.price list')
                                     <div class="col-sm-2">
                                         <input readonly type="text" name="total_amount_due" class="form-control total_amount_due" id="total_amount_due">
                                     </div>
-                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>
+{{--                                    <span id="rounding_amount" class="btn btn-success btn-sm">تقريب المبلغ</span>--}}
                                 </div>
                             </div> <!-- end col 12 -->
                             <div class="col-xs-12 col-custom-style">
@@ -210,7 +210,7 @@ $pageItem = __('trans.price list')
     <script src="{{ asset('assets') }}/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
     <!-- Calculator Script -->
-    <script src="{{ asset('js/calculatorScript.js') }}"></script>
+    <script src="{{ asset('js/priceListCalculatorScript.js') }}"></script>
 
     <script src="{{ asset('js/jquryValidation/jquery.form.js') }}"></script>
     <script src="{{ asset('js/jquryValidation/jquery.validate.min.js') }}"></script>

@@ -20,19 +20,27 @@
             <!-- /.modal -->
         </div>
 
-
         <div class="buttons_area">
 
-            <!-- Simplified tax invoice -->
             <button
                 id="statement_print"
                 class="btn btn-info btn-sm btn-block"
-                data-link="{{ route('admin.statement.print') }}"
+                data-link="{{ route('admin.statement.print', ['startDate'=>$startDate, 'endDate'=>$endDate, 'branchId'=> $branch->id]) }}"
                 href="javascript:void(0);"
                 onclick="printJS($(this).data('link'))"
             >
                 <span> طباعة اليومية <i class="fa fa-print"></i></span>
             </button>
+
+            <a target="_blank" href="{{ route('admin.statement.print', ['startDate'=>$startDate, 'endDate'=>$endDate, 'branchId'=> $branch->id]) }}"
+               class="btn btn-warning btn-sm btn-block">
+                <span> عرض اليومية ك PDF <i class="fa fa-paperclip"></i></span>
+            </a>
+
+            <a target="_blank" href="{{ route('admin.statement.print', ['startDate'=>$startDate, 'endDate'=>$endDate, 'branchId'=> $branch->id, 'download' => true]) }}"
+               class="btn btn-success btn-sm btn-block">
+                <span> تحميل اليومية <i class="fa fa-download"></i></span>
+            </a>
 
         </div>
         <table border="1" width="100%" style="font-size: 20px;" class="text-center table_striped_class">
@@ -187,15 +195,15 @@
                 <td width="70%">رصيد سابق</td>
             </tr>
             <tr>
-                <td width="30%">{{ $total_imports_formatted }}</td>
+                <td width="30%">{{ $total_imports_cash_formatted }}</td>
                 <td width="70%">اجمالى الوارد</td>
             </tr>
             <tr>
-                <td width="30%">{{ $total_custody_administration_cash_formatted }}</td>
+                <td width="30%">{{ $total_custody_administration_formatted }}</td>
                 <td width="70%">عهدة من الادارة</td>
             </tr>
             <tr>
-                <td width="30%">{{ $total_expenses_cash_formatted }}</td>
+                <td width="30%">{{ $total_expenses_formatted }}</td>
                 <td width="70%">مصروفات</td>
             </tr>
             <tr>

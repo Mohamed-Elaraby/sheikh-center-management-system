@@ -66,7 +66,6 @@ class SaleOrderReturnController extends Controller
         $amount_paid_bank = [];
         $amount_paid_add_to_client_balance = [];
 //        dd($request->all());
-        $sale_order_id = $request -> sale_order_id;
         $branch_id = $request -> branch_id;
         $user_id = Auth::user()->id;
         $invoice_number = SaleOrderReturn::all()->last() ? SaleOrderReturn::all()->last()->id + 1 : 1;
@@ -115,15 +114,15 @@ class SaleOrderReturnController extends Controller
                     ]);
                     array_push($amount_paid, $item_sub_total);
 
-                    /* Record Transaction On Statement Table */
-                    $this ->insertToStatement(
-                        $sale_order_return, // relatedModel
-                        [
-                            'expenses_cash'                 =>  $product ['item_sub_total'],
-                            'notes'                         =>  'فاتورة مردودات مبيعات رقم / ' . $sale_order_return -> invoice_number,
-                            'branch_id'                     =>  $request -> branch_id,
-                        ]
-                    );
+//                    /* Record Transaction On Statement Table */
+//                    $this ->insertToStatement(
+//                        $sale_order_return, // relatedModel
+//                        [
+//                            'expenses_cash'                 =>  $product ['item_sub_total'],
+//                            'notes'                         =>  'فاتورة مردودات مبيعات رقم / ' . $sale_order_return -> invoice_number,
+//                            'branch_id'                     =>  $request -> branch_id,
+//                        ]
+//                    );
                 }elseif ($return_amount_in == 'bank') {
                     /* Update Bank Amount */
                     $last_amount_bank = Bank::where('branch_id', $request -> branch_id)->get()->last();
@@ -137,15 +136,15 @@ class SaleOrderReturnController extends Controller
                     ]);
                     array_push($amount_paid_bank, $item_sub_total);
 
-                    /* Record Transaction On Statement Table */
-                    $this ->insertToStatement(
-                        $sale_order_return, // relatedModel
-                        [
-                            'expenses_network'              =>  $product ['item_sub_total'],
-                            'notes'                         =>  'فاتورة مردودات مبيعات رقم / ' . $sale_order_return -> invoice_number,
-                            'branch_id'                     =>  $request -> branch_id,
-                        ]
-                    );
+//                    /* Record Transaction On Statement Table */
+//                    $this ->insertToStatement(
+//                        $sale_order_return, // relatedModel
+//                        [
+//                            'expenses_network'              =>  $product ['item_sub_total'],
+//                            'notes'                         =>  'فاتورة مردودات مبيعات رقم / ' . $sale_order_return -> invoice_number,
+//                            'branch_id'                     =>  $request -> branch_id,
+//                        ]
+//                    );
 
                 }elseif ($return_amount_in == 'client_balance') {
                     /* Update client balance */
@@ -166,15 +165,18 @@ class SaleOrderReturnController extends Controller
         }
 //        dd($amount_paid, $amount_paid_bank);
         /* Record Transaction On Client Transaction Table */
-        $amount_paid = array_sum($amount_paid);
+        $amount_paid = array_sum($amount_paid) ?? 0;
         $amount_paid_bank = array_sum($amount_paid_bank) ?? 0;
-        $amount_paid_add_to_client_balance = array_sum($amount_paid_add_to_client_balance);
+        $amount_paid_add_to_client_balance = array_sum($amount_paid_add_to_client_balance) ?? 0;
         $total_amounts = $amount_paid + $amount_paid_bank + $amount_paid_add_to_client_balance;
         $total_amount_paid_plus_bank = $amount_paid + $amount_paid_bank;
 
         /* Update Supplier balance after subtract total amounts */
         $client_balance_after_add_total_amounts_paid = $client->balance + $total_amounts ;
         $client->update(['balance' => $client_balance_after_add_total_amounts_paid ]);
+
+
+//        dd($this->round_number($amount_paid), $this->round_number($amount_paid_bank));
 
         $this -> insertToClientTransaction($sale_order_return,
             [
@@ -211,6 +213,30 @@ class SaleOrderReturnController extends Controller
                 'client_id'                             => $client_id,
             ]);
         }
+
+//        $amount_paid = array_sum($amount_paid) ?? null;
+//        $amount_paid_bank = array_sum($amount_paid_bank) ?? null;
+//        dd(gettype($amount_paid), gettype($amount_paid_bank));
+
+//        $vat_amount_paid = $amount_paid - ($amount_paid / 1.15); /* 15% */
+//        $vat_amount_paid_bank = $amount_paid_bank - ($amount_paid_bank / 1.15); /* 15% */
+//        $total_vat = $vat_amount_paid + $vat_amount_paid_bank ;
+//dd($request -> amount_paid,$request -> amount_paid_bank,$request -> card_details_tax);
+        /* Record Transaction On Statement Table */
+        $this ->insertToStatement(
+            $sale_order_return, // relatedModel
+            [
+                'imports_cash'                  =>  $request -> amount_paid ? '-'.$request -> amount_paid : null,
+                'imports_bank_transfer'         =>  $request -> amount_paid_bank ? '-'.$request -> amount_paid_bank : null,
+                'card_details_tax'              =>  $request -> card_details_tax ? '-'.$request -> card_details_tax : null,
+                'card_details_hand_labour'      =>  $request -> hand_labour ? '-'.$request -> hand_labour : null,
+                'card_details_new_parts'        =>  $request -> new_parts ? '-'.$request -> new_parts : null,
+                'card_details_used_parts'       =>  $request -> used_parts ? '-'.$request -> used_parts : null,
+                'notes'                         =>  'فاتورة مردودات مبيعات رقم / ' . $sale_order_return -> invoice_number,
+                'branch_id'                     =>  $request -> branch_id,
+            ]
+        );
+
         return redirect() -> route('admin.saleOrderReturns.show', $sale_order_return_id);
     }
 
@@ -225,5 +251,10 @@ class SaleOrderReturnController extends Controller
         // show sale orders products Page
         $saleOrderReturns = SaleOrderReturn::findOrFail($sale_order_return_id); // show products for sale order
         return view('admin.saleOrderReturns.orderProducts', compact('saleOrderReturns'));
+    }
+
+    public function round_number($number)
+    {
+        return round($number);
     }
 }

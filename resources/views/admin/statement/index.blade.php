@@ -106,7 +106,7 @@
         function getFilterResult(start_d, end_d) {
             start_d = startDate || '';
             end_d = endDate || '';
-            branch_id = $('#branch_id').val();
+            let branch_id = $('#branch_id').val();
             getStatementByBranchAndDate(start_d, end_d, branch_id);
         }
 
@@ -262,12 +262,12 @@
 
             let total_imports_amounts = makeToFixedNumber(total_imports_area.text());
 
-            console.log('hand_labour = ' + typeof hand_labour + ' - ' + hand_labour);
-            console.log('new_parts = ' + typeof new_parts + ' - ' + new_parts);
-            console.log('used_parts = ' + typeof used_parts + ' - ' + used_parts);
-            console.log('total_vat = ' + typeof total_vat + ' - ' + total_vat);
-            console.log('sum_card_amounts = ' + typeof sum_card_amounts + ' - ' + sum_card_amounts);
-            console.log('total_imports_amounts = ' + typeof total_imports_amounts + ' - ' + total_imports_amounts);
+            // console.log('hand_labour = ' + typeof hand_labour + ' - ' + hand_labour);
+            // console.log('new_parts = ' + typeof new_parts + ' - ' + new_parts);
+            // console.log('used_parts = ' + typeof used_parts + ' - ' + used_parts);
+            // console.log('total_vat = ' + typeof total_vat + ' - ' + total_vat);
+            // console.log('sum_card_amounts = ' + typeof sum_card_amounts + ' - ' + sum_card_amounts);
+            // console.log('total_imports_amounts = ' + typeof total_imports_amounts + ' - ' + total_imports_amounts);
 
 
             if (sum_card_amounts === total_imports_amounts)
@@ -297,10 +297,6 @@
             }
 
         })
-
-    </script>
-
-    <script>
 
     </script>
 @endpush

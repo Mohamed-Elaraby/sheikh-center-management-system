@@ -25,14 +25,10 @@ $(document).ready(function () {
         _discount_type_element = $('.discount_type'),
         _taxable_amount_element = $('#taxable_amount'),
         _total_amount_due_element = $('#total_amount_due'),
-        // _amount_paid_element = $('#amount_paid'),
         _amount_due_element = $('#amount_due'),
         _total_vat_element = $('#total_vat');
         _card_details_tax_element = $('#card_details_tax');
-    let total_amount_due_with_round ;
-    let amount_due_with_round ;
-    let total_amount_due_without_round ;
-    let amount_due_without_round ;
+
 
     // make button to remove select elements
     $(document).on('click', '.removeField', function () {
@@ -51,17 +47,16 @@ $(document).ready(function () {
 
     // calculating invoice data
     function calc_items_total_amounts(taxable_amount_removed = 0, discount_removed = 0, tax_removed = 0, subtotal_removed = 0) {
-        amount_paid_bank = parseFloat($('#amount_paid_bank').val()) || 0 ; // init amount paid
         amount_paid = parseFloat($('#amount_paid').val()) || 0 ; // init amount paid
+        amount_paid_bank = parseFloat($('#amount_paid_bank').val()) || 0 ; // init amount paid
+        let total_amounts = toTwoDecimalPlaces((amount_paid + amount_paid_bank)) ;
 
-        // console.log(amount_paid_bank);
-        // console.log(amount_paid);
         // calc amount_taxable value and insert value into total element
         let amount_taxable_value = 0;
         $('input.item_amount_taxable').each(function () {
             amount_taxable_value += +$(this).val() ;
             calcTotal = (amount_taxable_value);
-            _total_element.val((calcTotal - taxable_amount_removed).toFixed(2)); // insert total amount inside total input
+            _total_element.val(round_amount(calcTotal - taxable_amount_removed).toFixed(2)); // insert total amount inside total input
         });
 
         // calc discount value and insert value into discount element
@@ -69,7 +64,7 @@ $(document).ready(function () {
         $('input.item_discount_amount').each(function () {
             discount_value += +$(this).val() || 0;
             calc_discount = (discount_value);
-            _discount_element.val((calc_discount - discount_removed).toFixed(2)); // insert discount amount inside discount input
+            _discount_element.val(round_amount(calc_discount - discount_removed).toFixed(2)); // insert discount amount inside discount input
         });
 
         // calc item tax amount value and insert value into total vat element
@@ -77,8 +72,8 @@ $(document).ready(function () {
         $('input.item_tax_amount').each(function () {
             tax_value += +$(this).val() || 0;
             calc_tax = (tax_value);
-            _total_vat_element.val((calc_tax - tax_removed).toFixed(2)); // insert tax_amount amount inside tax_amount input
-            _card_details_tax_element.val((calc_tax - tax_removed).toFixed(2)); // insert total amount inside total input
+            _total_vat_element.val(round_amount(calc_tax - tax_removed).toFixed(2)); // insert tax_amount amount inside tax_amount input
+            _card_details_tax_element.val(round_amount(calc_tax - tax_removed).toFixed(2)); // insert total amount inside total input
         });
 
             // calc item sub total value and insert value into total amount due element and amount due element
@@ -86,20 +81,8 @@ $(document).ready(function () {
         $('input.item_sub_total').each(function () {
             subtotal_value += +$(this).val() || 0;
             calcSubTotal = (subtotal_value);
-            total_amount_due_with_round = Math.round((calcSubTotal - subtotal_removed)).toFixed(2);
-            amount_due_with_round = Math.round(((calcSubTotal - subtotal_removed) - (amount_paid + amount_paid_bank))).toFixed(2);
-            total_amount_due_without_round = (calcSubTotal - subtotal_removed).toFixed(2);
-            amount_due_without_round = ((calcSubTotal - subtotal_removed) - (amount_paid + amount_paid_bank)).toFixed(2);
-            if ($('#rounding_amount').hasClass('btn-danger'))
-            {
-                // Rounding [ total_amount_due ] and [ amount_due ]
-                _total_amount_due_element.val(Math.round((calcSubTotal - subtotal_removed)).toFixed(2)); // insert total amount inside total input
-                _amount_due_element.val(Math.round(((calcSubTotal - subtotal_removed) - (amount_paid + amount_paid_bank))).toFixed(2)); // insert total amount inside total input
-            }else
-            {
-                _total_amount_due_element.val((calcSubTotal - subtotal_removed).toFixed(2)); // insert total amount inside total input
-                _amount_due_element.val(((calcSubTotal - subtotal_removed) - (amount_paid + amount_paid_bank)).toFixed(2)); // insert total amount inside total input
-            }
+            _total_amount_due_element.val(round_amount(calcSubTotal - subtotal_removed));
+            _amount_due_element.val(toTwoDecimalPlaces(_total_amount_due_element.val() - total_amounts));
 
         });
 
@@ -109,28 +92,35 @@ $(document).ready(function () {
 
     }
 
-    // Rounding [ total_amount_due ] and [ amount_due ]
-    $('#rounding_amount').on('click', function () {
-        if ($(this).hasClass('btn-danger'))
-        {
-            $(this).addClass('btn-success').removeClass('btn-danger').text('تقريب المبلغ');
 
-            _total_amount_due_element.val(total_amount_due_without_round); // insert total amount inside total input
-            _amount_due_element.val(amount_due_without_round); // insert total amount inside total input
-
-
-        }else
-        {
-            $(this).removeClass('btn-success').addClass('btn-danger').text('الغاء التقريب');
-            _total_amount_due_element.val(total_amount_due_with_round); // insert total amount inside total input
-            _amount_due_element.val(amount_due_with_round); // insert total amount inside total input
-        }
-        check_client_balance();
-    });
+    function round_amount(amount) {
+        return Math.round(amount);
+    }
 
     function makeToFixedNumber(num) {
         // return Math.trunc(num*100)/100;
         return Math.round(num * 100) / 100;
+    }
+    function makeToFixedNumberWithoutRounding(num) {
+        return Math.trunc(num * 100) /100;
+    }
+
+
+    function toTwoDecimalPlaces(str) {
+        // Convert the string to a number
+        const num = Number(str);
+
+        // Check if the number is finite (not NaN, Infinity, or -Infinity)
+        if (isFinite(num)) {
+            // Use `toFixed()` to get the string representation of the number with two decimal places
+            const fixedString = num.toFixed(2);
+
+            // Convert the fixed string back to a number and return it
+            return Number(fixedString);
+        } else {
+            // If the input string is not a valid number, return 0
+            return 0;
+        }
     }
 
     // check if client balance less than amount due of invoice
@@ -142,11 +132,12 @@ $(document).ready(function () {
             method: 'GET',
             data: {client_id: client_id},
             success: function (client_balance) {
-                let amount_due = makeToFixedNumber($('#amount_due').val());
+                let amount_due = makeToFixedNumberWithoutRounding($('#amount_due').val());
+                // let amount_due = $('#amount_due').val();
                 client_balance = makeToFixedNumber(client_balance);
                 let calc_difference_amounts = makeToFixedNumber(amount_due - client_balance);
-                console.log(amount_due, ' - ' , calc_difference_amounts);
-                console.log(typeof amount_due, ' - ' , typeof calc_difference_amounts);
+                // console.log(amount_due, ' - ' , client_balance ,' - ' , calc_difference_amounts);
+                // console.log(typeof amount_due, ' - ' , typeof calc_difference_amounts);
                 if(amount_due != 0 && client_balance < amount_due)
                 {
                     $('#amount_due_error').addClass('hasError').css({'display': 'inline', 'font-size': 'x-small', 'font-style': 'italic', 'margin-bottom': '5px', 'font-weight': '700'}).text('رصيد حساب العميل ' + client_balance + ' وهذا المبلغ لا يغطى قيمة المبلغ المتبقى المقدر ب ' + amount_due + ' يرجى تحصيل مبلغ ' + calc_difference_amounts + ' من العميل .');
@@ -155,6 +146,7 @@ $(document).ready(function () {
                 {
                     $('#amount_due_error').removeClass('hasError').css('display','none').text();
                 }
+
             }
         });
     }
@@ -186,11 +178,26 @@ $(document).ready(function () {
         calc_subTotal = (calc_amount_taxable - discount_amount_or_percentage + calc_tax_amount).toFixed(2); // calculation sub total for item
         row.find('.item_sub_total').val(calc_subTotal); // insert sub total items into sub total field
         calc_items_total_amounts();
+        $('#supplier_discount_amount').val(calc_supplier_discount_amount());
         putHandLabourAndPartsAmount();
         check_client_balance();
     });
-    putHandLabourAndPartsAmount();
 
+
+    function calc_supplier_discount_amount() {
+
+        supplier_discount_type = parseInt($('#supplier_discount_type').val());
+
+        supplier_discount = parseFloat( $('#supplier_discount').val() || 0); // if discount value not empty get value else get zero
+
+        let total_amount_due = _total_amount_due_element.val() || 0;
+
+        discount_amount_or_percentage = supplier_discount_type === 1 ? ( total_amount_due * supplier_discount /100):supplier_discount;
+
+        return discount_amount_or_percentage  || 0;
+    }
+
+    putHandLabourAndPartsAmount();
 
     function putHandLabourAndPartsAmount() {
 
@@ -198,7 +205,7 @@ $(document).ready(function () {
         let amount_paid_bank = parseFloat($('#amount_paid_bank').val())|| 0;
 
         let total_amounts_paid  = parseFloat(amount_paid + amount_paid_bank);
-        console.log('total_amounts_paid = ' + total_amounts_paid, typeof total_amounts_paid);
+        // console.log('total_amounts_paid = ' + total_amounts_paid, typeof total_amounts_paid);
 
         let hand_labour = parseFloat($('#hand_labour').val())|| 0;
         let new_parts = parseFloat($('#new_parts').val())|| 0;
@@ -208,18 +215,6 @@ $(document).ready(function () {
         let calculate_tax_amount = Math.round(total_amounts_paid - ( total_amounts_paid / 1.15)); /* 15% */
         let card_details_tax = $('#card_details_tax');
         let total_card_details_amount = makeToFixedNumber(hand_labour + new_parts + used_parts + calculate_tax_amount);
-
-        card_details_tax.val(calculate_tax_amount);
-        console.log('total_card_details_amount = ' + total_card_details_amount, typeof total_card_details_amount);
-        console.log('calculate_tax_amount = ' + calculate_tax_amount, typeof calculate_tax_amount);
-
-
-
-
-        // let total_vat = parseFloat(_total_vat_element.val())|| 0;
-        // let total_amount_due = parseFloat($('#total_amount_due').val());
-        // let total_card_details_amount = hand_labour + new_parts + used_parts + total_vat;
-
         if (total_amounts_paid > 0)
         {
             if (total_card_details_amount < 1 || total_card_details_amount > total_amounts_paid)

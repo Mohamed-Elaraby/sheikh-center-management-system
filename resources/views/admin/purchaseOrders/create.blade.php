@@ -224,7 +224,7 @@
     <script src="{{ asset('assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 
     <!-- Calculator Script -->
-    <script src="{{ asset('js/calculatorScript.js') }}"></script>
+    <script src="{{ asset('js/purchase_order_calculatorScript.js') }}"></script>
 
     <script src="{{ asset('js/jquryValidation/jquery.form.js') }}"></script>
     <script src="{{ asset('js/jquryValidation/jquery.validate.min.js') }}"></script>

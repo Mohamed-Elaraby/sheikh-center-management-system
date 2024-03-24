@@ -158,35 +158,35 @@ class SaleOrderController extends Controller
                 ]);
 
                 /* insert into statement table */
-                $amount_paid = $request->amount_paid ?? null;
-                $amount_paid_bank = $request->amount_paid_bank ?? null;
+                $statement_amount_paid = $request->amount_paid ?? null;
+                $statement_amount_paid_bank = $request->amount_paid_bank ?? null;
                 $total_vat = $request -> card_details_tax  ?? null;
 
-                $amount_paid_bank_transfer = null ;
+                $statement_amount_paid_bank_transfer = null ;
 
                 if ($request -> payment_method_bank == 'تحويل بنكى')
                 {
-                    $amount_paid_bank = null;
-                    $amount_paid_bank_transfer = $request -> amount_paid_bank;
+                    $statement_amount_paid_bank = null;
+                    $statement_amount_paid_bank_transfer = $request -> amount_paid_bank;
                 }
                 elseif ($request -> payment_method_bank == 'شبكة')
                 {
-                    $amount_paid_bank = $request -> amount_paid_bank;
-                    $amount_paid_bank_transfer = null;
+                    $statement_amount_paid_bank = $request -> amount_paid_bank;
+                    $statement_amount_paid_bank_transfer = null;
                 }
                 elseif ($request -> payment_method_bank == 'STC-Pay')
                 {
-                    $amount_paid_bank = $request -> amount_paid_bank;
-                    $amount_paid_bank_transfer = null;
+                    $statement_amount_paid_bank = $request -> amount_paid_bank;
+                    $statement_amount_paid_bank_transfer = null;
                 }
-//                dd($amount_paid, $amount_paid_bank, $amount_paid_bank_transfer);
+//                dd($statement_amount_paid, $statement_amount_paid_bank, $statement_amount_paid_bank_transfer);
                 /* Record Transaction On Statement Table */
                 $this -> insertToStatement(
                     $saleOrder, // relatedModel
                     [
-                        'imports_cash'                  =>  $amount_paid,
-                        'imports_network'               =>  $amount_paid_bank,
-                        'imports_bank_transfer'         =>  $amount_paid_bank_transfer,
+                        'imports_cash'                  =>  $statement_amount_paid,
+                        'imports_network'               =>  $statement_amount_paid_bank,
+                        'imports_bank_transfer'         =>  $statement_amount_paid_bank_transfer,
                         'card_details_hand_labour'      =>  $request -> hand_labour,
                         'card_details_new_parts'        =>  $request -> new_parts,
                         'card_details_used_parts'       =>  $request -> used_parts,

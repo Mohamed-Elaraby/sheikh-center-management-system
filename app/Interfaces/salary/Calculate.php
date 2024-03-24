@@ -4,9 +4,13 @@
 namespace App\Interfaces\salary;
 
 
+use App\Models\Advance;
 use App\Models\Car;
+use App\Models\Discount;
+use App\Models\Employee;
 use App\Models\EmployeeSalaryLog;
 use App\Models\Images;
+use App\Models\Reward;
 use App\Models\Salary;
 use Carbon\Carbon;
 use PDF;
@@ -57,5 +61,39 @@ class Calculate implements Operations
 //        }
 
         return $mpdf->stream($employee_name . ' - ' .$month. ' - ' .$year.'.pdf');
+    }
+
+
+    public function check_advance_greater_than_limit($advance_amount, $employee_id)
+    {
+        $current_month = Carbon::now()->month;
+        $current_year = Carbon::now()->year;
+
+        $advances_during_the_month = Advance::where('employee_id', $employee_id)
+            ->where('type', 'تخصم مباشرة')
+            ->whereMonth('updated_at', $current_month)
+            ->whereYear('updated_at', $current_year)
+            ->sum('amount');
+
+        $rewards_during_the_month = Reward::where('employee_id', $employee_id)
+            ->where('type', 'يحصل عليها العامل فورا')
+            ->whereMonth('updated_at', $current_month)
+            ->whereYear('updated_at', $current_year)
+            ->sum('amount');
+
+        $salary = new Calculate();
+        $employee_salary = $salary ->totalSalary($employee_id);
+
+        if ($advance_amount > ($employee_salary + $rewards_during_the_month - $advances_during_the_month))
+        {
+            $details = [
+                'advance_amount' => $advance_amount,
+                'employee_salary' => $employee_salary,
+                'rewards_during_the_month' => $rewards_during_the_month,
+                'advances_during_the_month' => $advances_during_the_month,
+                'total_employee_receives' => ($employee_salary + $rewards_during_the_month - $advances_during_the_month)
+            ];
+            return $details ;
+        }
     }
 }

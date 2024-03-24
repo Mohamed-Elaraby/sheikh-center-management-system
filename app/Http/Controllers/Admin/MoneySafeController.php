@@ -64,7 +64,7 @@ class MoneySafeController extends Controller
                     $moneySafe, // relatedModel
                     [
                         'cash_to_administration'            =>  $request -> amount_paid,
-                        'notes'                             =>  $moneySafe -> notes,
+                        'notes'                             =>  $moneySafe -> notes ? 'نقدى الى الادارة [ ' . $moneySafe -> notes . ' ]' : 'نقدى الى الادارة ',
                         'branch_id'                         =>  $request -> branch_id,
                     ]
                 );
@@ -100,7 +100,7 @@ class MoneySafeController extends Controller
                 $moneySafe, // relatedModel
                 [
                     'custody_administration_cash'       =>  $amount_paid,
-                    'notes'                             =>  $moneySafe -> notes,
+                    'notes'                             =>  'عهدة من الادارة',
                     'branch_id'                         =>  $request -> branch_id,
                 ]
             );
