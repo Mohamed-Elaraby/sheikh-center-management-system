@@ -73,7 +73,7 @@ $(document).ready(function () {
             tax_value += +$(this).val() || 0;
             calc_tax = (tax_value);
             _total_vat_element.val(round_amount(calc_tax - tax_removed).toFixed(2)); // insert tax_amount amount inside tax_amount input
-            _card_details_tax_element.val(round_amount(calc_tax - tax_removed).toFixed(2)); // insert total amount inside total input
+            // _card_details_tax_element.val(round_amount(calc_tax - tax_removed).toFixed(2)); // insert total amount inside total input
         });
 
             // calc item sub total value and insert value into total amount due element and amount due element
@@ -210,10 +210,9 @@ $(document).ready(function () {
         let hand_labour = parseFloat($('#hand_labour').val())|| 0;
         let new_parts = parseFloat($('#new_parts').val())|| 0;
         let used_parts = parseFloat($('#used_parts').val())|| 0;
-
+        _card_details_tax_element.val(round_amount(total_amounts_paid - (total_amounts_paid / 1.15)));
 
         let calculate_tax_amount = Math.round(total_amounts_paid - ( total_amounts_paid / 1.15)); /* 15% */
-        let card_details_tax = $('#card_details_tax');
         let total_card_details_amount = makeToFixedNumber(hand_labour + new_parts + used_parts + calculate_tax_amount);
         if (total_amounts_paid > 0)
         {
